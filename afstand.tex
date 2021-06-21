@@ -62,18 +62,19 @@ De afstande, vi har set på her, er allesammen \emph{metrikker}. De opfylder nog
 En metrik på en mængde $M$ er en funktion $d$ fra $M\times M$  til $\mathbb{R}$ - altså en funktion, som tager to elementer  i $M$ og giver et reelt tal.
 
 $d$ skal opfylde følgende for alle $p,q,r$ i $M$:
-\begin{itemize}
-\item $d(p,q)\geq 0$ og $d(p,q)=0$ hvis og kun hvis $p=q$. Alle afstande er positive. Med ord: Afstanden fra et punkt til sig selv er $0$ og ingen andre afstande er $0$
+\begin{enumerate}
+\item $d(p,q)\geq 0$. Med ord: Alle afstande er positive.
+\item $d(p,p)=0$ og $d(p,q)=0$ hvis og kun hvis $p=q$.  Med ord: Afstanden fra et punkt til sig selv er $0$ og ingen andre afstande er $0$
 \item $d(p,q)=d(q,p)$ Afstanden er \emph{symmetrisk}. Med ord: Der er lige så langt fra $p$ til $q$ som fra $q$ til $p$.
 \item $d(p,q)+d(q,r)\geq d(p,r)$. \emph{Trekantsuligheden}. Med ord:  Der er mindst lige så langt fra $p$ til $ r$ via $q$, som den direkte afstand fra $p$ til $r$. 
-\end{itemize}
+\end{enumerate}
 \end{tcolorbox}
 
 Det er en meget kort definition. Og meget, meget generel. $M$ er en \emph{mængde} - der er en streng logisk måde at gå til mængder på, men lad os her sige en samling af objekter, som vi også kalder elementer af mængden. Læg mærke til, at vi her bare graver problemet lidt længere ned i sandet - fejer det ind under gulvtæppet - for hvad er "objekter"?  Det kommer vi ikke nærmere her. 
 
-Det er ret nemt at acceptere, at de tre krav er rimelige. Men er det nok? Og hvad med symmetrien? Der er vel længere 10 km op ad bakke end 10 km ned ad bakke, hvis man tænker på arbejdsindsats. Så måske giver det ikke altid mening? 
+Det er ret nemt at acceptere, at de tre krav er rimelige. Men er det nok? Og hvad med symmetrien? Der er vel længere 10 km op ad bakke end 10 km ned ad bakke, hvis man tænker på arbejdsindsats. Så måske giver det ikke altid mening?\footnote{ Hvis funktionen $d$ opfylder 1, 3 og 4, og første del af 2 ($d(p,p)=0$, men der kan være andre afstande, der er $0$)  er det en \emph{pseudometrik}. Opfylder den 1,2,4, er det en \emph{quasimetrik}. Opfylder den 1,2,3, er det en \emph{semimetrik}. Der findes såmænd også præmetrikker, metametrikker, pseudoquasimetrikker og sikkert andre. }
 
-Definitionen af metrik som her er den, vi bruger i matematik. Den har vist sig nyttig. Der er en skov af artikler og bøger, hvor man kan se, hvad man ved, når man har en funktion, der er en metrik. 
+Definitionen af metrik som her, er den, vi bruger i matematik. Den har vist sig nyttig. Der er en skov af artikler og bøger, hvor man kan se, hvad man ved, når man har en funktion, der er en metrik. 
 
 
 
