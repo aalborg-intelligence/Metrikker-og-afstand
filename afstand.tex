@@ -16,7 +16,12 @@
 \newtheorem{Opgave}{\textbf{Opgave}}
 \begin{document}
 \section*{Afstande, nærmest, størst, mindst}
-Når vi adskiller eller samler data bygger vi på en form for afstand. De $k$ \emph{ nærmeste} naboer er dem, der ligger tættest på i én eller anden forstand. Hvis det drejer sig om dem, hvis højder er tætte på hinanden eller måske dem, der vejer nogenlunde det samme, kan man se det for sig. Der er tal, man umiddelbart kan sammenligne. Men hvad med at sammenligne \emph{både} vægt og højde? Hvad betyder så mest? Er der lige langt mellem en person A, der vejer 80 kg og er 1.80 høj og en anden, B,  der vejer 90 og er 2,00m eller mellem A og C, der vejer 70 kg og er 1,60m? Det er ikke klart, selvom vi da kan plotte de tre punkter i et vægt,højde koordinatsystem og endda bruge Pythagoras og få den samme afstand. Udregner man BMI, er $A$ tættere på $B$ end på $C$  \emph{personerne er muligvis ikke helt velvalgt...}
+Når vi adskiller eller samler data bygger vi på en form for afstand. De $k$ \emph{ nærmeste} naboer er dem, der ligger tættest på i én eller anden forstand. 
+Hvis det drejer sig om dem, hvis højder er tætte på hinanden eller måske dem, der vejer nogenlunde det samme, kan man se det for sig. 
+Der er tal, man umiddelbart kan sammenligne. Men hvad med at sammenligne \emph{både} vægt og højde? Hvad betyder så mest? 
+Er der lige langt mellem en person A, der vejer 80 kg og er 1.80 høj og en anden, B,  der vejer 90 og er 2,00m eller mellem A og C, der vejer 70 kg og er 1,60m? 
+Det er ikke klart, selvom vi da kan plotte de tre punkter i et vægt,højde koordinatsystem og endda bruge Pythagoras og få den samme afstand. 
+Udregner man BMI, er $A$ tættere på $B$ end på $C$  \emph{personerne er muligvis ikke helt velvalgt...}
 Det kommer nok også an på, hvad vi gerne vil udtale os om: Er de gode til at løbe langt? Eller hurtigt? Mere kompliceret bliver det, hvis vi også vil inddrage øjenfarve, skostørrelse eller måske, om de køber rigtig meget mælk.
 
 Lad os begynde med afstand mellem punkter i planen uden at bekymre os om, hvad koordinaterne står for. Kald punkterne $p=(x_1,y_1)$ og $q=(x_2,y_2)$: 
@@ -28,16 +33,47 @@ Lad os begynde med afstand mellem punkter i planen uden at bekymre os om, hvad k
 \end{itemize}
 Der er mange eksempler på afstande, som ikke umiddelbart er fysisk afstand:
 \begin{Eksempel}
-Afstande mellem ord. Lad os gøre det lidt lettere for os selv. Et ord er en følge eller en \emph{streng} af bogstaver \emph{hnaikgoh} (nej, det behøver ikke give mening).\footnote{Sædvanligvis gør man det desuden binært, så det er en streng af $0$ og $1$ såsom $00110110$ Det er fornuftigt nok, eftersom computere opererer med den slags strenge.} Længden af en streng er antallet af "bogstaver" - her $0$'er og $1$'er.
+Afstande mellem ord. Lad os gøre det lidt lettere for os selv. 
+Et ord er en følge eller en \emph{streng} af bogstaver \emph{hnaikgoh} (nej, det behøver ikke give mening).\footnote{Ofte gør man det desuden binært, så det er en streng af $0$ og $1$ såsom $00110110$ Det er fornuftigt nok, eftersom computere opererer med den slags strenge.}
+ Længden af en streng er antallet af bogstaver.
 Edit-afstande er basalt set, hvor mange ændringer, man skal lave, for at komme fra den ene streng til den anden. Det afhænger naturligvis af, hvilke typer ændringer, man tillader. 
 \begin{itemize}
-\item Hammingafstanden mellem to lige lange strenge er Antallet af pladser, hvor de to strenge er forskellige. Afstand fra \emph{sne} til \emph{sno} er $1$. Afstand fra \emph{sne} til \emph{neg} er $3$. Det svarer til, at man må ændre et bogstav ad gangen. \emph{sne} $\rightarrow$ \emph{nne} $\rightarrow$ \emph{nee} $\rightarrow$ \emph{neg}.
-\item Levenshteinafstanden er sådan set let at forstå. Man må ændre bogstaver, som i Hamming, men man må også indsætte og fjerne bogstaver. Levenshteinfstanden er det mindste antal sådanne ændringer, man skal  lave for at nå fra det ene ord til det andet. De behøver ikke have samme længde - man kan jo indsætte og fjerne bogstaver. Afstand fra  \emph{sne} til \emph{sno} er $1$, ligesom Hammingafstanden. Afstand fra \emph{sne} til \emph{sned} er også $1$ - og her er Hammingafstanden slet ikke meningsfuld . den er ikke defineret, Afstand fra \emph{sne} til \emph{neg} er $2$ - via disse ændringer: \emph{sne} $\rightarrow$ \emph{ne}$\rightarrow$ \emph{neg}. Jo flere tilladte ændringer, jo kortere afstand. Der er algoritmer, der finder denne mindste vej mellem to ord - det er ikke helt så klart, hvordan man regner den ud, som for Hammingafstanden. Bemærk, at vi kunne have valgt \emph{sne} $\rightarrow$ \emph{sneg}$\rightarrow$ \emph{neg}, som også har to "moves".
-\item Damerau-Levenshteinafstanden er som Levenshtein, men man tillader nu også ombytning af to bogstaver, som står ved siden af hinanden. Hvis man skriver teskt på en telefon eller pc, er det let at bytte om på den måde. Hvis man så har en liste over ord, der giver mening, kan man opdage, at teskt ikke giver mening, men at ordet tekst ligger meget tæt på - afstand 1 i dette afstandsmål - afstand 2 i Hamming eller Levenshtein.
+\item Hammingafstanden mellem to lige lange strenge er Antallet af pladser, hvor de to strenge er forskellige. 
+Afstand fra \emph{sne} til \emph{sno} er $1$. Afstand fra \emph{sne} til \emph{neg} er $3$. 
+Det svarer til, at man må ændre et bogstav ad gangen. \emph{sne} $\rightarrow$ \emph{nne} $\rightarrow$ \emph{nee} $\rightarrow$ \emph{neg}.
+\item Levenshteinafstanden er sådan set let at forstå. 
+Man må ændre bogstaver, som i Hamming, men man må også indsætte og fjerne bogstaver. 
+Levenshteinfstanden er det mindste antal sådanne ændringer, man skal  lave for at nå fra det ene ord til det andet. 
+De behøver ikke have samme længde - man kan jo indsætte og fjerne bogstaver. 
+Afstand fra  \emph{sne} til \emph{sno} er $1$, ligesom Hammingafstanden. 
+Afstand fra \emph{sne} til \emph{sned} er også $1$ - og her er Hammingafstanden slet ikke meningsfuld . Den er ikke defineret 
+Afstand fra \emph{sne} til \emph{neg} er $2$ - via disse ændringer: \emph{sne} $\rightarrow$ \emph{ne}$\rightarrow$ \emph{neg}. 
+Jo flere tilladte ændringer, jo kortere afstand. Der er algoritmer, der finder denne mindste vej mellem to ord - det er ikke helt så klart, hvordan man regner den ud, som for Hammingafstanden.
+ Bemærk, at vi kunne have valgt \emph{sne} $\rightarrow$ \emph{sneg}$\rightarrow$ \emph{neg}, som også har to "moves".
+\item Damerau-Levenshteinafstanden er som Levenshtein, men man tillader nu også ombytning af to bogstaver, som står ved siden af hinanden. 
+Hvis man skriver teskt på en telefon eller pc, er det let at bytte om på den måde. 
+Hvis man så har en liste over ord, der giver mening, kan man opdage, at teskt ikke giver mening, men at ordet tekst ligger meget tæt på - afstand 1 i dette afstandsmål - afstand 2 i Hamming eller Levenshtein.
 \end{itemize}
+Afstand mellem DNA-strenge kan man se på med edit-afstande. Så det er bestemt ikke kun ord i sædvanlig forstand. 
 \end{Eksempel}
 
+De afstande, vi har set på her, er allesammen \emph{metrikker}. De opfylder nogen overordnede krav til afstandsmål. 
+\begin{tcolorbox}[title=Metrik]
+En metrik på en mængde $M$ er en funktion $d$ fra $M\times M$  til $\mathbb{R}$ - altså en funktion, som tager to elementer  i $M$ og giver et reelt tal.
 
+$d$ skal opfylde følgende for alle $p,q,r$ i $M$:
+\begin{itemize}
+\item $d(p,q)\geq 0$ og $d(p,q)=0$ hvis og kun hvis $p=q$. Alle afstande er positive. Med ord: Afstanden fra et punkt til sig selv er $0$ og ingen andre afstande er $0$
+\item $d(p,q)=d(q,p)$ Afstanden er \emph{symmetrisk}. Med ord: Der er lige så langt fra $p$ til $q$ som fra $q$ til $p$.
+\item $d(p,q)+d(q,r)\geq d(p,r)$. \emph{Trekantsuligheden}. Med ord:  Der er mindst lige så langt fra $p$ til $ r$ via $q$, som den direkte afstand fra $p$ til $r$. 
+\end{itemize}
+\end{tcolorbox}
+
+Det er en meget kort definition. Og meget, meget generel. $M$ er en \emph{mængde} - der er en streng logisk måde at gå til mængder på, men lad os her sige en samling af objekter, som vi også kalder elementer af mængden. Læg mærke til, at vi her bare graver problemet lidt længere ned i sandet - fejer det ind under gulvtæppet - for hvad er "objekter"?  Det kommer vi ikke nærmere her. 
+
+Det er ret nemt at acceptere, at de tre krav er rimelige. Men er det nok? Og hvad med symmetrien? Der er vel længere 10 km op ad bakke end 10 km ned ad bakke, hvis man tænker på arbejdsindsats. Så måske giver det ikke altid mening? 
+
+Definitionen af metrik som her er den, vi bruger i matematik. Den har vist sig nyttig. Der er en skov af artikler og bøger, hvor man kan se, hvad man ved, når man har en funktion, der er en metrik. 
 
 
 
