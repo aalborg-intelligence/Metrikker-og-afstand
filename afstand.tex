@@ -66,15 +66,19 @@ $d$ skal opfylde følgende for alle $p,q,r$ i $M$:
 \item $d(p,q)\geq 0$. Med ord: Alle afstande er positive.
 \item $d(p,p)=0$ og $d(p,q)=0$ hvis og kun hvis $p=q$.  Med ord: Afstanden fra et punkt til sig selv er $0$ og ingen andre afstande er $0$
 \item $d(p,q)=d(q,p)$ Afstanden er \emph{symmetrisk}. Med ord: Der er lige så langt fra $p$ til $q$ som fra $q$ til $p$.
-\item $d(p,q)+d(q,r)\geq d(p,r)$. \emph{Trekantsuligheden}. Med ord:  Der er mindst lige så langt fra $p$ til $ r$ via $q$, som den direkte afstand fra $p$ til $r$. 
+\item $d(p,q)+d(q,r)\geq d(p,r)$. \emph{Trekantsuligheden}. Med ord:  Der er mindst lige så langt fra $p$ til $ r$ via $q$, som direkte fra $p$ til $r$. 
 \end{enumerate}
 \end{tcolorbox}
 
 Det er en meget kort definition. Og meget, meget generel. $M$ er en \emph{mængde} - der er en streng logisk måde at gå til mængder på, men lad os her sige en samling af objekter, som vi også kalder elementer af mængden. Læg mærke til, at vi her bare graver problemet lidt længere ned i sandet - fejer det ind under gulvtæppet - for hvad er "objekter"?  Det kommer vi ikke nærmere her. 
 
-Det er ret nemt at acceptere, at de tre krav er rimelige. Men er det nok? Og hvad med symmetrien? Der er vel længere 10 km op ad bakke end 10 km ned ad bakke, hvis man tænker på arbejdsindsats. Så måske giver det ikke altid mening?\footnote{ Hvis funktionen $d$ opfylder 1, 3 og 4, og første del af 2 ($d(p,p)=0$, men der kan være andre afstande, der er $0$)  er det en \emph{pseudometrik}. Opfylder den 1,2,4, er det en \emph{quasimetrik}. Opfylder den 1,2,3, er det en \emph{semimetrik}. Der findes såmænd også præmetrikker, metametrikker, pseudoquasimetrikker og sikkert andre. }
+Det er ret nemt at acceptere, at de tre krav er rimelige. Men er det nok? Og er det nu alligevel rimeligt? Hvad med symmetrien? Der er vel længere 10 km op ad bakke end 10 km ned ad bakke, hvis man tænker på arbejdsindsats. Så måske giver det ikke altid mening?\footnote{ Hvis funktionen $d$ opfylder 1, 3 og 4, og første del af 2 ($d(p,p)=0$, men der kan være andre afstande, der er $0$)  er det en \emph{pseudometrik}. Opfylder den 1,2,4, er det en \emph{quasimetrik}. Opfylder den 1,2,3, er det en \emph{semimetrik}. Der findes såmænd også præmetrikker, metametrikker, pseudoquasimetrikker og sikkert andre. }
 
-Definitionen af metrik som her, er den, vi bruger i matematik. Den har vist sig nyttig. Der er en skov af artikler og bøger, hvor man kan se, hvad man ved, når man har en funktion, der er en metrik. 
+Definitionen af metrik som her, er den, vi bruger i matematik. Den har vist sig nyttig. Der er en skov af artikler og bøger, hvor man kan se, hvad man ved, når man har  en metrik. En mængde med en metrik kaldes et \emph{metrisk rum}.\footnote{Ordet "rum" skal man ikke lægge for meget i. Det er ikke anden information i det end definitionen. Intution skal man være varsom med.}
+
+\section*{Clustering}
+
+\emph{Clustering} er samling af datapunkter i "klumper", hvor punkterne i en klump ligner hinanden, men ikke ligner dem, der er i andre klumper. Det kan man bruge en metrik til, men der er andre måder, data kan ligne hinanden på. Når musiktjenester anbefaler musik, online boghandlere anbefaler bøger, online supermarkeder anbefaler grønsager etc. "Andre, der hører xxx hører også yyy." "Andre, der har set filmen xxx har også set filmen yyy", så baserer de anbefalingerne på en forståelse af, hvordan vi ligner andre kunder. 
 
 
 
