@@ -81,12 +81,13 @@ Den diskrete metrik: På en mængde $M$ er funktionen $d$ givet ved.
 \item $d(p,p)=0$
 \item Hvis $p\neq q$ er $d(p,q)=1$.
 \end{itemize}
-Det er en metrik - den opfylder definitionen ovenfor. Men det er ikke nogen specielt nyttig metrik. Alle punkter ligger lige tæt på alle andre, så der er ikke ny information - udover, om d to punkter er ens eller ikke.
+Det er en metrik - den opfylder definitionen ovenfor. Men det er ikke nogen specielt nyttig metrik. Alle punkter ligger lige tæt på alle andre, så der er ikke ny information - udover, om  to punkter er ens eller ikke.
 \end{Eksempel}
-\begin{Eksempel} Afstand mellem DNA-strenge. Man ved, at en mutation fra 
+\begin{Eksempel} Afstand mellem DNA og RNA-strenge. RNA er strenge med bogstaverne U (uracil), G (guanin), C (cytosin), A, (adenin). DNA har ikke U, men i stedet T (thymin) og DNA er dobbelt. 
+ Udover regler for, hvilke ændringer, man tillader, kan man give forskellige omkostninger til forskellige ændringer. Måske er det mere sandsynligt, at G muterer til U  end til C. Det giver et andet afstandsmål end de umiddelbare edit-afstande. 
 \end{Eksempel}
 
-\section*{Clustering}
+\section*{Clustering og anbefalingsalgoritmer}
 
 \emph{Clustering} er samling af datapunkter i "klumper", hvor punkterne i en klump ligner hinanden, men ikke ligner dem, der er i andre klumper. Det kan man bruge en metrik til, men der er andre måder, data kan ligne hinanden på. Når musiktjenester anbefaler musik, online boghandlere anbefaler bøger, online supermarkeder anbefaler grønsager etc. "Andre, der hører xxx hører også yyy." "Andre, der har set filmen xxx har også set filmen yyy", så baserer de anbefalingerne på en forståelse af, hvordan vi ligner andre kunder. 
 
