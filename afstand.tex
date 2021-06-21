@@ -1,0 +1,283 @@
+\documentclass[a4paper, 12pt]{article}
+\usepackage[danish]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx,amsmath,amssymb}
+\usepackage{tcolorbox}
+\usepackage{amsthm}
+
+
+\renewcommand{\vec}[1]{{\mathbf #1}}
+\newcommand{\ora}{\overrightarrow} \newcommand{\mb}[1]{{\mathbf #1}}
+\newcommand{\tc}[1]{\textcolor{#1}}
+\theoremstyle{remark}
+\newtheorem{Eksempel}{\textbf{Eksempel}}
+\newtheorem{Interaktiv}{\textbf{Interaktivitet}}
+\newtheorem{Opgave}{\textbf{Opgave}}
+\begin{document}
+\section*{Kædereglen. I punktform.}
+\subsection*{Neurale netværk er funktioner}  I et neuralt netværk bearbejdes inputdata og bliver til output. Man kan tænke på det som en funktion. 
+
+
+FIGUR: a la \\
+\includegraphics[width=5cm]{DeepLearningErEnFunktion.PNG}
+
+
+Bearbejdningen sker  i flere lag - output fra det ene lag kombineres til input i det næste. Man kan tænke på det som en funktion, der er sammensat af flere funktioner 
+
+
+FIGUR a la - måske skal funktionerne hedde f,g,h i stedet for at have subscript \\
+\includegraphics[width=10cm]{NetvaerkSammensatFunktion.png}
+
+\subsection*{Den samlede kvadratiske afstand til en linje er (mindst) en funktion}
+for at finde bedste rette linje givet datapunkter, gælder det om at finde minimum for en funktion.
+
+Med datapunkterne $(x_1,y_1), (x_2,y_2), (x_3,y_3), x_4,y_4)$ og linjen $y=ax +b$, er den samlede kvadratiske afstand
+$$(ax_1+b - y_1)^2+(ax_2+b - y_2)^2+(ax_3+b - y_3)^2+(ax_4+b - y_4)^2$$
+
+Hvis man kender linjen og udregner denne afstand, kan vi tænke på det udtryk som en funktion af 8 variable, $x_1,y_1, x_2,y_2, x_3,y_3, x_4,y_4$ men hvis vi vil fastlægge bedste rette linje, tænker vi på udtrykket som en funktion af to variable, $a,b$.
+
+
+%\begin{Eksempel}
+%Vi vil finde bedste rette linje gennem punkterne $(1,1)$, $(3,5)$ og $(4,7)$ . Vi har gættet på linjen $y=2x+3$. Af uransagelige grunde må vi kun ændre linjen en lille smule. Hvordan skal vi ændre den? Svar: Vi ser på den samlede kvadratiske afstand som funktion af de to koefficienter: 
+%$$F(a,b)= (a+b - 1)^2+(a\cdot 3+b -5 )^2+(a\cdot 4+b - 7)^2$$
+%Vi udregner de partielle afledte i punktet $(a,b)=(2,3)$ 
+%$\frac{\partial F}{\partial a}= 2\cdot(a+b-1)+2\cdot(3a+b-1)\cdot 3+2\cdot(4a+b-7)\cdot 4=$
+%
+%etc. indsæt $(2,3)$ etc. men det er jo gradient descent, så det er nok malplaceret...
+%\end{Eksempel}
+
+\subsection*{Afledte og forplantning af variation} Når netværket træner på data, hvor man ved, hvad output bør være, skal de indgående funktioner justeres - så output bedre matcher det ønskede/korrekte. Til det skal man vide, hvordan variationer  forplanter sig gennem lagene - så man kan justere de rigtige steder. Forplantning af mindre variationer gennem en funktion kan ses ved differentiation: 
+
+Hvordan ændrer $f(x)$ sig, når man ændrer input fra $x_0$ til $x_0+\Delta x$ ? M.a.o. hvad er \emph{funktionstilvæksten}?
+
+Det er faktisk indeholdt i tretrinsreglen: 
+\begin{tcolorbox}
+\begin{center}Tretrinsreglen\end{center}
+\begin{enumerate}
+\item Find funktionstilvæksten $$f(x_0+\Delta x)-f(x_0)$$
+\item Find differenskvotienten $$\frac{f(x_0+\Delta x)-f(x_0)}{\Delta x}$$
+\item Hvis det giver mening (hvis grænseværdien findes), så udregn $$\lim_{\Delta x\to 0}\frac{f(x_0+\Delta x)-f(x_0)}{\Delta x}$$
+\end{enumerate}
+Hvis det sidste trin kan udføres, kaldes grænseværdien for $f'(x_0)$. Hvis ikke, er $f$ ikke differentiabel i $x_0$. 
+\end{tcolorbox}
+Når det sidste trin lykkes, betyder det, at $$|\frac{f(x_0+\Delta x)-f(x_0)}{\Delta x}-f'(x_0)|$$ bliver meget lille, når $|\Delta x|$ er meget lille.\footnote{Mere præcist: For ethvert $\varepsilon>0$ findes et $\delta >0$, så $|\frac{f(x_0+\Delta x)-f(x_0)}{\Delta x}-f'(x_0)|<\varepsilon$ hvis $|\Delta x|<\delta$}
+For små $\Delta x$ skriver vi 
+
+$$f(x_0+\Delta x)-f(x_0)\simeq f'(x_0)\Delta x$$
+og har i baghovedet, at $\simeq$ ikke er et lighedstegn, men et cirka. På venstresiden står $f(x_0+\Delta x)-f(x_0)$, funktionstilvæksten. Højresiden $f'(x_0)\Delta x$ fortæller, at en ændring $\Delta x$ i input til funktionen bliver til en ændring $f'(x_0)\Delta x$ i output. 
+OBS: Det er en variation med udgangspunkt i $x_0$. Og den funktionstilvækst, der sker - udfra $f(x_0)$. Man skal \emph{ikke} tænke på funktionen $f'(x)$, men på tallet (funktionsværdien)  $f'(x_0)$ - hældningen for tangenten til grafen for $f$ i punktet $(x_0,f(x_0))$. 
+
+
+
+\begin{Interaktiv} med tangent til en graf for $f$ og illustration af, at approksimationen er bedst for $\Delta a$ tæt på $0$. Flyt fra $a$ til højre og til venstre. Se effekt dels langs tangentlinjen og dels på grafen for $f$. Markering: $a$, $\Delta a$, $f'(a)\Delta a$. Forudindtastede muligheder a la eksemplet nedenfor.
+\end{Interaktiv}
+
+\begin{Eksempel} Med $f'(a)>0$, $f'(a)<0$, $f'(a)>1$, $0<f'(a)<1$, $f'(a)=0$
+
+
+ Variation i input til $f$  kan forstærkes, formindskes, skifte fortegn, elimineres i output af $f$  Forstærkes, hvis $|f'(a)|>1$ formindskes, hvis  $|f'(a)|<1$, skifte fortegn, hvis $f'(a)<0$, elimineres, hvis $f'(a)=0$
+\end{Eksempel}
+
+Den afledte beskriver, hvordan en lille variation forplanter sig - hvis variationen i input  er $\Delta a$, er resultatet en variation i output på $f'(a)\Delta a$.
+
+\begin{Eksempel} Hvis $f(x)=2x^2+x+3$, $a=1$ udregner vi $f'(x)=4x+1$, så $f'(1)=5$. Vi varierer input med $\Delta a=\frac{1}{2}$. Nu er $f(a+\Delta a)= f(\frac{3}{2})=2\frac{9}{4}+\frac{3}{2}+3=9$, så $f(a+\Delta a)-f(a)=3$.
+
+Det tilnærmes nu:  $f(a+\Delta a)-f(a)\simeq f'(a)\Delta a=5\cdot \frac{1}{2}=\frac{5}{2}$, så tilnærmelsen skyder $\frac{1}{2}$ forkert. {\bf{Tegning}}: grafen for $f$, tangenten i $x=1$ og genfind $f(a+\Delta a)-f(a)$ og $f'(a)\Delta a$. 
+\end{Eksempel}
+
+\subsection*{Variation gennem flere lag} For sammensatte funktioner forplanter variation sig gennem hele kæden af funktioner. For to funktioner ser det sådan ud:
+
+FIGUR: 3 "blobs" og pile (fra venstre mod højre) mellem blobs; med $f$ over den ene og $g$ over den anden.
+\begin{Interaktiv}
+graf for $(x,f(x))$, for $(y,g(y))$, variation af input til $f$ ses på grafen for $f$ og igen på grafen for $g$ - på førsteaksen - og resultat på andenaksen.  Mulighed for skift til at se samme effekter for tangentlinjerne med et bestemt punkt $a$ som input til $f$. Måske mulighed for at fastholde $\Delta x$ og variere $a$, så man kan se, at effekten - den forplantede variation - afhænger af $a$.
+\end{Interaktiv}
+Vi starter med ræsonnementet om forplanting af variation og tænker nu
+\begin{enumerate}
+\item $f$ får $a$ som input,
+\item output fra $f$ er input til $g$, så $g$ får  input $f(a)$
+\item med input $f(a)$ er output fra $g$ nu  $g(f(a))$.
+\end{enumerate}
+ Den \emph{sammensatte} funktion - med input $a$ og output $g(f(a))$ kaldes $g\circ f$.\\
+
+\begin{itemize}
+\item Nu varierer vi input med  $\Delta a$ - i stedet for $a$, er input nu $a+\Delta a$. 
+\item Så vil variation i output fra $f$ tilnærmelsesvis være   $f'(a)\Delta a$. 
+
+\item Lad os se på input til $g$. Det var $f(a)$, men varieres nu med $f'(a)\Delta a$. 
+\item Vi finder variation i output fra $g$: Variation i input til $g$ skal ganges med $g'(f(a))$, så alt i alt er variationen $g'(f(a))f'(a)h$
+\end{itemize}
+
+
+$$a\to f(a) \to g(f(a))$$  
+$$a+\Delta a\to f(a+\Delta a)\simeq f(a)+f'(a)\Delta a\to  g(f(a)+f'(a)\Delta a)\simeq g(f(a))+g'(f(a))f'(a)\Delta a$$
+
+Kædereglen siger:  $(g\circ f)'(a)=g'(f(a))f'(a)$ - det kan man gense ved at skjule mellemleddet ovenfor og skrive $$a+\Delta a\to g(f(a+\Delta a))\simeq g(f(a))+g'(f(a))f'(a)\Delta a$$ En variation i input til $g\circ f$ fra $a$ til $a+\Delta a$ bliver til $(g\circ f)'(a)\Delta a$, så hvis vi kan regne på variationer på den måde, må $(g\circ f)'(a)=g'(f(a))f'(a)$
+
+\subsection*{Kædereglen for tre funktioner} Sammensætning af tre funktioner: 
+
+Nu bruger vi kædereglen på en funktion $h\circ g\circ f$. Tænk på $g\circ f$ som \'en funktion: $h\circ (g\circ f)$ er en sammensætning af de to funktioner $h$ og  $g\circ f$, så kædereglen siger $(h\circ (g\circ f))'(a)=h'((g\circ f)(a))(g\circ f)'(a)$. 
+
+Vi folder $(g\circ f)'(a)$ ud til $(g\circ f)'(a)=g'(f(a))f'(a)$ og får  $(h\circ g\circ f)'(a)=h'((g\circ f)(a))g'(f(a))f'(a)$ 
+
+ Fortolkning. En variation i input fra $a$ til $a+\Delta a$ giver en variation i output på $h'((g\circ f)(a))g'(f(a))f'(a)\Delta a$ 
+
+
+Der bliver ganget med de afledte: $$\Delta a\to f'(a)\Delta a\to g'(f(a))f'(a)\Delta a \to h'(g(f(a))g'(f(a))f'(a)\Delta a$$
+
+\begin{Eksempel} $g(x)=2x$, $f(y)=y^3$, $e(z)=sin(z)$. $h=e\circ f\circ g$
+
+\begin{itemize}
+\item $h'(x)=\cos(f(g(x)))\cdot 3(g(x)^2\cdot 2$, 
+\item $f(g(x))=(2x)^3$, $g(x)=2x$
+\item Så $h'(x)=\cos((2x)^3)\cdot 3(2x)^2\cdot 2=24\cos(8x^3)x^2$
+\end{itemize}
+Læg mærke til, at funktionsudtrykket for $h$ ikke har været i brug. Kædereglen har brugt de afledte af de tre funktioner $e,f,g$ og disse funktioners funktionsudtryk.
+
+Funktionsudtrykket for $h$ er $h(x)=\sin((2x)^3)$
+
+\end{Eksempel}
+\begin{Opgave} I kunstige neurale netværk bruges sigmoidfunktionen $\sigma(x)=\frac{1}{1+e^{-x}}$ som aktiveringsfunktion.
+Overvej, at $\sigma$ er den sammensatte funktion $e\circ f \circ g$, hvor $g(x)=e^{-x}$, $f(y)=1+y$ og $e(z)=\frac{1}{z}$
+Udregn $\sigma'(x)$ og vis, at $\sigma'(x)=\sigma(x)(1-\sigma(x))$
+
+Prøv med andre funktioner, I kender, om $h'(x)$ kan udregnes nemt, hvis man kender $h(x)$. 
+\end{Opgave}
+\begin{Eksempel}
+En sammensat funktion er givet ved $$x_1 \to ax_1+b \to \sigma(ax_1+b) \to \sigma(ax_1+b)-y_1\to  (\sigma(ax_1+b)-y_1)^2$$
+Alt i alt. $E(x_1,y_1,a,b)=(\sigma(ax_1+b)-y_1)^2$. Det er et lillebitte neuralt netværk - faktisk en perceptron med ét input. 
+
+Vi forestiller os, at den er udregnet i de trin, der er indikeret, med tallene $x_1,y_1,a_1,b_1$  og at værdierne på hvert trin er lagret - i en computer eller på et stykke papir. 
+
+Vi vil gerne finde $\frac{\partial E}{\partial a}(a_1,b_1)$ og  $\frac{\partial E}{\partial b}(a_1,b_1)$ uden at udregne nye funktioner.
+
+Kædereglen giver $$\frac{\partial E}{\partial a}(a_1,b_1)=2\cdot (\sigma(a_1x_1+b_1)-y_1)\cdot \sigma'(a_1x_1+b_1)\cdot x_1$$ og $$\frac{\partial E}{\partial b}(a_1,b_1)=2\cdot (\sigma(a_1x_1+b_1)-y_1)\cdot \sigma'(a_1x_1+b_1)\cdot 1$$
+Har vi allerede regnet de tal ud, der skal ganges sammen her? Ja, næsten. Husk $\sigma'(t)=\sigma(t)(1-\sigma(t)$, så vi skal faktisk udregne 
+$$\frac{\partial E}{\partial a}(a_1,b_1)=2\cdot (\sigma(a_1x_1+b_1)-y_1)\cdot \sigma(a_1x_1+b_1)\cdot (1-\sigma(a_1x_1+b_1))\cdot x_1$$ og $$\frac{\partial E}{\partial b}(a_1,b_1)=2\cdot (\sigma(a_1x_1+b_1)-y_1)\cdot \sigma(a_1x_1+b_1)\cdot (1-\sigma(a_1x_1+b_1))\cdot 1$$
+Læg mærke til, at de første fire led er de samme i de to udregninger og at alle de tal, der skal bruges, er lagret, da vi udregnede $E(x_1,y_1,a_1,b_1)$ . Uden kædereglen ville vi  have skrevet
+$$E(a,b)=(\frac{1}{1-e^{-(ax_1+b)}}-y_1)^2$$ 
+og det er nok ikke sandsynligt, at vi ville have opdaget, at det er smart at bruge $\sigma'(t)=\sigma(t)(1-\sigma(t)$
+
+
+\end{Eksempel}
+
+\section*{Funktioner af flere variable}
+
+I kender allerede funktioner af flere variable: Spændingsfald afhænger af modstand og af strømstyrke - $U(R,I)=RI$. Temperatur afhænger af, hvor man er og tidspunktet $T(x,y,t)$ eller måske rumligt $T(x,y,z,t)$. Volumen af en kasse afhænger af længde, bredde og højde, $V(l,b,h)$
+
+\begin{Eksempel} Bedste rette linje: Funktionsudtrykket for en linje er $ax+b$ og vi plejer at tænke på det som en funktion af én variabel, $f(x)=ax+b$. Når vi skal finde bedste rette linje, er det $a$ og $b$, der er de variable i en funktion $g(a,b)= ax+b$. det samme udtryk, men forskellige funktioner. 
+\end{Eksempel}
+
+\begin{Eksempel} Udtrykket $ax^2+bx+c$ kan være funktionsudtryk for en funktion af én variabel $f:\mathbb{R}\to \mathbb{R}$ $f(x)=ax^2+bx+c$, men hvis vi skal finde det andetgradspolynomium, der bedst tilnærmer nogle datapunkter, vil vi betragte udtrykket som en funktion af tre variable: $g:\mathbb{R}^3\to\mathbb{R}$ $g(a,b,c)=ax^2+bx+c$. Man kunne såmænd også betragte det som en funktion af fire variable $h(a,b,c,x)= ax^2+bx+c$
+
+\end{Eksempel}
+\begin{Eksempel} I det neurale netværk .... tænker vi på   outputfunktionen ... som en funktion af inputvariablene $x_1,x_2,x_3$, når vi laver feedforward. Lossfunktionen er en funktion af $x_1,x_2,x_3$ og $t_1,t_2$, input og target.
+
+Når vi laver backpropagation skifter synspunktet og lossfunktionen er nu en funktion af parametrene ..... Hvorfor? Jo, når vi backpropagerer, kender vi træningsdata. De er ikke variable. Og vi vil gerne justere parametrene. 
+\end{Eksempel}
+
+
+Her ser vi på funktioner af to variable $f: \mathbb{R}^2\to \mathbb{R}$ og hvordan små ændringer i input giver ændringer i output.
+
+Eksempler: $f(x_1,x_2)=x_1^2+x_2^2$, $f(x_1,x_2)=x_1^2-x_2^2$,... $f(a,b)=ax_1+b$ 
+
+Skematisk: Her er funktionen $f$ af to variable.\\
+
+\begin{tcolorbox}
+\begin{center} Partielle afledte.\end{center}
+Variationer af en funktion af flere variable kan ske i mange retninger. For en funktion $f(x_1,x_2)$ af to variable er alle plane vektorer mulige variationer: Fra $(a,b)$ til $a+\Delta a, b+ \Delta b)$ - vektoren $\begin{bmatrix}\Delta a\\ \Delta b\end{bmatrix}$ er variationen. 
+
+Varierer vi kun den ene koordinat - fra $(a,b)$ til $(a+\Delta a, b)$ - og fokuserer på funktionen $g(t)=f(a+t,b)$, er $g'(0)$ den \emph{partielle afledte} af $f$ mht. $x_1$ i punktet $(a,b)$. Den noteres $\frac{\partial f}{\partial x_2}(a,b)$.
+
+Tilsvarende er $\frac{\partial f}{\partial x_2}(a,b)$ den sædvanlige afledte $h'(0)$ af funktionen $h(t)=f(a,b+t)$.
+
+Man kan faktisk også se på funktionen, der svarer til variation i retning af en vektor $\vec{v}=\begin{bmatrix}v_1\\v_2\end{bmatrix}$ fra $(a,b)$ til $(a+ tv_1,b+tv_2)$. 
+Igen er der er funktion af én variabel. $g(t)=f(a+ tv_1,b+tv_2)$, som afspejler dette. 
+Den afledte $g'(0)$ er den \emph{retningsafledte} af $f$ i punktet $(a,b)$ i retning $\vec{v}$.
+\end{tcolorbox}
+
+
+Hvis en funktion $f$ af to variable har begge sine partielle afledte og de to funktioner $\frac{\partial f}{\partial x_1}$ og $\frac{\partial f}{\partial x_2}$ er kontinuerte, så kan vi igen bruge de partielle afledte til at vurdere effekten af en lille ændring i input.
+Vi ser på en ændring udfra punktet $(a,b)$
+\begin{enumerate}
+\item En lille variation $\Delta a$ i førstekoordinaten: Når andenkoordinaten holdes fast  på værdien $b$, er der kun én variabel - $x_2$ varierer jo ikke. Variationen $\Delta a$ i input til $s(x_1)=f(x_1,b)$ omkring $x_1=a$ giver en tilnærmet variation på $s'(a)\Delta a$ i output. Og altså en tilnærmet variation på $\frac{\partial f}{\partial x_1}(a,b)\Delta a$ i output for den oprindelige funktion af to variable.
+\item Tilsvarende: En lille variation $\Delta b$ af andenkoordinaten i input giver variationen $\frac{\partial f}{\partial x_2}(a,b)\Delta b$
+\item Variationen i output som følge af både en variation $\Delta a$ i førstekoordinatet og en variation $\Delta b$ i andenkoordinaten giver en tilnærmet variation på $\frac{\partial f}{\partial x_1}(a,b)\Delta a +\frac{\partial f}{\partial x_2}(a,b)\Delta b$ i output. 
+\end{enumerate}
+
+\begin{Interaktiv} Graf for funktion af to variable - mulighed for at vælge mellem givne funktioner (og/eller selv skrive en ind). Et punkt $(a,b)$ markeret i $x-y$-planen, $f(a,b)$ markeret på grafen. Mulighed for at flytte $(a,b)$ og se det andet punkt følge med.
+
+Tangentplan i $(a,b,f(a,b)$ kan vælges til. Mulighed for at vælge og derefter fastholde $(a,b,f(a,b))$ og tangentplanen og variere fra $(a,b)$ og se den tilsvarende variation på grafen og i tangentplanen. Måske skal der være spor efter variationen - kurver i $x-y$-plan, på grafen og på tangent planen. 
+\end{Interaktiv}
+Den tilnærmede variation i output er variationen langs \emph{tangentplanen} i $(a,b)$ - for funktioner af én variabel var det langs tangentlinjen. \footnote{Der ligger en hel den underforstået her: Hvad ved vi om, hvor god den tilnærmelse er? Og hvilke funktioner har kontinuerte partielle afledte? Hvorfor bliver det \emph{summen} af variationerne i output under punkt 3? Der kunne vel være en ondsindet kombination - varier funktionen $f(x_1,x_2)=3x_1x_2$ omkring punktet $(1,1)$. $f(1+ v,1+w)=3(1+v)(1+w)=3(1+v+w+vw)$. Men $f(1,1)+\frac{\partial f}{\partial x_1}(1,1)\cdot v +\frac{\partial f}{\partial x_2}(1,1)\cdot w=3+3v+3w$, den tilnærmede variation mangler leddet $3vw$. Og det er præcis den præcision, vi har: Det, der mangler, er her et andetgradsled - produkt af variationerne $v$ og $w$. Når $v$ og $w$ er små - $|v|<1$ og $|w|<1$ -  så er $v^2, w^2, vw, v^3,w^3,\ldots$ endnu mindre. De afledte giver en lineær approksimation af $f(a+\Delta a, b+\Delta b)-f(a,b)$. }
+
+\subsection*{Kædereglen for funktioner af flere variable}
+Diagrammet viser en sammensat funktion.  $f$ er en funktion af to variable, $g$ er en funktion af én variabel. 
+
+
+Her er $g\circ f$, hvor $g$ er en funktion af én variabel. $h=g\circ f$ er en funktion af to variable. $h(x_1,x_2)=g(f(x_1,x_2))$
+
+Hvad er sammenhængen mellem 
+\begin{itemize}
+\item de partielle afledte af $f$: $\frac{\partial f}{\partial x_1}$,  $\frac{\partial f}{\partial x_2}$
+\item den afledte af $g$: $g'$, som vi også skriver $\frac{dg}{dy}$
+\item og de partielle afledte af $h$: $\frac{\partial h}{\partial x_1}$,  $\frac{\partial h}{\partial x_2}$
+\end{itemize}
+Svar: $$\frac{\partial h}{\partial x_1}(a,b)=g'(f(a,b))\frac{\partial f}{\partial x_1}(a,b)$$
+og 
+$$\frac{\partial h}{\partial x_2}(a,b)=g'(f(a.b))\frac{\partial f}{\partial x_2}(a,b)$$
+
+Hvorfor? Jo, vi tænker igen på variationer. En lille variation $\Delta a$ af $a$ giver en variation $\frac{\partial f}{\partial x_1}(a,b)\Delta a$ i input til $g$. Den giver variationen $g'(f(a,b))\frac{\partial f}{\partial x_1}(a,b)\Delta a$ i output fra $g$ - den sidste knude. Tilsvarende med en variation $\Delta b$ af $b$.
+
+\begin{tcolorbox}
+Ligesom de partielle afledte skrives $\frac{\partial h}{\partial x_1}(a,b)$, kan sædvanlige afledte skrives $\frac{dg}{dy}$ i stedet for $g'(y)$.\footnote{$g'(y)$ kaldes Lagrange-notation, mens $\frac{dg}{dy}$ er Leibniz-notation} OBS: Her bruges "hårde" d'er og ikke de bløde $\partial$, som indikerer, at der differentieres mht. en ud af flere variable. Man kan således skrive 
+ $$\frac{\partial h}{\partial x_1}(a,b)=\frac{dg}{dy}(f(a,b))\frac{\partial f}{\partial x_1}(a,b)$$
+eller kortere 
+$$\frac{\partial h}{\partial x_1}=\frac{dg}{dy}\frac{\partial y}{\partial x_1}$$
+hvor venstresiden er en funktion - ligesom vi kan skrive $f$ for funktionen og $f(x)$ for funktionsværdien i en ubekendt variabel $x$. På højresiden er det underforstået, at $y$ er input til $g$ og $\frac{\partial y}{\partial x_1}$ findes fra variationen af dette $y$ mht. $x_1$. Vi ved, at den sammenhæng sker via $f$.
+
+
+Man kan også skrive de variable ind i den korte version, som så ikke er kort alligevel:
+$$\left.\frac{\partial h}{\partial x_1}\right\vert_{(a,b)}=\left.\frac{dg}{dy}\right\vert_{f(a,b)}\left.\frac{\partial y}{\partial x_1}\right\vert_{(a,b)}$$
+\end{tcolorbox}
+
+Nu ser vi på sammensætning af en funktion $f(t)=\begin{bmatrix}f_1(t)\\f_2(t)\end{bmatrix}$ som i diagrammet ... med en funktion $g$ af to variable. Den sammensatte funktion $h(t)=g(f_1(t),f_2(t))$ har den afledte
+
+$$h'(t)=\frac{\partial g}{\partial y_1}(f_1(t),f_2(t))f_1'(t)+\frac{\partial g}{\partial y_2}(f_1(t),f_2(t))f_2'(t)$$
+som også kan skrives 
+$$\frac{dh}{dt}(t)=\frac{\partial g}{\partial y_1}(f_1(t),f_2(t))\frac{df_1}{dt}(t)+\frac{\partial g}{\partial y_2}(f_1(t),f_2(t))\frac{df_2}{dt}(t)$$
+
+
+Hvorfor? En variation af $t$ fra $c$ til $c+\Delta c$ giver en variation af de to output fra $f$ på $f_1'(c)\Delta c$ og $f_2'(c)\Delta c$. Det er variationer i de to variable, der er input til $g$ fra (tilnærmet) $(f_1(c),f_2(c))$ til $(f_1(c)+f_1'(c)\Delta c,f_2(c)+f_2'(c)\Delta c)$. Resultatet er en variation i output fra $g$ på $$\frac{\partial g}{\partial y_1}(f_1(c),f_2(c))f_1'(c)\Delta c+\frac{\partial g}{\partial y_2}(f_1(c),f_2(c))f_2'(c)\Delta c $$ $$=(\frac{\partial g}{\partial y_1}(f_1(c),f_2(c))f_1'(c)+\frac{\partial g}{\partial y_2}(f_1(c),f_2(c))f_2'(c))\Delta c$$ og vi ved dette skal være $h'(c)\Delta c$
+
+
+\begin{tcolorbox}
+\begin{center}Om Notation\end{center}
+Vi gav to notationer for kædereglen ovenfor. Ligesom man kan skrive en funktion $f$ og ikke et funktionsudtryk eller en evaluering $f(x)$, kan man skrive kædereglen meget kompakt: 
+$$\frac{dh}{dt}(t)=\frac{\partial g}{\partial y_1}(f_1(t),f_2(t))\frac{df_1}{dt}(t)+\frac{\partial g}{\partial y_2}(f_1(t),f_2(t))\frac{df_2}{dt}(t)$$ kan skrives 
+ $$\frac{dh}{dt}=\frac{\partial g}{\partial y_1}\frac{dy_1}{dt}+\frac{\partial g}{\partial y_2}\frac{dy_2}{dt}$$
+
+Her skriver vi $\frac{dy_1}{dt}$ i stedet for $\frac{df_1}{dt}$ - underforstået: $y_1$ skal betragtes som en funktion af $t$. Og det fremgår af sammenhængen, hvad det er for en funktion.
+
+Vi skriver $\frac{\partial g}{\partial y_1}\frac{dy_1}{dt}$ og underforstår: Hvis vi skal finde $\frac{dh}{dt}(t)$, må der skulle stå  $\frac{\partial g}{\partial y_1}\frac{dy_1}{dt}(t)$. Hvad er input til  $\frac{\partial g}{\partial y_1}$ ? Det eneste, der giver mening, er i $(y_1(t), y_2(t))$ - output fra funktionen $f$. Man kunne skrive 
+$$\frac{dh}{dt}(t)=\frac{\partial g}{\partial y_1}(y_1(t),y_2(t))\frac{dy_1}{dt}(t)+\frac{\partial g}{\partial y_2}(y_1(t),y_2(t))\frac{dy_2}{dt}(t)$$ 
+eller
+$$\left.\frac{dh}{dt}\right\vert_t=\left.\frac{\partial g}{\partial y_1}\right\vert_{(y_1(t),y_2(t))}\left.\frac{dy_1}{dt}\right\vert_t+\left.\frac{\partial g}{\partial y_2}\right\vert_{(y_1(t),y_2(t))}\left.\frac{dy_2}{dt}\right\vert_t$$
+hvor det nu er underforstået, hvordan $y_1$ og $y_2$ afhænger af $t$.
+
+\end{tcolorbox}
+
+
+
+
+
+
+
+
+
+\end{document}
+
+%%% Local Variables: 
+%%% mode: latex
+%%% TeX-master: t
+%%% End: 
