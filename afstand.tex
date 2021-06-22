@@ -92,7 +92,18 @@ Det er en metrik - den opfylder definitionen ovenfor. Men det er ikke nogen spec
 \end{Eksempel}
 \section*{Clustering}
 
-Clustering er at samle datapunkter i grupper, så objekter i en gruppe har mere til fælles med hinanden end med objekter i andre grupper. Har man et afstandsbegreb, der passer godt til det, vi mener med til fælles, kan men bruge det til clustering - objeker i et cluster er tæt på hinanden, men længere fra punkter i de andre clusters. 
+Clustering er at samle datapunkter i grupper, så objekter i en gruppe har mere til fælles med hinanden end med objekter i andre grupper. Har man et afstandsbegreb, der passer godt til det, vi mener med til fælles, kan men bruge det til clustering - objekter i et cluster er tæt på hinanden, men længere fra punkter i de andre clusters. 
+\subsection*{Hierarkisk clustering}
+Her kender vi alle parvise afstande. Og ikke andet. 
+
+Udfra den information laver vi et dendogram, hvor i første omgang par af datapunkter "mødes" i den højde, der svarer til deres afstand. Men der er mere: Hvornår skal datapunktet $p$ mødes med $qr$, som mødtes tidligere? Hvornår skal $pqr$ mødes med $ab$?  Det er \emph{linkage}-reglerne.
+\begin{itemize}
+\item Single linkage: $pqr$ mødes med $ab$ i den højde, hvor minimumsafstanden mellem de to grupper af punkter nås: minimum af $d(a,p),d(a,q), d(a,r), d(b,p), d(b,q), d(p,r)$
+\item Complete linkage: $pqr$ mødesmed $ab$, når den maksimale afstand mellem punkter i de to grupper er nået. Maksimum af $d(a,p),d(a,q), d(a,r), d(b,p), d(b,q), d(p,r)$
+Middelafstand- avarage linkage: Når den gennemsnitlige afstand er nået. $\frac{1}{2\cdot 3}(d(a,p)+d(a,q)+ d(a,r)+ d(b,p)+ d(b,q)+ d(p,r))$
+\end{itemize}
+(OBS: Her skal være tegninger og diagrammer. Og eksempler på, hvad forskellen er på de forskellige linkagekrav)
+\subsection*{k-means clustering}
 
 \section*{Clustering og anbefalingsalgoritmer}
 
