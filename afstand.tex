@@ -28,7 +28,7 @@ Lad os begynde med afstand mellem punkter i planen uden at bekymre os om, hvad k
 \begin{itemize}
 \item Pythagoras siger, afstanden mellem $p$ og $q$ er $\sqrt{(x_2-x_1)^2+(y_2-y_1)^2}$. Det er den Euklidiske afstand.
 \item Manhattanafstanden er $|x_2-x_1|+|y_2-y_1|$. Det er afstanden, når man er tvunget til at bevæge sig langs akserne, som vi kender det fra vejene i mange amerikanske byer, herunder på Manhattan. Den kaldes også taxi-afstanden. 
-\item Max-afstanden er maksimum af   $|x_2-x_1|$ og $|y_2-y_1|$
+\item Max-afstanden er maksimum af   $|x_2-x_1|$ og $|y_2-y_1|$. Den kaldes også skak-konge afstanden: Kongen i skak kan gå diagonalt eller langs de to akser. Et diagonalt move fra (a,b) til (a+k,b+k) tænkes at have længde k - som i skak. 
 \item Posthusafstanden\footnote{Den hedder også British Rail afstanden eller, hvis man er fransk, SNCF (Société Nationale des Chemins de fer Francais) -afstanden. Man tænker sig, at man altid skal rejse via London (eller Paris) for at komme med tog fra et sted til et andet.} mellem $p$ og $q$ er $\sqrt{x_1^2+y_1^2}+\sqrt{x_2^2+y_2^2}$. Man kan tænke på, at der ligger et posthus i Origo og vi skal sende et brev fra $p$ til $q$. Det bliver transporteret fra $p$  til posthuset først og derefter fra posthuset til $q$.
 \end{itemize}
 Der er mange eksempler på afstande, som ikke umiddelbart er fysisk afstand:
@@ -56,7 +56,11 @@ Hvis man så har en liste over ord, der giver mening, kan man opdage, at teskt i
 \end{itemize}
 Afstand mellem DNA-strenge kan man se på med edit-afstande. Så det er bestemt ikke kun ord i sædvanlig forstand. 
 \end{Eksempel}
+\begin{Eksempel}
+Afstande mellem navne: Navne som Peter, Pieter, Pietro, Petrus, Peder, Per, Pelle, Pekka, Peer, Petur, Pedro, Pierre, Pjotr, Pyotr, Petar eller måske Katarina, Katharina, Katrina, Katrine, Katrin, Cathryn, Kathryn, Catherine har samme oprindelse. Der er stor forskel på, hvor hyppigt, de optræder i forskellige lande. Overvej, om metrikkerne ovenfor kan bruges til at afsløre, hvor tæt på hinanden lande med Peter som hyppigst af de fem, er på lande med Pyotr. 
 
+
+\end{Eksempel}
 De afstande, vi har set på her, er allesammen \emph{metrikker}. De opfylder nogen overordnede krav til afstandsmål. 
 \begin{tcolorbox}[title=Metrik]
 En metrik på en mængde $M$ er en funktion $d$ fra $M\times M$  til $\mathbb{R}$ - altså en funktion, som tager to elementer  i $M$ og giver et reelt tal.
@@ -70,7 +74,7 @@ $d$ skal opfylde følgende for alle $p,q,r$ i $M$:
 \end{enumerate}
 \end{tcolorbox}
 
-Det er en meget kort definition. Og meget, meget generel. $M$ er en \emph{mængde} - der er en streng logisk måde at gå til mængder på, men lad os her sige en samling af objekter, som vi også kalder elementer af mængden. Læg mærke til, at vi her bare graver problemet lidt længere ned i sandet - fejer det ind under gulvtæppet - for hvad er "objekter"?  Det kommer vi ikke nærmere her. 
+Det er en meget kort definition. Og meget, meget generel. $M$ er en \emph{mængde} - der er en strengt logisk måde at gå til mængder på, men lad os her sige en samling af objekter, som vi også kalder elementer af mængden. Læg mærke til, at vi her bare graver problemet lidt længere ned i sandet - fejer det ind under gulvtæppet - for hvad er "objekter"?  Det kommer vi ikke nærmere her. 
 
 Det er ret nemt at acceptere, at de tre krav er rimelige. Men er det nok? Og er det nu alligevel rimeligt? Hvad med symmetrien? Der er vel længere 10 km op ad bakke end 10 km ned ad bakke, hvis man tænker på arbejdsindsats. Så måske giver det ikke altid mening?\footnote{ Hvis funktionen $d$ opfylder 1,2,4, er det en \emph{quasimetrik}. Opfylder den 1,2,3, er det en \emph{semimetrik}. Opfylder den 1, 3 og 4, og første del af 2 ($d(p,p)=0$, men der kan være andre afstande, der er $0$)  er det en \emph{pseudometrik}.  Der findes såmænd også præmetrikker, metametrikker, pseudoquasimetrikker og sikkert andre - ikke helt en metrik, men så alligevel. }
 
@@ -86,6 +90,9 @@ Det er en metrik - den opfylder definitionen ovenfor. Men det er ikke nogen spec
 \begin{Eksempel} Afstand mellem DNA og RNA-strenge. RNA er strenge med bogstaverne U (uracil), G (guanin), C (cytosin), A, (adenin). DNA har ikke U, men i stedet T (thymin) og DNA er dobbelt. 
  Udover regler for, hvilke ændringer, man tillader, kan man give forskellige omkostninger til forskellige ændringer. Måske er det mere sandsynligt, at G muterer til U  end til C. Det giver et andet afstandsmål end de umiddelbare edit-afstande. 
 \end{Eksempel}
+\section*{Clustering}
+
+Clustering er at samle datapunkter i grupper, så objekter i en gruppe har mere til fælles med hinanden end med objekter i andre grupper. Har man et afstandsbegreb, der passer godt til det, vi mener med til fælles, kan men bruge det til clustering - objeker i et cluster er tæt på hinanden, men længere fra punkter i de andre clusters. 
 
 \section*{Clustering og anbefalingsalgoritmer}
 
@@ -93,7 +100,7 @@ Det er en metrik - den opfylder definitionen ovenfor. Men det er ikke nogen spec
 
 Ligner handler her om, hvor mange film, vi har fælles med hinanden. Der er et stykke vej, til definitionen, men hold hovedet koldt, så går det:
 
-Ofte forekommende delmængder - frequent item set:
+Hyppige delmængder - frequent item set:
 
 Hvis vi har forbrugere, der har købt/lyttet til/set som følger:
 \begin{center}
@@ -110,7 +117,7 @@ Hvis vi har forbrugere, der har købt/lyttet til/set som følger:
 
 \end{tabular}
 \end{center}
-uddrager vi ofte forekommende delmængder
+uddrager vi hyppige delmængder
 
 \begin{center}
 \begin{tabular}{cc}
@@ -140,7 +147,7 @@ uddrager vi ofte forekommende delmængder
 
 \end{tabular}
 \end{center}
-Det løber ret hurtigt ud over det, man kan overskue. Men vi kan strukturere: Når \{c,d,e\} er set/hørt af  3,4,9 er det klart, at \{c,d\}, \{c,e\} og \{d,e\} også er hørt af  disse og muligvis andre. Desuden synes vi nok ikke, delmængder, der kun er hørt af én, er "ofte forekommende delmængder" og vi er ikke interesserede i delmængder med kun ét element - vi vil jo anbefale noget nyt. Vi reagerer med to tiltag:
+Det løber ret hurtigt ud over det, man kan overskue. Men vi kan strukturere: Når \{c,d,e\} er set/hørt af  3,4,9 er det klart, at \{c,d\}, \{c,e\} og \{d,e\} også er hørt af  disse og muligvis andre. Desuden synes vi nok ikke, delmængder, der kun er hørt af én, er "hyppige delmængder" og vi er ikke interesserede i delmængder med kun ét element - vi vil jo anbefale noget nyt. Vi reagerer med to tiltag:
 \begin{itemize}
 \item  Vi sætter en minimal længde - lad os sige 2, så kun delmængder med mindst to elementer er med.  
 \item En minimal support - hvor stor en andel af lytterne skal have denne delmængde til fælles. Her vælger vi 33\% - så mindst 3 skal have delmængden fælles.
