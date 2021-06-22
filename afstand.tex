@@ -100,10 +100,11 @@ Udfra den information laver vi et dendogram, hvor i første omgang par af datapu
 \begin{itemize}
 \item Single linkage: $pqr$ mødes med $ab$ i den højde, hvor minimumsafstanden mellem de to grupper af punkter nås:\\ Minimum af $d(a,p),d(a,q), d(a,r), d(b,p), d(b,q), d(p,r)$
 \item Complete linkage: $pqr$ mødesmed $ab$, når den maksimale afstand mellem punkter i de to grupper er nået. \\Maksimum af $d(a,p),d(a,q), d(a,r), d(b,p), d(b,q), d(p,r)$
-\item Middelafstand- avarage linkage: Når den gennemsnitlige afstand er nået. $\frac{1}{2\cdot 3}(d(a,p)+d(a,q)+ d(a,r)+ d(b,p)+ d(b,q)+ d(p,r))$
+\item Middelafstand- average linkage: Når den gennemsnitlige afstand er nået. $\frac{1}{2\cdot 3}(d(a,p)+d(a,q)+ d(a,r)+ d(b,p)+ d(b,q)+ d(p,r))$
 \end{itemize}
 (OBS: Her skal være tegninger og diagrammer. Og eksempler på, hvad forskellen er på de forskellige linkagekrav)
 \subsection*{k-means clustering}
+Her skal vi bruge mere end parvise afstande. Vores data er punkter med $d$ koordinater. Afstanden er kvadratisk Euklidisk. Vi vælger $k$, det antal clusters, det skal ende med. Målet er at opdele data i $k$ dele, $S_1, S_2,\ldots , S_k$ så den samlede gennemsnitlige kvadratiske afstand $\Sigma_{i=1}^{k}\Sigma_{p,q\in S_i}\frac{1}{2|S_i|}\|p-q\|^2$ indenfor de $k$ clusters er mindst mulig. 
 
 \section*{Clustering og anbefalingsalgoritmer}
 
