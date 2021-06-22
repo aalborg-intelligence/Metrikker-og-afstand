@@ -143,31 +143,31 @@ uddrager vi ofte forekommende delmængder
 Det løber ret hurtigt ud over det, man kan overskue. Men vi kan strukturere: Når \{c,d,e\} er set/hørt af  3,4,9 er det klart, at \{c,d\}, \{c,e\} og \{d,e\} også er hørt af  disse og muligvis andre. Desuden synes vi nok ikke, delmængder, der kun er hørt af én, er "ofte forekommende delmængder" og vi er ikke interesserede i delmængder med kun ét element - vi vil jo anbefale noget nyt. Vi reagerer med to tiltag:
 \begin{itemize}
 \item  Vi sætter en minimal længde - lad os sige 2, så kun delmængder med mindst to elementer er med.  
-\item En minimal support - hvor stor en andel af lytterne skal have denne delmængde til fælles. Her vælger vi 20\% - så mindst 2 skal have delmængden fælles.
+\item En minimal support - hvor stor en andel af lytterne skal have denne delmængde til fælles. Her vælger vi 33\% - så mindst 3 skal have delmængden fælles.
 \end{itemize}
 Tilbage har vi 
 \begin{center}
 \begin{tabular}{cc}
 \{a,c\} & hørt af 1,4,6 \\
-\{a,d\}& hørt af 4,6\\
+%%\{a,d\}& hørt af 4,6\\
 \{ a,e\}& hørt af 1,4,7\\
-\{b,c\} & hørt af 3, 8 \\
+%\{b,c\} & hørt af 3, 8 \\
 \{b,d\}& hørt af 2,3,8 \\
 \{b,e\}& hørt af  2,3,5,7\\
 \{c,d\}& hørt af 3,4,6,8\\
 \{c,e\}& hørt af 1,3,4\\
 \{d,e\}& hørt af 2,3,4,9\\
 
-\{a,c,e\}& hørt af 1,4 \\
+%\{a,c,e\}& hørt af 1,4 \\
 
-\{b,d,e\}& hørt af 2,3 \\
+%\{b,d,e\}& hørt af 2,3 \\
 \{c,d,e\} & hørt af 3,4,9 \\
 \end{tabular}
 \end{center}
 
 
 
-
+Nu vender vi det lidt om og vil gruppere lytterne/seerne. Vi vil lave clustering baseret på tabellen ovenfor. 
 
 \end{document}
 
