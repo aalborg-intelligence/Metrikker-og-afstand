@@ -26,7 +26,7 @@ Det kommer nok også an på, hvad vi gerne vil udtale os om: Er de gode til at l
 
 Lad os begynde med afstand mellem punkter i planen uden at bekymre os om, hvad koordinaterne står for. Kald punkterne $p=(x_1,y_1)$ og $q=(x_2,y_2)$: 
 \begin{itemize}
-\item Pythagoras siger, afstanden mellem $p$ og $q$ er $\sqrt{(x_2-x_1)^2+(y_2-y_1)^2}$. Det er den Euklidiske afstand.
+\item Euklidisk afstand mellem $p$ og $q$ er $\sqrt{(x_2-x_1)^2+(y_2-y_1)^2}$. Det er det, vi kender mest - det, der kommer ud af at bruge Pythagoras.
 \item Manhattanafstanden er $|x_2-x_1|+|y_2-y_1|$. Det er afstanden, når man er tvunget til at bevæge sig langs akserne, som vi kender det fra vejene i mange amerikanske byer, herunder på Manhattan. Den kaldes også taxi-afstanden. 
 \item Max-afstanden er maksimum af   $|x_2-x_1|$ og $|y_2-y_1|$. Den kaldes også skak-konge afstanden: Kongen i skak kan gå diagonalt eller langs de to akser. Et diagonalt move fra (a,b) til (a+k,b+k) tænkes at have længde k - som i skak. 
 \item Posthusafstanden\footnote{Den hedder også British Rail afstanden eller, hvis man er fransk, SNCF (Société Nationale des Chemins de fer Francais) -afstanden. Man tænker sig, at man altid skal rejse via London (eller Paris) for at komme med tog fra et sted til et andet.} mellem $p$ og $q$ er $\sqrt{x_1^2+y_1^2}+\sqrt{x_2^2+y_2^2}$. Man kan tænke på, at der ligger et posthus i Origo og vi skal sende et brev fra $p$ til $q$. Det bliver transporteret fra $p$  til posthuset først og derefter fra posthuset til $q$.
@@ -76,7 +76,7 @@ $d$ skal opfylde følgende for alle $p,q,r$ i $M$:
 
 Det er en meget kort definition. Og meget, meget generel. $M$ er en \emph{mængde} - der er en strengt logisk måde at gå til mængder på, men lad os her sige en samling af objekter, som vi også kalder elementer af mængden. Læg mærke til, at vi her bare graver problemet lidt længere ned i sandet - fejer det ind under gulvtæppet - for hvad er "objekter"?  Det kommer vi ikke nærmere her. 
 
-Det er ret nemt at acceptere, at de tre krav er rimelige. Men er det nok? Og er det nu alligevel rimeligt? Hvad med symmetrien? Der er vel længere 10 km op ad bakke end 10 km ned ad bakke, hvis man tænker på arbejdsindsats. Så måske giver det ikke altid mening?\footnote{ Hvis funktionen $d$ opfylder 1,2,4, er det en \emph{quasimetrik}. Opfylder den 1,2,3, er det en \emph{semimetrik}. Opfylder den 1, 3 og 4, og første del af 2 ($d(p,p)=0$, men der kan være andre afstande, der er $0$)  er det en \emph{pseudometrik}.  Der findes såmænd også præmetrikker, metametrikker, pseudoquasimetrikker og sikkert andre - ikke helt en metrik, men så alligevel. }
+Det er ret nemt at acceptere, at de tre krav er rimelige. Men er det nok? Og er det nu alligevel rimeligt? Hvad med symmetrien? Der er vel længere 10 km op ad bakke end 10 km ned ad bakke, hvis man tænker på arbejdsindsats. Så måske giver det ikke altid mening?\footnote{ Hvis funktionen $d$ opfylder 1,2,4, er det en \emph{quasimetrik}. Opfylder den 1,2,3, er det en \emph{semimetrik}. Opfylder den 1, 3 og 4, og første del af 2 ($d(p,p)=0$, men der kan være andre afstande, der er $0$)  er det en \emph{pseudometrik}.  Der findes såmænd også præmetrikker, metametrikker, pseudoquasimetrikker og sikkert andre - "falske metrikker". }
 
 Definitionen af metrik som her, er den, vi bruger i matematik. Den har vist sig nyttig. Der er en skov af artikler og bøger, hvor man kan se, hvad man ved, når man har  en metrik. En mængde med en metrik kaldes et \emph{metrisk rum}.\footnote{Ordet "rum"  skal man ikke lægge for meget i. Det er ikke anden information i det end definitionen. Intution skal man være varsom med.}
 \begin{Eksempel}
@@ -98,9 +98,9 @@ Her kender vi alle parvise afstande. Og ikke andet.
 
 Udfra den information laver vi et dendogram, hvor i første omgang par af datapunkter "mødes" i den højde, der svarer til deres afstand. Men der er mere: Hvornår skal datapunktet $p$ mødes med $qr$, som mødtes tidligere? Hvornår skal $pqr$ mødes med $ab$?  Det er \emph{linkage}-reglerne.
 \begin{itemize}
-\item Single linkage: $pqr$ mødes med $ab$ i den højde, hvor minimumsafstanden mellem de to grupper af punkter nås: minimum af $d(a,p),d(a,q), d(a,r), d(b,p), d(b,q), d(p,r)$
-\item Complete linkage: $pqr$ mødesmed $ab$, når den maksimale afstand mellem punkter i de to grupper er nået. Maksimum af $d(a,p),d(a,q), d(a,r), d(b,p), d(b,q), d(p,r)$
-Middelafstand- avarage linkage: Når den gennemsnitlige afstand er nået. $\frac{1}{2\cdot 3}(d(a,p)+d(a,q)+ d(a,r)+ d(b,p)+ d(b,q)+ d(p,r))$
+\item Single linkage: $pqr$ mødes med $ab$ i den højde, hvor minimumsafstanden mellem de to grupper af punkter nås:\\ Minimum af $d(a,p),d(a,q), d(a,r), d(b,p), d(b,q), d(p,r)$
+\item Complete linkage: $pqr$ mødesmed $ab$, når den maksimale afstand mellem punkter i de to grupper er nået. \\Maksimum af $d(a,p),d(a,q), d(a,r), d(b,p), d(b,q), d(p,r)$
+\item Middelafstand- avarage linkage: Når den gennemsnitlige afstand er nået. $\frac{1}{2\cdot 3}(d(a,p)+d(a,q)+ d(a,r)+ d(b,p)+ d(b,q)+ d(p,r))$
 \end{itemize}
 (OBS: Her skal være tegninger og diagrammer. Og eksempler på, hvad forskellen er på de forskellige linkagekrav)
 \subsection*{k-means clustering}
