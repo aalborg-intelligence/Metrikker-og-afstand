@@ -87,12 +87,23 @@ Den diskrete metrik: På en mængde $M$ er funktionen $d$ givet ved.
 \end{itemize}
 Det er en metrik - den opfylder definitionen ovenfor. Men det er ikke nogen specielt nyttig metrik. Alle punkter ligger lige tæt på alle andre, så der er ikke ny information - udover, om  to punkter er ens eller ikke.
 \end{Eksempel}
+\begin{Eksempel} I afsnittet om k-means clustering minimerer vi en sum af kvadratiske afstande, hvor afstand er Euklidisk - den med Pythagoras. Kvadratisk afstand er \emph{ikke} en metrik: 
+
+Vi prøver i planen. $D((x_1,y_1),(x_2,y_2))=\|(x_2,y_2)-(x_1,y_1)\|^2=(x_2-x_1)^2+(y_2-y_1)^2$. Påstand: $D$ er ikke en metrik. Den opfylder ikke trekantsuligheden.
+
+Hvordan kan man se det? Husk, at vi bare skal finde ét eksempel - tre punkter $p,q,r$, hvor trekantsuligheden ikke holder. Så har vi vist, at $D$ ikke er en metrik. 
+
+Idé: Hvis $A,B,C$ er hjørnepunkter i en retvinklet trekant, hvor $C$ er den rette vinkel og sidelængderne er $a,b,c$ (modstående til vinkler med samme bogstav (OBS: TEGNING!)
+så ved vi $D(B,C)+D(A,C)=D(A,B)$ da det netop er ligningen $a^2+b^2=c^2$. Nu holder vi sidelængderne $a$ og $b$, men gør vinklen ved $C$ større end $90^\circ$. Så bliver $c$ større og trekantsuligheden gælder ikke for vores afstandsmål $D$.
+
+Et konkret eksempel: $C=(0,0)$ $A=(1,0)$, $B=(-1,1)$. $D(A,C)=1$, $D(B,C)=2$, $D(A,B)=5$, så der er "kortere" fra $A$ til $B$ via $C$ end direkte fra $A$ til $B$.
+\end{Eksempel}
 \begin{Eksempel} Afstand mellem DNA og RNA-strenge. RNA er strenge med bogstaverne U (uracil), G (guanin), C (cytosin), A, (adenin). DNA har ikke U, men i stedet T (thymin) og DNA er dobbelt. 
  Udover regler for, hvilke ændringer, man tillader, kan man give forskellige omkostninger til forskellige ændringer. Måske er det mere sandsynligt, at G muterer til U  end til C. Det giver et andet afstandsmål end de umiddelbare edit-afstande. 
 \end{Eksempel}
 \section*{Clustering}
 
-Clustering er at samle datapunkter i grupper, så objekter i en gruppe har mere til fælles med hinanden end med objekter i andre grupper. Har man et afstandsbegreb, der passer godt til det, vi mener med til fælles, kan men bruge det til clustering - objekter i et cluster er tæt på hinanden, men længere fra punkter i de andre clusters. 
+Clustering er at samle datapunkter i grupper, så objekter i en gruppe har mere til fælles med hinanden end med objekter i andre grupper. Har man et afstandsbegreb, der passer godt til det, vi mener med til fælles, kan man bruge det til clustering - objekter i et cluster er tæt på hinanden, men længere fra punkter i de andre clusters. 
 \subsection*{Hierarkisk clustering}
 Her kender vi alle parvise afstande. Og ikke andet. 
 
@@ -104,7 +115,9 @@ Udfra den information laver vi et dendogram, hvor i første omgang par af datapu
 \end{itemize}
 (OBS: Her skal være tegninger og diagrammer. Og eksempler på, hvad forskellen er på de forskellige linkagekrav)
 \subsection*{k-means clustering}
-Her skal vi bruge mere end parvise afstande. Vores data er punkter med $d$ koordinater. Afstanden er kvadratisk Euklidisk. Vi vælger $k$, det antal clusters, det skal ende med. Målet er at opdele data i $k$ dele, $S_1, S_2,\ldots , S_k$ så den samlede gennemsnitlige kvadratiske afstand $\Sigma_{i=1}^{k}\Sigma_{p,q\in S_i}\frac{1}{2|S_i|}\|p-q\|^2$ indenfor de $k$ clusters er mindst mulig. 
+ Vores data er punkter med $d$ koordinater. Afstanden er Euklidisk. Vi vælger $k$, det antal clusters, det skal ende med. Målet er at opdele data i $k$ dele, $S_1, S_2,\ldots , S_k$ så den samlede gennemsnitlige kvadratiske afstand $\Sigma_{i=1}^{k}\Sigma_{p,q\in S_i}\frac{1}{2|S_i|}\|p-q\|^2$ indenfor de $k$ clusters er mindst mulig. 
+
+
 
 
 
