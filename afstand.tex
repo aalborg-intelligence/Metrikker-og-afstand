@@ -94,7 +94,7 @@ Vi prøver i planen. $D((x_1,y_1),(x_2,y_2))=\|(x_2,y_2)-(x_1,y_1)\|^2=(x_2-x_1)
 Hvordan kan man se det? Husk, at vi bare skal finde ét eksempel - tre punkter $p,q,r$, hvor trekantsuligheden ikke holder. Så har vi vist, at $D$ ikke er en metrik. 
 
 Idé: Hvis $A,B,C$ er hjørnepunkter i en retvinklet trekant, hvor $C$ er den rette vinkel og sidelængderne er $a,b,c$ (modstående til vinkler med samme bogstav (OBS: TEGNING!)
-så ved vi $D(B,C)+D(A,C)=D(A,B)$ da det netop er ligningen $a^2+b^2=c^2$. Nu holder vi sidelængderne $a$ og $b$, men gør vinklen ved $C$ større end $90^\circ$. Så bliver $c$ større og trekantsuligheden gælder ikke for vores afstandsmål $D$.
+så ved vi $D(B,C)+D(A,C)=D(A,B)$ da det netop er ligningen $a^2+b^2=c^2$. Nu fastholder vi sidelængderne $a$ og $b$, men gør vinklen ved $C$ større end $90^\circ$. Så bliver $c$ større og trekantsuligheden gælder ikke for vores afstandsmål $D$.
 
 Et konkret eksempel: $C=(0,0)$ $A=(1,0)$, $B=(-1,1)$. $D(A,C)=1$, $D(B,C)=2$, $D(A,B)=5$, så der er "kortere" fra $A$ til $B$ via $C$ end direkte fra $A$ til $B$.
 \end{Eksempel}
@@ -103,7 +103,7 @@ Et konkret eksempel: $C=(0,0)$ $A=(1,0)$, $B=(-1,1)$. $D(A,C)=1$, $D(B,C)=2$, $D
 
 \end{Eksempel}
 \begin{Eksempel}
-Afstand mellem DNA bruges til at analysere slægtskab og hvilke dyr, herunder mennesket, der nedstammer fra hvilke - fylogenetiske træer.\\ \url{ http://www.biotekunderviser.dk/sites/default/files/Handout Bioinformatik workshop Vejle 2.pdf}
+Afstand mellem DNA bruges til at analysere slægtskab og hvilke dyr, herunder mennesket, der nedstammer fra hvilke - fylogenetiske træer.\\ \url{ http://www.biotekunderviser.dk/sites/default/files/Handout\%20Bioinformatik\%20workshop\%20Vejle\%202.pdf}
 
 I den sammenhæng kalder man skift mellem A og G eller mellem C og T for \emph{transitioner}. De fire andre mulige skift: Mellem A og C, mellem A og T, mellem G og T, mellem G og C, kaldes \emph{transversioner}. Transitioner er hyppigere end transversioner, så afstanden mellem $GATTACA$ og $GATTACG$ er mindre end mellem $GATTACA$ og $GATTACC$ . Den slags udskiftning af et bogstav (et basepar) kaldes en punktmutation.
 
@@ -126,10 +126,16 @@ Udfra den information laver vi et dendogram, hvor i første omgang par af datapu
 \end{itemize}
 (OBS: Her skal være tegninger og diagrammer -dendrogrammer. Og eksempler på, hvad forskellen er på de forskellige linkagekrav)
 
-\begin{Eksempel} Klyngeanalyse af DNA eller for eksempel mRNA giver anledning til dendrogrammer, som kaldes de phylogenetiske træer for de arter/sygdomme,... der svarer til den analyserede DNA.
+\begin{Eksempel} Klyngeanalyse af DNA eller for eksempel mRNA giver anledning til dendrogrammer, som kaldes de phylogenetiske træer for de arter/sygdomme,... der svarer til den analyserede DNA. 
+
+https://www.ncbi.nlm.nih.gov/pmc/articles/PMC2859286/
+
+https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6130602/
 \end{Eksempel}
 \subsection*{k-means clustering}
- Vores data er punkter med $d$ koordinater. Afstanden er Euklidisk. Vi vælger $k$, det antal clusters, det skal ende med. Målet er at opdele data i $k$ dele, $S_1, S_2,\ldots , S_k$ så den samlede gennemsnitlige kvadratiske afstand $\Sigma_{i=1}^{k}\Sigma_{p,q\in S_i}\frac{1}{2|S_i|}\|p-q\|^2$ indenfor de $k$ clusters er mindst mulig. 
+ Vores data er punkter med $d$ koordinater. Afstanden er Euklidisk. Vi vælger $k$, det antal clusters, det skal ende med. Målet er at opdele data i $k$ dele, $S_1, S_2,\ldots , S_k$ så den samlede gennemsnitlige kvadratiske afstand $$\Sigma_{i=1}^{k}\Sigma_{p,q\in S_i}\frac{1}{2|S_i|}\|p-q\|^2$$ indenfor de $k$ clusters er mindst mulig. 
+
+
 
 
 
