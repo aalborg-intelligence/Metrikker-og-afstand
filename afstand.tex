@@ -103,7 +103,7 @@ Et konkret eksempel: $C=(0,0)$ $A=(1,0)$, $B=(-1,1)$. $D(A,C)=1$, $D(B,C)=2$, $D
 
 \end{Eksempel}
 \begin{Eksempel}
-Afstand mellem DNA bruges til at analysere slægtskab og hvilke dyr, herunder mennesket, der nedstammer fra hvilke - fylogenetiske træer.\url{ http://www.biotekunderviser.dk/sites/default/files/Handout Bioinformatik workshop Vejle 2.pdf}
+Afstand mellem DNA bruges til at analysere slægtskab og hvilke dyr, herunder mennesket, der nedstammer fra hvilke - fylogenetiske træer.\\ \url{ http://www.biotekunderviser.dk/sites/default/files/Handout Bioinformatik workshop Vejle 2.pdf}
 
 I den sammenhæng kalder man skift mellem A og G eller mellem C og T for \emph{transitioner}. De fire andre mulige skift: Mellem A og C, mellem A og T, mellem G og T, mellem G og C, kaldes \emph{transversioner}. Transitioner er hyppigere end transversioner, så afstanden mellem $GATTACA$ og $GATTACG$ er mindre end mellem $GATTACA$ og $GATTACC$ . Den slags udskiftning af et bogstav (et basepar) kaldes en punktmutation.
 
@@ -124,9 +124,9 @@ Udfra den information laver vi et dendogram, hvor i første omgang par af datapu
 \item Complete linkage: $pqr$ mødesmed $ab$, når den maksimale afstand mellem punkter i de to grupper er nået. \\Maksimum af $d(a,p),d(a,q), d(a,r), d(b,p), d(b,q), d(p,r)$
 \item Middelafstand- average linkage: Når den gennemsnitlige afstand er nået. $\frac{1}{2\cdot 3}(d(a,p)+d(a,q)+ d(a,r)+ d(b,p)+ d(b,q)+ d(p,r))$
 \end{itemize}
-(OBS: Her skal være tegninger og diagrammer. Og eksempler på, hvad forskellen er på de forskellige linkagekrav)
+(OBS: Her skal være tegninger og diagrammer -dendrogrammer. Og eksempler på, hvad forskellen er på de forskellige linkagekrav)
 
-\begin{Eksempel} Klyngeanalyse af DNA giver anledning til dendrogrammer, som kaldes de phylogenetiske træer for de arter/sygdomme,... der svarer til den analyserede DNA.
+\begin{Eksempel} Klyngeanalyse af DNA eller for eksempel mRNA giver anledning til dendrogrammer, som kaldes de phylogenetiske træer for de arter/sygdomme,... der svarer til den analyserede DNA.
 \end{Eksempel}
 \subsection*{k-means clustering}
  Vores data er punkter med $d$ koordinater. Afstanden er Euklidisk. Vi vælger $k$, det antal clusters, det skal ende med. Målet er at opdele data i $k$ dele, $S_1, S_2,\ldots , S_k$ så den samlede gennemsnitlige kvadratiske afstand $\Sigma_{i=1}^{k}\Sigma_{p,q\in S_i}\frac{1}{2|S_i|}\|p-q\|^2$ indenfor de $k$ clusters er mindst mulig. 
