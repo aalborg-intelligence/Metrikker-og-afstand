@@ -2,7 +2,7 @@
 \usepackage[danish]{babel}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
-\usepackage{graphicx,amsmath,amssymb}
+\usepackage{graphicx,amsmath,amssymb,hyperref}
 \usepackage{tcolorbox}
 \usepackage{amsthm}
 
@@ -100,10 +100,21 @@ Et konkret eksempel: $C=(0,0)$ $A=(1,0)$, $B=(-1,1)$. $D(A,C)=1$, $D(B,C)=2$, $D
 \end{Eksempel}
 \begin{Eksempel} Afstand mellem DNA og RNA-strenge. RNA er strenge med bogstaverne U (uracil), G (guanin), C (cytosin), A, (adenin). DNA har ikke U, men i stedet T (thymin) og DNA er dobbelt. 
  Udover regler for, hvilke ændringer, man tillader, kan man give forskellige omkostninger til forskellige ændringer. Måske er det mere sandsynligt, at G muterer til U  end til C. Det giver et andet afstandsmål end de umiddelbare edit-afstande. 
-\end{Eksempel}
-\section*{Clustering}
 
-Clustering er at samle datapunkter i grupper, så objekter i en gruppe har mere til fælles med hinanden end med objekter i andre grupper. Har man et afstandsbegreb, der passer godt til det, vi mener med til fælles, kan man bruge det til clustering - objekter i et cluster er tæt på hinanden, men længere fra punkter i de andre clusters. 
+\end{Eksempel}
+\begin{Eksempel}
+Afstand mellem DNA bruges til at analysere slægtskab og hvilke dyr, herunder mennesket, der nedstammer fra hvilke - fylogenetiske træer.\url{ http://www.biotekunderviser.dk/sites/default/files/Handout Bioinformatik workshop Vejle 2.pdf}
+
+I den sammenhæng kalder man skift mellem A og G eller mellem C og T for \emph{transitioner}. De fire andre mulige skift: Mellem A og C, mellem A og T, mellem G og T, mellem G og C, kaldes \emph{transversioner}. Transitioner er hyppigere end transversioner, så afstanden mellem $GATTACA$ og $GATTACG$ er mindre end mellem $GATTACA$ og $GATTACC$ . Den slags udskiftning af et bogstav (et basepar) kaldes en punktmutation.
+
+Indel mutationer er indsætning ("In") eller fjernelse ("Del" for delete") af en eller flere basepar. Det er mindre hyppigt og svarer til længere afstand. 
+
+
+\end{Eksempel}
+
+\section*{Clustering - klyngeanalyse}
+
+Clustering er at samle datapunkter i grupper, klynger, så objekter i en klynge har mere til fælles med hinanden end med objekter i andre grupper. Har man et afstandsbegreb, der passer godt til det, vi mener med til fælles, kan man bruge det til clustering - objekter i samme klynge er tæt på hinanden, men længere fra punkter i de andre klynger. 
 \subsection*{Hierarkisk clustering}
 Her kender vi alle parvise afstande. Og ikke andet. 
 
@@ -114,6 +125,9 @@ Udfra den information laver vi et dendogram, hvor i første omgang par af datapu
 \item Middelafstand- average linkage: Når den gennemsnitlige afstand er nået. $\frac{1}{2\cdot 3}(d(a,p)+d(a,q)+ d(a,r)+ d(b,p)+ d(b,q)+ d(p,r))$
 \end{itemize}
 (OBS: Her skal være tegninger og diagrammer. Og eksempler på, hvad forskellen er på de forskellige linkagekrav)
+
+\begin{Eksempel} Klyngeanalyse af DNA giver anledning til dendrogrammer, som kaldes de phylogenetiske træer for de arter/sygdomme,... der svarer til den analyserede DNA.
+\end{Eksempel}
 \subsection*{k-means clustering}
  Vores data er punkter med $d$ koordinater. Afstanden er Euklidisk. Vi vælger $k$, det antal clusters, det skal ende med. Målet er at opdele data i $k$ dele, $S_1, S_2,\ldots , S_k$ så den samlede gennemsnitlige kvadratiske afstand $\Sigma_{i=1}^{k}\Sigma_{p,q\in S_i}\frac{1}{2|S_i|}\|p-q\|^2$ indenfor de $k$ clusters er mindst mulig. 
 
