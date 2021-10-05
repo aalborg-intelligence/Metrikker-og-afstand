@@ -19,8 +19,8 @@
 Når vi adskiller eller samler data bygger vi på en form for afstand. De $k$ \emph{ nærmeste} naboer er dem, der ligger tættest på i én eller anden forstand. 
 Hvis det drejer sig om dem, hvis højder er tætte på hinanden eller måske dem, der vejer nogenlunde det samme, kan man se det for sig. 
 Der er tal, man umiddelbart kan sammenligne. Men hvad med at sammenligne \emph{både} vægt og højde? Hvad betyder så mest? 
-Er der lige langt mellem en person A, der vejer 80 kg og er 1.80 høj og en anden, B,  der vejer 90 og er 2,00m eller mellem A og C, der vejer 70 kg og er 1,60m? 
-Det er ikke klart, selvom vi da kan plotte de tre punkter i et vægt,højde koordinatsystem og endda bruge Pythagoras og få den samme afstand. 
+Er der lige langt mellem en person A, der vejer 80 kg og er 1,80 m høj og en anden, B,  der vejer 90 kg og er 2,00 m eller mellem A og C, der vejer 70 kg og er 1,60 m? 
+Det er ikke klart, selvom vi da kan plotte de tre punkter i et vægt, højde koordinatsystem og endda bruge Pythagoras og få den samme afstand. 
 Udregner man BMI, er $A$ tættere på $B$ end på $C$  \emph{personerne er muligvis ikke helt velvalgt...}
 Det kommer nok også an på, hvad vi gerne vil udtale os om: Er de gode til at løbe langt? Eller hurtigt? Mere kompliceret bliver det, hvis vi også vil inddrage øjenfarve, skostørrelse eller måske, om de køber rigtig meget mælk.
 
@@ -29,7 +29,7 @@ Lad os begynde med afstand mellem punkter i planen uden at bekymre os om, hvad k
 \item Euklidisk afstand mellem $p$ og $q$ er $\sqrt{(x_2-x_1)^2+(y_2-y_1)^2}$. Det er det, vi kender mest - det, der kommer ud af at bruge Pythagoras.
 \item Manhattanafstanden er $|x_2-x_1|+|y_2-y_1|$. Det er afstanden, når man er tvunget til at bevæge sig langs akserne, som vi kender det fra vejene i mange amerikanske byer, herunder på Manhattan. Den kaldes også taxi-afstanden. 
 \item Max-afstanden er maksimum af   $|x_2-x_1|$ og $|y_2-y_1|$. Den kaldes også skak-konge afstanden: Kongen i skak kan gå diagonalt eller langs de to akser. Et diagonalt move fra (a,b) til (a+k,b+k) tænkes at have længde k - som i skak. 
-\item Posthusafstanden\footnote{Den hedder også British Rail afstanden eller, hvis man er fransk, SNCF (Société Nationale des Chemins de fer Francais) -afstanden. Man tænker sig, at man altid skal rejse via London (eller Paris) for at komme med tog fra et sted til et andet.} mellem $p$ og $q$ er $\sqrt{x_1^2+y_1^2}+\sqrt{x_2^2+y_2^2}$. Man kan tænke på, at der ligger et posthus i Origo og vi skal sende et brev fra $p$ til $q$. Det bliver transporteret fra $p$  til posthuset først og derefter fra posthuset til $q$.
+\item Posthusafstanden\footnote{Den hedder også British Rail afstanden eller, hvis man er fransk, SNCF (Société Nationale des Chemins de fer Fran\c{c}ais) -afstanden. Man tænker sig, at man altid skal rejse via London (eller Paris) for at komme med tog fra et sted til et andet.} mellem $p$ og $q$ er $\sqrt{x_1^2+y_1^2}+\sqrt{x_2^2+y_2^2}$. Man kan tænke på, at der ligger et posthus i Origo og vi skal sende et brev fra $p$ til $q$. Det bliver transporteret fra $p$  til posthuset først og derefter fra posthuset til $q$.
 \end{itemize}
 Der er mange eksempler på afstande, som ikke umiddelbart er fysisk afstand:
 \begin{Eksempel}
@@ -89,6 +89,14 @@ Den diskrete metrik: På en mængde $M$ er funktionen $d$ givet ved.
 \end{itemize}
 Det er en metrik - den opfylder definitionen ovenfor. Men det er ikke nogen specielt nyttig metrik. Alle punkter ligger lige tæt på alle andre, så der er ikke ny information - udover, om  to punkter er ens eller ikke.
 \end{Eksempel}
+\begin{Opgave}\label{Opg:Levensh} Vis, at Levenshteinafstanden giver en metrik. 
+\begin{itemize}
+\item Hvilken mængde er det mon en metrik på? Her kan man vælge - hvilke bogstaver må bruges? Vil I begrænse længden på de ord, der kan optræde? 
+\item Overvej, at afstanden mellem to ord er længden af den (en - der kan være flere veje, som er lige lange)  korteste mulige vej fra det ene til det andet i et netværk (en graf) som på FIGUREN
+
+\end{itemize}
+Nu skulle det være til at indse, at de fire betingelser er opfyldt. 
+\end{Opgave}
 \begin{Eksempel} I afsnittet om k-means clustering minimerer vi en sum af kvadratiske afstande, hvor afstand er Euklidisk - den med Pythagoras. Kvadratisk afstand er \emph{ikke} en metrik: 
 
 Vi prøver i planen. $D((x_1,y_1),(x_2,y_2))=\|(x_2,y_2)-(x_1,y_1)\|^2=(x_2-x_1)^2+(y_2-y_1)^2$. Påstand: $D$ er ikke en metrik. Den opfylder ikke trekantsuligheden.
@@ -100,19 +108,44 @@ så ved vi $D(B,C)+D(A,C)=D(A,B)$ da det netop er ligningen $a^2+b^2=c^2$. Nu fa
 
 Et konkret eksempel: $C=(0,0)$ $A=(1,0)$, $B=(-1,1)$. $D(A,C)=1$, $D(B,C)=2$, $D(A,B)=5$, så der er "kortere" fra $A$ til $B$ via $C$ end direkte fra $A$ til $B$.
 \end{Eksempel}
-\begin{Eksempel} Afstand mellem DNA og RNA-strenge. RNA er strenge med bogstaverne U (uracil), G (guanin), C (cytosin), A, (adenin). DNA har ikke U, men i stedet T (thymin) og DNA er dobbelt. 
- Udover regler for, hvilke ændringer, man tillader, kan man give forskellige omkostninger til forskellige ændringer. Måske er det mere sandsynligt, at G muterer til U  end til C. Det giver et andet afstandsmål end de umiddelbare edit-afstande. 
+\section{ Afstand mellem DNA og RNA-strenge.} 
+RNA er strenge med bogstaverne U (uracil), G (guanin), C (cytosin), A, (adenin). DNA har ikke U, men i stedet T (thymin) og DNA er dobbelt. U, G, C, A og T er nukleotider. 
 
-\end{Eksempel}
+Vi ser her på afstande mellem DNA (eller RNA) som bygger på antallet af mutationer for at nå fra den ene til den anden og desuden, hvor hyppige disse mutationer er - hvis man ved, en mutation sker ofte, er afstanden mellem en streng uden mutationen og en med mutationen ikke så lang, som hvis mutationen er meget sjælden. 
+ Udover regler for, hvilke ændringer, man tillader, giver man derfor en omkostning ved ændringen - afstanden er ikke bare antal ændringer, men summen af, hvor "dyre" disse ændringer er.
+
 \begin{Eksempel}
-Afstand mellem DNA bruges til at analysere slægtskab og hvilke dyr, herunder mennesket, der nedstammer fra hvilke - fylogenetiske træer.\\ \url{ http://www.biotekunderviser.dk/sites/default/files/Handout\%20Bioinformatik\%20workshop\%20Vejle\%202.pdf}
+Afstand mellem DNA bruges til at analysere slægtskab og hvilke dyr, herunder mennesket, der nedstammer fra hvilke - fylogenetiske træer.\\ \url{ http://www.biotekunderviser.dk/sites/default/files/Handout Bioinformatik workshop Vejle 2.pdf}
 
-I den sammenhæng kalder man skift mellem A og G eller mellem C og T for \emph{transitioner}. De fire andre mulige skift: Mellem A og C, mellem A og T, mellem G og T, mellem G og C, kaldes \emph{transversioner}. Transitioner er hyppigere end transversioner, så afstanden mellem $GATTACA$ og $GATTACG$ er mindre end mellem $GATTACA$ og $GATTACC$ . Den slags udskiftning af et bogstav (et basepar) kaldes en punktmutation.
+I den sammenhæng kalder man skift mellem A og G eller mellem C og T for \emph{transitioner}\footnote{A og G er puriner, mens C og T er pyrimediner. Transition bytter en purin med en purin eller en pyrimedin med en pyrimedin} . De fire andre mulige skift: Mellem A og C, mellem A og T, mellem G og T, mellem G og C, kaldes \emph{transversioner}. Transitioner er hyppigere end transversioner, så afstanden mellem $GATTACA$ og $GATTACG$ er mindre end mellem $GATTACA$ og $GATTACC$ . Den slags udskiftning af et bogstav (et basepar) kaldes en punktmutation.
 
-Indel mutationer er indsætning ("In") eller fjernelse ("Del" for delete") af en eller flere basepar. Det er mindre hyppigt og svarer til længere afstand. 
+Indel mutationer er indsætning ("In") eller fjernelse ("Del" for delete") af en eller flere basepar. Det er mindre hyppigt og svarer til længere afstand. I  KILDEN OVENFOR bruges følgende omkostninger og altså afstande mellem DNA-strenge; det er et valg - der er mange andre muligheder: 
+\begin{itemize}
+\item Transition: 1
+\item Transversion: 2
+\item Gap åbning: 9 (indsæt eller fjern præcis en base - altså et bogstav.
+\item Gap forlængelse: 4 (indsæt eller fjern en baser på samme sted, som er åbnet)
+\end{itemize}
+Man kan samle de to sidste og sige, at det koster $5+4L$ at indsætte eller fjerne en delstreng med $L$ bogstaver midt i et ord. 
 
+Vi tilføjer forlængelse/forkortelse: Det koster $4L$ at indsætte eller fjerne $L$ bogstaver i start eller slut af et ord. Alt i alt:
+\begin{itemize}
+\item Transition: 1
+\item Transversion: 2
+\item Indsæt eller fjern delord med $L$ bogstaver midt i et ord: $5+4L$
+\item Forlæng/forkort Indsæt eller fjern $L$ bogstaver i start eller slut af et ord: $4L$
+\end{itemize}
+\end{Eksempel}
+
+Afstand mellem to strenge er så den kortest mulige måde, man kan komme fra den ene til den anden med de tilladte moves vægtet som her. 
+
+Overvej, at samme argumenter som i Opgave \ref{Opg:Levensh} kan vise, at vi har lavet en metrik på mængden af DNA-strenge.
+
+\begin{Eksempel} 
+Her bruger vi meget korte strenge. Det er naturligvis ikke realistisk. 
 
 \end{Eksempel}
+
 
 \section*{Clustering - klyngeanalyse}
 
@@ -120,10 +153,10 @@ Clustering er at samle datapunkter i grupper, klynger, så objekter i en klynge 
 \subsection*{Hierarkisk clustering}
 Her kender vi alle parvise afstande. Og ikke andet. 
 
-Udfra den information laver vi et dendogram, hvor i første omgang par af datapunkter "mødes" i den højde, der svarer til deres afstand. Men der er mere: Hvornår skal datapunktet $p$ mødes med $qr$, som mødtes tidligere? Hvornår skal $pqr$ mødes med $ab$?  Det er \emph{linkage}-reglerne.
+Udfra den information laver vi et dendogram, hvor i første omgang par af datapunkter "mødes"\; i den højde, der svarer til deres afstand. Men der er mere: Hvornår skal datapunktet $p$ mødes med $qr$, som mødtes tidligere? Hvornår skal $pqr$ mødes med $ab$?  Det er \emph{linkage}-reglerne.
 \begin{itemize}
 \item Single linkage: $pqr$ mødes med $ab$ i den højde, hvor minimumsafstanden mellem de to grupper af punkter nås:\\ Minimum af $d(a,p),d(a,q), d(a,r), d(b,p), d(b,q), d(p,r)$
-\item Complete linkage: $pqr$ mødesmed $ab$, når den maksimale afstand mellem punkter i de to grupper er nået. \\Maksimum af $d(a,p),d(a,q), d(a,r), d(b,p), d(b,q), d(p,r)$
+\item Complete linkage: $pqr$ mødes med $ab$, når den maksimale afstand mellem punkter i de to grupper er nået. \\Maksimum af $d(a,p),d(a,q), d(a,r), d(b,p), d(b,q), d(p,r)$
 \item Middelafstand- average linkage: Når den gennemsnitlige afstand er nået. $\frac{1}{2\cdot 3}(d(a,p)+d(a,q)+ d(a,r)+ d(b,p)+ d(b,q)+ d(p,r))$
 \end{itemize}
 (OBS: Her skal være tegninger og diagrammer -dendrogrammer. Og eksempler på, hvad forskellen er på de forskellige linkagekrav)
