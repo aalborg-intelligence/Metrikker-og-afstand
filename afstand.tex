@@ -153,11 +153,21 @@ Der er to punktmutationer og begge er transversioner (fra $T$ til $G$ eller omve
 Havde vi brugt samme omkostning/vægt for alle tilladte ændringer, ville begge de to veje have samme længde. 
 
 \end{Eksempel}
-Med lange strenge, som er ens på lange stykker, finder man afstande ved først at "aligne" - anbringe strengene, så de passer sammen på flest mulige pladser. Og derefter udregne afstande:
+Med lange strenge, som er ens på lange stykker, finder man afstande ved først at "aligne"\; - anbringe strengene, så de passer sammen på flest mulige pladser. Og derefter udregne afstande, men det er stadig ikke nemt - der skal algoritmer til:
 \begin{Eksempel}
-Streng 1: $TCGTAGG$ Streng 2: $TCGGTCTCGA$
+Streng 1: $TCGTAGG$ Streng 2: $TCTGTATCGA$
+\\Første alignment:
+$$\begin{matrix}T&C&G&-&-&-&T&A&G&G\\T&C&T&G&T&A&T&C&G&A\end{matrix}$$
+Det koster indsættelse af $GTA$, $5+4x3=17$ to  transversioner $G\leftrightarrow T$ og $A\leftrightarrow C$ en transition $G\leftrightarrow A$. I alt $17+4+1=22$.\\
+Hvis man vælger alignment 
+$$\begin{matrix}T&C&-&-&-&G&T&A&G&G\\T&C&T&G&T&A&T&C&G&A\end{matrix}$$
+er transversionen mellem $G$ og $T$ erstattet med en transition $G\leftrightarrow A$ og omkostningen falder med $1$ til $21$
 
-
+Man indser ret let, at straffen for at klippe gør, at man ikke vil klippe to gange og  bruge 
+$$\begin{matrix}T&C&-&G&-&-&T&A&G&G\\T&C&T&G&T&A&T&C&G&A\end{matrix}$$
+hvor man kun sparer en enkelt transition, men hvad med 
+$$\begin{matrix}T&C&-&G&T&A&-&-&G&G\\T&C&T&G&T&A&T&C&G&A\end{matrix}$$
+Her er omkostningen $9$ for det første gap og $13$ for det andet. Og der er en transition i sidste plads $G\leftrightarrow A$, så omkostningen er $23$, men det er ikke helt så klart. I kan nok finde på eksempler, hvor det svarer sig at klippe flere steder. 
 \end{Eksempel}
 
 
