@@ -59,7 +59,7 @@ Hvis man så har en liste over ord, der giver mening, kan man opdage, at teskt i
 Afstand mellem DNA-strenge kan man se på med edit-afstande. Så det er bestemt ikke kun ord i sædvanlig forstand. 
 \end{Eksempel}
 \begin{Eksempel}
-Afstande mellem navne: Navne som Peter, Pieter, Pietro, Petrus, Peder, Per, Pelle, Pekka, Peer, Petur, Pedro, Pierre, Pjotr, Pyotr, Petar eller måske Katarina, Katharina, Katrina, Katrine, Katrin, Cathryn, Kathryn, Catherine har samme oprindelse. Der er stor forskel på, hvor hyppigt, de optræder i forskellige lande. Overvej, om metrikkerne ovenfor kan bruges til at afsløre, hvor tæt på hinanden lande med Peter som hyppigst af de fem, er på lande med Pyotr. 
+Afstande mellem navne: Navne som Peter, Pieter, Pietro, Petrus, Peder, Per, Pelle, Pekka, Peer, Petur, Pedro, Pierre, Pjotr, Pyotr, Petar eller måske Katarina, Katharina, Katrina, Katrine, Katrin, Cathryn, Kathryn, Catherine har samme oprindelse. Der er stor forskel på, hvor hyppigt, de optræder i forskellige lande. Overvej, om metrikkerne ovenfor kan bruges til at afsløre, hvor tæt på hinanden lande med Peter som hyppigst, er på lande med Pyotr. 
 
 
 \end{Eksempel}
@@ -117,7 +117,7 @@ Vi ser her på afstande mellem DNA (eller RNA) som bygger på antallet af mutati
 \begin{Eksempel}
 Afstand mellem DNA bruges til at analysere slægtskab og hvilke dyr, herunder mennesket, der nedstammer fra hvilke - fylogenetiske træer.\\ \url{ http://www.biotekunderviser.dk/sites/default/files/Handout Bioinformatik workshop Vejle 2.pdf}
 
-I den sammenhæng kalder man skift mellem A og G eller mellem C og T for \emph{transitioner}\footnote{A og G er puriner, mens C og T er pyrimediner. Transition bytter en purin med en purin eller en pyrimedin med en pyrimedin} . De fire andre mulige skift: Mellem A og C, mellem A og T, mellem G og T, mellem G og C, kaldes \emph{transversioner}. Transitioner er hyppigere end transversioner, så afstanden mellem $GATTACA$ og $GATTACG$ er mindre end mellem $GATTACA$ og $GATTACC$ . Den slags udskiftning af et bogstav (et basepar) kaldes en punktmutation.
+I den sammenhæng kalder man skift mellem A og G eller mellem C og T for \emph{transitioner}\footnote{A og G er puriner, mens C og T er pyrimediner. Transition bytter en purin med en purin eller en pyrimedin med en pyrimedin.} . De fire andre mulige skift: Mellem A og C, mellem A og T, mellem G og T, mellem G og C, kaldes \emph{transversioner}. Transitioner er hyppigere mutationer end transversioner, så afstanden mellem $GATTACA$ og $GATTACG$ er mindre end mellem $GATTACA$ og $GATTACC$ . Den slags udskiftning af et bogstav (et basepar) kaldes en punktmutation.
 
 Indel mutationer er indsætning ("In") eller fjernelse ("Del" for delete") af en eller flere basepar. Det er mindre hyppigt og svarer til længere afstand. I  KILDEN OVENFOR bruges følgende omkostninger og altså afstande mellem DNA-strenge; det er et valg - der er mange andre muligheder: 
 \begin{itemize}
@@ -144,7 +144,24 @@ Overvej, at samme argumenter som i Opgave \ref{Opg:Levensh} kan vise, at vi har 
 \begin{Eksempel} 
 Her bruger vi meget korte strenge. Det er naturligvis ikke realistisk. 
 
+Vi vil finde afstanden fra $AGT$ til $TGA$. Der er mange muligheder for, hvordan man kan komme fra $AGT$ til $TGA$, altså hvordan mutationerne kunne have set ud. 
+$$ AGT \to ATGT \to ATG$$
+Indsæt $T$ mellem $A$ og $G$ og fjern så det sidste $T$. Det koster $9+4 =13$ - længden af den vej er $13$. En anden mulighed er 
+$$AGT\to ATT \to ATG$$
+Der er to punktmutationer og begge er transversioner (fra $T$ til $G$ eller omvendt), så det koster $2+2=4$. Det er faktisk den korteste vej, så afstanden er $4$. At den faktisk er kortest, kræver mere eftertanke. 
+
+Havde vi brugt samme omkostning/vægt for alle tilladte ændringer, ville begge de to veje have samme længde. 
+
 \end{Eksempel}
+Med lange strenge, som er ens på lange stykker, finder man afstande ved først at "aligne" - anbringe strengene, så de passer sammen på flest mulige pladser. Og derefter udregne afstande:
+\begin{Eksempel}
+Streng 1: $TCGTAGG$ Streng 2: $TCGGTCTCGA$
+
+
+\end{Eksempel}
+
+
+
 
 
 \section*{Clustering - klyngeanalyse}
