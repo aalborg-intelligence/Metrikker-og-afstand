@@ -128,7 +128,7 @@ Indel mutationer er indsætning ("In") eller fjernelse ("Del" for delete") af en
 \end{itemize}
 Man kan samle de to sidste og sige, at det koster $5+4L$ at indsætte eller fjerne en delstreng med $L$ bogstaver midt i et ord. (Overvej, at I forstår, det er samme regel.)
 
-Vi tilføjer forlængelse/forkortelse: Det koster $4L$ at indsætte eller fjerne $L$ bogstaver i start eller slut af et ord. Alt i alt:
+Vi tilføjer forlængelse/forkortelse: Det koster $4L$ at indsætte eller fjerne $L$ bogstaver i start eller slut af et ord.  Alt i alt:
 \begin{itemize}
 \item Transition: 1
 \item Transversion: 2
@@ -141,16 +141,20 @@ Afstand mellem to strenge er så den kortest mulige måde, man kan komme fra den
 
 Overvej, at samme argumenter som i Opgave \ref{Opg:Levensh} kan vise, at vi har lavet en metrik på mængden af DNA-strenge.
 
+Et gratis move er at læse strengen bagfra, altså at vende den om. En DNA-streng har som udgangspunkt ikke en bestemt retning (ER DET MON RIGTIGT?)
+
 \begin{Eksempel} 
 Her bruger vi meget korte strenge. Det er naturligvis ikke realistisk. 
 
-Vi vil finde afstanden fra $AGT$ til $TGA$. Der er mange muligheder for, hvordan man kan komme fra $AGT$ til $TGA$, altså hvordan mutationerne kunne have set ud. 
+Vi vil finde afstanden fra $AGT$ til $ATG$. Der er mange muligheder for, hvordan man kan komme fra $AGT$ til $ATG$, altså hvordan mutationerne kunne have set ud. 
 $$ AGT \to ATGT \to ATG$$
 Indsæt $T$ mellem $A$ og $G$ og fjern så det sidste $T$. Det koster $9+4 =13$ - længden af den vej er $13$. En anden mulighed er 
 $$AGT\to ATT \to ATG$$
 Der er to punktmutationer og begge er transversioner (fra $T$ til $G$ eller omvendt), så det koster $2+2=4$. Det er faktisk den korteste vej, så afstanden er $4$. At den faktisk er kortest, kræver mere eftertanke. 
 
 Havde vi brugt samme omkostning/vægt for alle tilladte ændringer, ville begge de to veje have samme længde. 
+
+Hvad med fra $AGT$ til $TGA$? Jo, det er faktisk nemmere. Det er i virkeligheden samme DNA-sekvens; man har bare læst den fra den anden ende... 
 
 \end{Eksempel}
 Med lange strenge, som er ens på lange stykker, finder man afstande ved først at "aligne"\; - anbringe strengene, så de passer sammen på flest mulige pladser. Og derefter udregne afstande, men det er stadig ikke nemt - der skal algoritmer til:
@@ -163,12 +167,14 @@ Hvis man vælger alignment
 $$\begin{matrix}T&C&-&-&-&G&T&A&G&G\\T&C&T&G&T&A&T&C&G&A\end{matrix}$$
 er transversionen mellem $G$ og $T$ erstattet med en transition $G\leftrightarrow A$ og omkostningen falder med $1$ til $21$
 
-Man indser ret let, at straffen for at klippe gør, at man ikke vil klippe to gange og  bruge 
+Man indser ret let, at prisen for at klippe gør, at man ikke vil klippe to gange og  bruge 
 $$\begin{matrix}T&C&-&G&-&-&T&A&G&G\\T&C&T&G&T&A&T&C&G&A\end{matrix}$$
 hvor man kun sparer en enkelt transition, men hvad med 
 $$\begin{matrix}T&C&-&G&T&A&-&-&G&G\\T&C&T&G&T&A&T&C&G&A\end{matrix}$$
 Her er omkostningen $9$ for det første gap og $13$ for det andet. Og der er en transition i sidste plads $G\leftrightarrow A$, så omkostningen er $23$, men det er ikke helt så klart. I kan nok finde på eksempler, hvor det svarer sig at klippe flere steder. 
 \end{Eksempel}
+
+For DNA-strenge skal man også overveje, om der er kortere 
 
 
 
