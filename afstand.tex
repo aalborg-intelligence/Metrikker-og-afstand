@@ -174,10 +174,35 @@ $$\begin{matrix}T&C&-&G&T&A&-&-&G&G\\T&C&T&G&T&A&T&C&G&A\end{matrix}$$
 Her er omkostningen $9$ for det første gap og $13$ for det andet. Og der er en transition i sidste plads $G\leftrightarrow A$, så omkostningen er $23$, men det er ikke helt så klart. I kan nok finde på eksempler, hvor det svarer sig at klippe flere steder. 
 \end{Eksempel}
 
-For DNA-strenge skal man også overveje, om der er kortere 
+\section*{Afstande udfra data}
+Hvis data består af vægt og højde for nogen personer, er det ikke klart, hvad afstanden mellem to punkter $(v_1,h_1)$ og $(v_2,h_2)$ skal være. Altså, hvornår to punkter ligger tæt på hinanden. 
+\begin{Eksempel}
+Tre personer har vægt, højde $A=(70 kg, 165 cm)$, $B=(90 kg, 180 cm)$, $C=(80 kg, 190 cm)$.
 
+Bruger vi Pythagoras på tallene, der står her, er afstanden mellem $A$ og $B$ $\sqrt{20^2+15^2}=25$. Afstanden mellem $A$ og $C$ er $\sqrt{10^2+25^2}=\sqrt{725}\simeq 27$ og mellem $B$ og $C$ $\sqrt{10^2+10^2}=\sqrt{200}\simeq 14$. Der er altså længst fra $A$ til $C$.
 
+Skifter vi enhed og udtrykker højden i meter $A=(70 kg, 1,\!65 m)$, $B=(90 kg, 1,\!80 m)$, $C=(80 kg, 1,\!90 m)$ er afstanden mellem $A$ og $B$ cirka 20. Mellem $A$ og $C$ cirka $4$ og mellem $B$ og $C$ cirka $10$. Der er nu længst fra $A$ til $B$.
 
+Det er ikke ret smart. Skal man finde de nærmeste naboer, er svaret tilsyneladende som vinden blæser. OBS: PROBLEM i det videre - vægt og højde er ikke uafhængige....
+
+\end{Eksempel}
+
+Selv hvis begge variable er i samme enhed, kan Pythagoras brugt med hovedet under armen være uheldigt:
+\begin{Eksempel}
+Vi har data for, hvor meget familierne $A$, $B$ og $C$  bruger på bolig og på mælk om måneden. Begge variable kan være i kroner. Hvis $A$ bruger $(7.500 kr, 200 kr)$ og $B$ bruger $(7.500 kr, 1.700 kr)$, mens $C$ bruger $(6.000 kr, 200 kr)$, er afstanden udregnet med Pythagoras den samme fra $A$ til $B$ som fra $A$ til $C$, men vi vil nok mene, $B$ afviger mere fra $A$ end $C$ gør, fordi mælkeforbruget i familie $B$ er usædvanligt.
+
+Har vi data for mange familier, kan vi kvantificere ideen om, hvad der er usædvanligt og bruge det til at lave en mere passende afstand. 
+\end{Eksempel}
+
+\subsection*{Første naive tilgang:}
+
+Data er punkter $(x_i,y_i)$ i planen. $x$-værdierne ligger mellem $a$ og $b$, mens $y$-værdierne ligger mellem $c$ og $d$. TEGNING af datapunkter - det skal nok ligne en ellipse, hvis $x$ og $y$ er uafhængige (?).
+
+Ideen er nu, at vi skalerer, så afstandene langs $x$-aksen får samme vægt som afstande langs $y$-aksen. 
+
+Afstand fra $(x_1,y_1)$ til $(x_2,y_2)$ er $\sqrt{(\frac{x_2-x_1}{b-a})^2+(\frac{y_2-y_1}{d-c})^2}$
+\subsection*{Mindre naivt, mere bøvlet}
+Noget om at centrere i middelværdi og skalere med variansen - eller spredningen, der er noget med en kvadratrod :-)
 
 
 \section*{Clustering - klyngeanalyse}
