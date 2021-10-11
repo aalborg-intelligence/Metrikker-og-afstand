@@ -204,9 +204,22 @@ Ideen er nu, at vi skalerer, så afstandene langs $x$-aksen får samme vægt som
 
 Afstand fra $(x_1,y_1)$ til $(x_2,y_2)$ er $\sqrt{(\frac{x_2-x_1}{b-a})^2+(\frac{y_2-y_1}{d-c})^2}$
 \subsection*{Mindre naivt, mere bøvlet}
-Noget om at centrere i middelværdi og skalere med variansen - eller spredningen, der er noget med en kvadratrod :-)
+Skalering langs akserne, hvor man bruger data til at bestemme skaleringen, kaldes også "feature scaling", når vi arbejder med perceptroner eller neurale netværk. Hvis det data, der skal læres fra - det observerede data - er $(x_1,y_1), (x_2,y_2),\ldots, (x_n,y_n)$, så skalerer vi langs førsteaksen ved
+\begin{enumerate}
+\item Udregn et estimat for middelværdien af $x$:
+$$\bar{x}=\frac{\Sigma_{i=1}^nx_i}{n}$$
+\item og et estimat for denne variabels spredning:
+$$s_x=\sqrt{\frac{\Sigma_{i=1}^n(x_i-\bar{x})^2}{n-1}}$$
+\end{enumerate}
+Feature scaling af $x_i$ er da
+$$\hat{x}_i=\frac{x_i-\bar{x}}{s_x}$$
+Tilsvarende estimeres middelværdi og spredning for $y$ og feature scaling udregne 
+$$\hat{y}_i= \frac{y_i-\bar{y}}{s_y}$$
 
+Euklidisk afstand mellem disse nye punkter $(\hat{x}_i,\hat{y}_i)$ og  $(\hat{x}_j,\hat{y}_j)$ er 
 
+$$\sqrt{(\frac{x_i-\bar{x}}{s_x}-\frac{x_j-\bar{x}}{s_x})^2 +(\frac{y_i-\bar{y}}{s_y}-\frac{y_j-\bar{y}}{s_y})^2}=\sqrt{(\frac{x_i-x_j}{s_x})^2+(\frac{y_i-y_j}{s_y})^2}$$
+Hvis vi sammenligner med den naive tilgang, er den ikke helt skæv. Der skal bare skaleres med $s_x$ i stedet for $b-a$ og med $s_y$ i stedet for $c-d$.
 \section*{Clustering - klyngeanalyse}
 
 Clustering er at samle datapunkter i grupper, klynger, så objekter i en klynge har mere til fælles med hinanden end med objekter i andre grupper. Har man et afstandsbegreb, der passer godt til det, vi mener med til fælles, kan man bruge det til clustering - objekter i samme klynge er tæt på hinanden, men længere fra punkter i de andre klynger. 
