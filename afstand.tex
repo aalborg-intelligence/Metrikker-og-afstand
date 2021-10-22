@@ -162,7 +162,7 @@ Med lange strenge, som er ens på lange stykker, finder man afstande ved først 
 Streng 1: $TCGTAGG$ Streng 2: $TCTGTATCGA$
 \\Første alignment:
 $$\begin{matrix}T&C&G&-&-&-&T&A&G&G\\T&C&T&G&T&A&T&C&G&A\end{matrix}$$
-Det koster indsættelse af $GTA$, $5+4x3=17$ to  transversioner $G\leftrightarrow T$ og $A\leftrightarrow C$ en transition $G\leftrightarrow A$. I alt $17+4+1=22$.\\
+Det koster indsættelse af $GTA$, $5+4\cdot 3=17$, to  transversioner $G\leftrightarrow T$ og $A\leftrightarrow C$ en transition $G\leftrightarrow A$. I alt $17+4+1=22$.\\
 Hvis man vælger alignment 
 $$\begin{matrix}T&C&-&-&-&G&T&A&G&G\\T&C&T&G&T&A&T&C&G&A\end{matrix}$$
 er transversionen mellem $G$ og $T$ erstattet med en transition $G\leftrightarrow A$ og omkostningen falder med $1$ til $21$
@@ -185,7 +185,7 @@ Bruger vi Pythagoras på tallene, der står her, er afstanden mellem $A$ og $B$ 
 
 Skifter vi enhed og udtrykker højden i meter $A=(70 kg, 1,\!65 m)$, $B=(90 kg, 1,\!80 m)$, $C=(80 kg, 1,\!90 m)$ er afstanden mellem $A$ og $B$ cirka 20. Mellem $A$ og $C$ cirka $4$ og mellem $B$ og $C$ cirka $10$. Der er nu længst fra $A$ til $B$.
 
-Det er ikke ret smart. Skal man finde de nærmeste naboer, er svaret tilsyneladende som vinden blæser. OBS: PROBLEM i det videre (?) - vægt og højde er ikke uafhængige....
+Det er ikke ret smart. Skal man finde de nærmeste naboer, er svaret tilsyneladende som vinden blæser. 
 
 \end{Eksempel}
 
@@ -198,7 +198,7 @@ Har vi data for mange familier, kan vi kvantificere ideen om, hvad der er usædv
 
 \subsection*{Første naive tilgang:}
 
-Data er punkter $(x_i,y_i)$ i planen. $x$-værdierne ligger mellem $a$ og $b$, mens $y$-værdierne ligger mellem $c$ og $d$. TEGNING af datapunkter - det skal nok ligne en ellipse, hvis $x$ og $y$ er uafhængige (?).
+Data er punkter $(x_i,y_i)$ i planen. $x$-værdierne ligger mellem $a$ og $b$, mens $y$-værdierne ligger mellem $c$ og $d$. TEGNING af datapunkter.
 
 Ideen er nu, at vi skalerer, så afstandene langs $x$-aksen får samme vægt som afstande langs $y$-aksen. 
 
@@ -220,6 +220,9 @@ Euklidisk afstand mellem disse nye punkter $(\hat{x}_i,\hat{y}_i)$ og  $(\hat{x}
 
 $$\sqrt{\left(\frac{x_i-\bar{x}}{s_x}-\frac{x_j-\bar{x}}{s_x}\right)^2 +\left(\frac{y_i-\bar{y}}{s_y}-\frac{y_j-\bar{y}}{s_y}\right)^2}=\sqrt{\left(\frac{x_i-x_j}{s_x}\right)^2+\left(\frac{y_i-y_j}{s_y}\right)^2}$$
 Hvis vi sammenligner med den naive tilgang, er den ikke helt skæv. Der skal bare skaleres med $s_x$ i stedet for $b-a$ og med $s_y$ i stedet for $c-d$.
+\begin{Opgave}
+Vis, at afstandene i såvel den naive, som den knap så naive tilgang giver metrikker. VINK: De er begge skaleringer, så man kan gøre det i et hug. 
+\end{Opgave}
 \section*{Clustering - klyngeanalyse}
 
 Clustering er at samle datapunkter i grupper, klynger, så objekter i en klynge har mere til fælles med hinanden end med objekter i andre grupper. Har man et afstandsbegreb, der passer godt til det, vi mener med til fælles, kan man bruge det til clustering - objekter i samme klynge er tæt på hinanden, men længere fra punkter i de andre klynger. 
