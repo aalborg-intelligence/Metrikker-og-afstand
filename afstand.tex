@@ -184,7 +184,7 @@ Her er omkostningen $9$ for det første gap og $13$ for det andet. Og der er en 
 \section*{Afstande udfra data}
 Hvis data består af vægt og højde for nogen personer, er det ikke klart, hvad afstanden mellem to punkter $(v_1,h_1)$ og $(v_2,h_2)$ skal være. Altså, hvornår to punkter ligger tæt på hinanden. 
 \begin{Eksempel}
-Tre personer har vægt, højde $A=(70 kg, 165 cm)$, $B=(90 kg, 180 cm)$, $C=(80 kg, 190 cm)$.
+Tre personer er givet som datapunkter (vægt, højde) $A=(70 kg, 165 cm)$, $B=(90 kg, 180 cm)$, $C=(80 kg, 190 cm)$.
 
 Bruger vi Pythagoras på tallene, der står her, er afstanden mellem $A$ og $B$ $\sqrt{20^2+15^2}=25$. Afstanden mellem $A$ og $C$ er $\sqrt{10^2+25^2}=\sqrt{725}\simeq 27$ og mellem $B$ og $C$ $\sqrt{10^2+10^2}=\sqrt{200}\simeq 14$. Der er altså længst fra $A$ til $C$.
 
@@ -225,6 +225,9 @@ Euklidisk afstand mellem disse nye punkter $(\hat{x}_i,\hat{y}_i)$ og  $(\hat{x}
 
 $$\sqrt{\left(\frac{x_i-\bar{x}}{s_x}-\frac{x_j-\bar{x}}{s_x}\right)^2 +\left(\frac{y_i-\bar{y}}{s_y}-\frac{y_j-\bar{y}}{s_y}\right)^2}=\sqrt{\left(\frac{x_i-x_j}{s_x}\right)^2+\left(\frac{y_i-y_j}{s_y}\right)^2}$$
 Hvis vi sammenligner med den naive tilgang, er den ikke helt skæv. Der skal bare skaleres med $s_x$ i stedet for $b-a$ og med $s_y$ i stedet for $c-d$.
+\begin{Opgave}
+Se på INTERAKTIV ILLUSTRATION. Hvad er forskellen på den naive tilgang og \emph{feature scaling} i disse tilfælde? 
+\end{Opgave}
 \begin{Opgave}
 Vis, at afstandene i såvel den naive, som den knap så naive tilgang giver metrikker. VINK: De er begge skaleringer, så man kan gøre det i et hug. 
 \end{Opgave}
