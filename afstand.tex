@@ -204,14 +204,17 @@ Vi har data for, hvor meget familierne $A$, $B$ og $C$  bruger på bolig og på 
 Har vi data for mange familier, kan vi kvantificere ideen om, hvad der er usædvanligt og bruge det til at lave en mere passende afstand. 
 \end{Eksempel}
 
-\subsection*{Første naive tilgang:}
+\subsection*{Første naive tilgang - Min-Max-skalering:}
 
 Data er punkter $(x_i,y_i)$ i planen. $x$-værdierne ligger mellem $a$ og $b$, mens $y$-værdierne ligger mellem $c$ og $d$. TEGNING af datapunkter.
 
 Ideen er nu, at vi skalerer, så afstandene langs $x$-aksen får samme vægt som afstande langs $y$-aksen. 
 
 Afstand fra $(x_1,y_1)$ til $(x_2,y_2)$ er $\sqrt{(\frac{x_2-x_1}{b-a})^2+(\frac{y_2-y_1}{d-c})^2}$
-\subsection*{Mindre naivt, mere bøvlet}
+
+Overvej, at man får samme effekt, samme afstand, hvis man erstatter hver punkt $(x_i,y_i)$ med med $$(x_i,y_i)_{Norm}=\left(\frac{x_i-a}{b-a}, \frac{y_i-c}{d-c}\right)$$
+
+\subsection*{Mindre naivt, mere bøvlet. Feature scaling}
 Skalering langs akserne, hvor man bruger data til at bestemme skaleringen, kaldes også "feature scaling", når vi arbejder med perceptroner eller neurale netværk. Hvis det data, der skal læres fra - træningsdata - er $(x_1,y_1), (x_2,y_2),\ldots, (x_n,y_n)$, så skalerer vi langs førsteaksen ved
 \begin{enumerate}
 \item Udregn et estimat for middelværdien af $x$:
@@ -233,6 +236,8 @@ Se på INTERAKTIV ILLUSTRATION. Hvad er forskellen på den naive tilgang og \emp
 \end{Opgave}
 \begin{Opgave}
 Vis, at afstandene i såvel den naive, som den knap så naive tilgang giver metrikker. VINK: De er begge skaleringer, så man kan gøre det i et hug. 
+\end{Opgave}
+\begin{Opgave} Kan vi finde noget om middelværdi og spredning for eksemplerne med vægt, højde og det med bolig og mælk? Eller måske give 10 punkter? 
 \end{Opgave}
 \section*{Clustering - klyngeanalyse}
 
