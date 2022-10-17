@@ -20,8 +20,8 @@ Når vi adskiller eller samler data bygger vi på en form for afstand. De $k$ \e
 Hvis det drejer sig om dem, hvis højder er tætte på hinanden eller måske dem, der vejer nogenlunde det samme, kan man se det for sig. 
 Der er tal, man umiddelbart kan sammenligne. Men hvad med at sammenligne \emph{både} vægt og højde? Hvad betyder så mest? 
 Er der lige langt mellem en person A, der vejer 80 kg og er 1,80 m høj og en anden, B,  der vejer 90 kg og er 2,00 m eller mellem A og C, der vejer 70 kg og er 1,60 m? 
-Det er ikke klart, selvom vi da kan plotte de tre punkter i et (vægt, højde) koordinatsystem og endda bruge Pythagoras og få den samme afstand. 
-Udregner man BMI, er $A$ tættere på $B$ end på $C$  \emph{personerne er muligvis ikke helt velvalgt...}
+Det er ikke klart, selvom vi da kan plotte de tre punkter i et (vægt, højde) koordinatsystem og endda bruge Pythagoras og få den samme afstand.\footnote{Afstanden bliver $10^2+0,2^2$. Bemærk, at det er udregnet udfra vægt i kg og højde i meter. Med højde i cm ville det være $10^2+20^2$, men stadig samme afstand fra A til B som fra A til C. Se Eksempel \ref{ex:enheder og afstand} for mere info om effekten af at skifte enheder. Det kan godt lave om på, hvilke punkter, der ligger nærmest.}
+Udregner man BMI, er $A$ tættere på $B$ end på $C$.
 Det kommer nok også an på, hvad vi gerne vil udtale os om: Er de gode til at løbe langt? Eller hurtigt? Mere kompliceret bliver det, hvis vi også vil inddrage øjenfarve, skostørrelse eller måske, om de køber rigtig meget mælk.
 \subsubsection*{Afstande mellem punkter i planen.}
 Forskellige afstande mellem punkter i planen. Kald punkterne $p=(x_1,y_1)$ og $q=(x_2,y_2)$: 
@@ -186,7 +186,7 @@ Her er omkostningen $9$ for det første gap og $13$ for det andet. Og der er en 
 
 \section*{Afstande udfra data}
 Hvis data består af vægt og højde for nogen personer, er det ikke klart, hvad afstanden mellem to punkter $(v_1,h_1)$ og $(v_2,h_2)$ skal være. Altså, hvornår to punkter ligger tæt på hinanden. 
-\begin{Eksempel}
+\begin{Eksempel}\label{ex:enheder og afstand}
 Tre personer er givet som datapunkter (vægt, højde) $A=(70 kg, 165 cm)$, $B=(90 kg, 180 cm)$, $C=(80 kg, 190 cm)$.
 
 Bruger vi Pythagoras på tallene, der står her, er afstanden mellem $A$ og $B$ $\sqrt{20^2+15^2}=25$. Afstanden mellem $A$ og $C$ er $\sqrt{10^2+25^2}=\sqrt{725}\simeq 27$ og mellem $B$ og $C$ $\sqrt{10^2+10^2}=\sqrt{200}\simeq 14$. Der er altså længst fra $A$ til $C$.
