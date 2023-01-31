@@ -17,12 +17,12 @@
 \begin{document}
 \section*{Afstande, nærmest, størst, mindst}
 Når vi adskiller eller samler data bygger vi på en form for afstand. De $k$ \emph{ nærmeste} naboer er dem, der ligger tættest på i én eller anden forstand. 
-Hvis det drejer sig om dem, hvis højder er tætte på hinanden eller måske dem, der vejer nogenlunde det samme, kan man se det for sig. 
+Hvis det drejer sig om dem, hvis højder er tætte på hinanden eller måske dem, der vejer nogenlunde det samme, er det klart, hvad man mener. 
 Der er tal, man umiddelbart kan sammenligne. Men hvad med at sammenligne \emph{både} vægt og højde? Hvad betyder så mest? 
 Er der lige langt mellem en person A, der vejer 80 kg og er 1,80 m høj og en anden, B,  der vejer 90 kg og er 2,00 m eller mellem A og C, der vejer 70 kg og er 1,60 m? 
-Det er ikke klart, selvom vi da kan plotte de tre punkter i et (vægt, højde) koordinatsystem og endda bruge Pythagoras og få den samme afstand.\footnote{Afstanden bliver $10^2+0,2^2$. Bemærk, at det er udregnet udfra vægt i kg og højde i meter. Med højde i cm ville det være $10^2+20^2$, men stadig samme afstand fra A til B som fra A til C. Se Eksempel \ref{ex:enheder og afstand} for mere info om effekten af at skifte enheder. Det kan godt lave om på, hvilke punkter, der ligger nærmest.}
+Det er ikke klart, selvom vi da kan plotte de tre punkter i et (vægt, højde) koordinatsystem og endda bruge Pythagoras og få den samme afstand.\footnote{Afstanden bliver $10^2+0,2^2$. Bemærk, at det er udregnet udfra vægt i kg og højde i meter. Med højde i cm ville det være $10^2+20^2$, men stadig samme afstand fra A til B som fra A til C. Se Afstand udfra Data for mere info om effekten af at skifte enheder. Det kan godt lave om på, hvilke punkter, der ligger nærmest.}
 Udregner man BMI, er $A$ tættere på $B$ end på $C$.
-Det kommer nok også an på, hvad vi gerne vil udtale os om: Er de gode til at løbe langt? Eller hurtigt? Mere kompliceret bliver det, hvis vi også vil inddrage øjenfarve, skostørrelse eller måske, om de køber rigtig meget mælk.
+Det kommer nok også an på, hvad vi gerne vil udtale os om: Er de nogenlunde lige gode til at løbe langt? Eller hurtigt? Mere kompliceret bliver det, hvis vi også vil inddrage øjenfarve, skostørrelse eller måske, om de køber rigtig meget mælk.
 %\subsubsection*{Afstande mellem punkter i planen.}
 %Forskellige afstande mellem punkter i planen. Kald punkterne $p=(x_1,y_1)$ og $q=(x_2,y_2)$: 
 %\begin{itemize}
@@ -31,7 +31,7 @@ Det kommer nok også an på, hvad vi gerne vil udtale os om: Er de gode til at l
 %\item Max-afstanden er maksimum af   $|x_2-x_1|$ og $|y_2-y_1|$. Den kaldes også skak-konge afstanden: Kongen i skak kan gå diagonalt eller langs de to akser. Et diagonalt move fra (a,b) til (a+k,b+k) tænkes at have længde k - som i skak. Skal man fra eksempelvis $(1,4)$ til $(3,7)$ kan skakkongen gå fra $(1,4)$ til $(3,6)$ - det stykke har længde $2$ og derefter fra $(3,6)$ til $(3,7)$ langs $y$-aksen - st stykke på længde $1$. Samlet afstand er $3$, maksimum af $|3-1|$ og $|7-4|$. 
 %\item Posthusafstanden\footnote{Den hedder også British Rail afstanden eller, hvis man er fransk, SNCF (Société Nationale des Chemins de fer Fran\c{c}ais) -afstanden. Man tænker sig, at man altid skal rejse via London (eller Paris) for at komme med tog fra et sted til et andet.} mellem $p$ og $q$ er $\sqrt{x_1^2+y_1^2}+\sqrt{x_2^2+y_2^2}$. Man kan tænke på, at der ligger et posthus i Origo og vi skal sende et brev fra $p$ til $q$. Det bliver transporteret fra $p$  til posthuset først og derefter fra posthuset til $q$.
 %\end{itemize}
-Der er mange eksempler på afstande, som ikke umiddelbart er fysisk afstand:
+Der er mange eksempler på afstande, som ikke umiddelbart er fysisk afstand. For eksempel mellem ord (LINK) eller mellem DNA (Link) 
 %\subsubsection*{Afstande mellem ord.} 
 % 
 %Et ord er en følge eller en \emph{streng} af bogstaver eller tal \emph{hnaikgoh} (nej, det behøver ikke give mening). Det kunne være en DNA-sekvens, et ord i en tekst eller noget helt andet \footnote{Ofte gør man det desuden binært, så det er en streng af $0$ og $1$ såsom $00110110$ Det er fornuftigt nok, eftersom computere opererer med den slags strenge.}
@@ -239,7 +239,7 @@ Der er mange eksempler på afstande, som ikke umiddelbart er fysisk afstand:
 %\end{Opgave}
 %\begin{Opgave} Kan vi finde noget om middelværdi og spredning for eksemplerne med vægt, højde og det med bolig og mælk? Eller måske give 10 punkter? 
 %\end{Opgave}
-\section*{Clustering - klyngeanalyse}
+\section*{Clustering - klyngeanalyse. SKAL DET BRUGES?}
 
 Clustering er at samle datapunkter i grupper, klynger, så objekter i en klynge har mere til fælles med hinanden end med objekter i andre grupper. Har man et afstandsbegreb, der passer godt til det, vi mener med til fælles, kan man bruge det til clustering - objekter i samme klynge er tæt på hinanden, men længere fra punkter i de andre klynger. 
 \subsection*{Hierarkisk clustering}
