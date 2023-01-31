@@ -45,7 +45,7 @@ Afstand fra $(x_1,y_1)$ til $(x_2,y_2)$ er $\sqrt{(\frac{x_2-x_1}{b-a})^2+(\frac
 
 Overvej, at man får samme effekt, samme afstand, hvis man erstatter hver punkt $(x_i,y_i)$ med med $$(x_i,y_i)_{Norm}=\left(\frac{x_i-a}{b-a}, \frac{y_i-c}{d-c}\right)$$
 
-\subsection*{Mindre naivt, mere bøvlet. Feature scaling}
+\subsection*{Mindre naivt, mere bøvlet. Feature scaling.}
 Skalering langs akserne, hvor man bruger data til at bestemme skaleringen, kaldes også "feature scaling", når vi arbejder med perceptroner eller neurale netværk. Hvis det data, der skal læres fra - træningsdata - er $(x_1,y_1), (x_2,y_2),\ldots, (x_n,y_n)$, så skalerer vi langs førsteaksen ved
 \begin{enumerate}
 \item Udregn et estimat for middelværdien af $x$:
@@ -61,7 +61,11 @@ $$\hat{y}_i= \frac{y_i-\bar{y}}{s_y}$$
 Euklidisk afstand mellem disse nye punkter $(\hat{x}_i,\hat{y}_i)$ og  $(\hat{x}_j,\hat{y}_j)$ er 
 
 $$\sqrt{\left(\frac{x_i-\bar{x}}{s_x}-\frac{x_j-\bar{x}}{s_x}\right)^2 +\left(\frac{y_i-\bar{y}}{s_y}-\frac{y_j-\bar{y}}{s_y}\right)^2}=\sqrt{\left(\frac{x_i-x_j}{s_x}\right)^2+\left(\frac{y_i-y_j}{s_y}\right)^2}$$
+
 Hvis vi sammenligner med den naive tilgang, er den ikke helt skæv. Der skal bare skaleres med $s_x$ i stedet for $b-a$ og med $s_y$ i stedet for $c-d$.
+
+SKAL HER STÅ NOGET OM, AT DET ER STANDARDISERING OG Z-score??
+
 \begin{Opgave}
 Se på INTERAKTIV ILLUSTRATION. Hvad er forskellen på den naive tilgang og \emph{feature scaling} i disse tilfælde? 
 \end{Opgave}
