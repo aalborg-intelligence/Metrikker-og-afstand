@@ -1,0 +1,26 @@
+\documentclass[a4paper, 12pt]{article}
+\usepackage[danish]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx,amsmath,amssymb,hyperref}
+\usepackage{tcolorbox}
+\usepackage{amsthm}
+
+
+\renewcommand{\vec}[1]{{\mathbf #1}}
+\newcommand{\ora}{\overrightarrow} \newcommand{\mb}[1]{{\mathbf #1}}
+\newcommand{\tc}[1]{\textcolor{#1}}
+\theoremstyle{remark}
+\newtheorem{Eksempel}{\textbf{Eksempel}}
+\newtheorem{Interaktiv}{\textbf{Interaktivitet}}
+\newtheorem{Opgave}{\textbf{Opgave}}
+\begin{document}
+\section*{Afstande mellem punkter i planen.}
+Forskellige afstande mellem punkter i planen. Kald punkterne $p=(x_1,y_1)$ og $q=(x_2,y_2)$: 
+\begin{itemize}
+\item Euklidisk afstand mellem $p$ og $q$ er $\sqrt{(x_2-x_1)^2+(y_2-y_1)^2}$. Det er det, vi kender mest - det, der kommer ud af at bruge Pythagoras.
+\item Manhattanafstanden er $|x_2-x_1|+|y_2-y_1|$. Det er afstanden, når man er tvunget til at bevæge sig langs akserne, som vi kender det fra vejene i mange amerikanske byer, herunder på Manhattan. Den kaldes også taxi-afstanden. 
+\item Max-afstanden er maksimum af   $|x_2-x_1|$ og $|y_2-y_1|$. Den kaldes også skak-konge afstanden: Kongen i skak kan gå diagonalt eller langs de to akser. Et diagonalt move fra (a,b) til (a+k,b+k) tænkes at have længde k - som i skak. Skal man fra eksempelvis $(1,4)$ til $(3,7)$ kan skakkongen gå fra $(1,4)$ til $(3,6)$ - det stykke har længde $2$ og derefter fra $(3,6)$ til $(3,7)$ langs $y$-aksen - st stykke på længde $1$. Samlet afstand er $3$, maksimum af $|3-1|$ og $|7-4|$. 
+\item Posthusafstanden\footnote{Den hedder også British Rail afstanden eller, hvis man er fransk, SNCF (Société Nationale des Chemins de fer Fran\c{c}ais) -afstanden. Man tænker sig, at man altid skal rejse via London (eller Paris) for at komme med tog fra et sted til et andet.} mellem $p$ og $q$ er $\sqrt{x_1^2+y_1^2}+\sqrt{x_2^2+y_2^2}$. Man kan tænke på, at der ligger et posthus i Origo og vi skal sende et brev fra $p$ til $q$. Det bliver transporteret fra $p$  til posthuset først og derefter fra posthuset til $q$.
+\end{itemize}
+\end{document}

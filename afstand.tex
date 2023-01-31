@@ -23,47 +23,47 @@ Er der lige langt mellem en person A, der vejer 80 kg og er 1,80 m høj og en an
 Det er ikke klart, selvom vi da kan plotte de tre punkter i et (vægt, højde) koordinatsystem og endda bruge Pythagoras og få den samme afstand.\footnote{Afstanden bliver $10^2+0,2^2$. Bemærk, at det er udregnet udfra vægt i kg og højde i meter. Med højde i cm ville det være $10^2+20^2$, men stadig samme afstand fra A til B som fra A til C. Se Eksempel \ref{ex:enheder og afstand} for mere info om effekten af at skifte enheder. Det kan godt lave om på, hvilke punkter, der ligger nærmest.}
 Udregner man BMI, er $A$ tættere på $B$ end på $C$.
 Det kommer nok også an på, hvad vi gerne vil udtale os om: Er de gode til at løbe langt? Eller hurtigt? Mere kompliceret bliver det, hvis vi også vil inddrage øjenfarve, skostørrelse eller måske, om de køber rigtig meget mælk.
-\subsubsection*{Afstande mellem punkter i planen.}
-Forskellige afstande mellem punkter i planen. Kald punkterne $p=(x_1,y_1)$ og $q=(x_2,y_2)$: 
-\begin{itemize}
-\item Euklidisk afstand mellem $p$ og $q$ er $\sqrt{(x_2-x_1)^2+(y_2-y_1)^2}$. Det er det, vi kender mest - det, der kommer ud af at bruge Pythagoras.
-\item Manhattanafstanden er $|x_2-x_1|+|y_2-y_1|$. Det er afstanden, når man er tvunget til at bevæge sig langs akserne, som vi kender det fra vejene i mange amerikanske byer, herunder på Manhattan. Den kaldes også taxi-afstanden. 
-\item Max-afstanden er maksimum af   $|x_2-x_1|$ og $|y_2-y_1|$. Den kaldes også skak-konge afstanden: Kongen i skak kan gå diagonalt eller langs de to akser. Et diagonalt move fra (a,b) til (a+k,b+k) tænkes at have længde k - som i skak. Skal man fra eksempelvis $(1,4)$ til $(3,7)$ kan skakkongen gå fra $(1,4)$ til $(3,6)$ - det stykke har længde $2$ og derefter fra $(3,6)$ til $(3,7)$ langs $y$-aksen - st stykke på længde $1$. Samlet afstand er $3$, maksimum af $|3-1|$ og $|7-4|$. 
-\item Posthusafstanden\footnote{Den hedder også British Rail afstanden eller, hvis man er fransk, SNCF (Société Nationale des Chemins de fer Fran\c{c}ais) -afstanden. Man tænker sig, at man altid skal rejse via London (eller Paris) for at komme med tog fra et sted til et andet.} mellem $p$ og $q$ er $\sqrt{x_1^2+y_1^2}+\sqrt{x_2^2+y_2^2}$. Man kan tænke på, at der ligger et posthus i Origo og vi skal sende et brev fra $p$ til $q$. Det bliver transporteret fra $p$  til posthuset først og derefter fra posthuset til $q$.
-\end{itemize}
+%\subsubsection*{Afstande mellem punkter i planen.}
+%Forskellige afstande mellem punkter i planen. Kald punkterne $p=(x_1,y_1)$ og $q=(x_2,y_2)$: 
+%\begin{itemize}
+%\item Euklidisk afstand mellem $p$ og $q$ er $\sqrt{(x_2-x_1)^2+(y_2-y_1)^2}$. Det er det, vi kender mest - det, der kommer ud af at bruge Pythagoras.
+%\item Manhattanafstanden er $|x_2-x_1|+|y_2-y_1|$. Det er afstanden, når man er tvunget til at bevæge sig langs akserne, som vi kender det fra vejene i mange amerikanske byer, herunder på Manhattan. Den kaldes også taxi-afstanden. 
+%\item Max-afstanden er maksimum af   $|x_2-x_1|$ og $|y_2-y_1|$. Den kaldes også skak-konge afstanden: Kongen i skak kan gå diagonalt eller langs de to akser. Et diagonalt move fra (a,b) til (a+k,b+k) tænkes at have længde k - som i skak. Skal man fra eksempelvis $(1,4)$ til $(3,7)$ kan skakkongen gå fra $(1,4)$ til $(3,6)$ - det stykke har længde $2$ og derefter fra $(3,6)$ til $(3,7)$ langs $y$-aksen - st stykke på længde $1$. Samlet afstand er $3$, maksimum af $|3-1|$ og $|7-4|$. 
+%\item Posthusafstanden\footnote{Den hedder også British Rail afstanden eller, hvis man er fransk, SNCF (Société Nationale des Chemins de fer Fran\c{c}ais) -afstanden. Man tænker sig, at man altid skal rejse via London (eller Paris) for at komme med tog fra et sted til et andet.} mellem $p$ og $q$ er $\sqrt{x_1^2+y_1^2}+\sqrt{x_2^2+y_2^2}$. Man kan tænke på, at der ligger et posthus i Origo og vi skal sende et brev fra $p$ til $q$. Det bliver transporteret fra $p$  til posthuset først og derefter fra posthuset til $q$.
+%\end{itemize}
 Der er mange eksempler på afstande, som ikke umiddelbart er fysisk afstand:
-\subsubsection*{Afstande mellem ord.} 
- 
-Et ord er en følge eller en \emph{streng} af bogstaver eller tal \emph{hnaikgoh} (nej, det behøver ikke give mening). Det kunne være en DNA-sekvens, et ord i en tekst eller noget helt andet \footnote{Ofte gør man det desuden binært, så det er en streng af $0$ og $1$ såsom $00110110$ Det er fornuftigt nok, eftersom computere opererer med den slags strenge.}
- Længden af en streng er antallet af bogstaver.
-\emph{Edit-afstande} er basalt set, hvor mange ændringer, man skal lave, for at komme fra den ene streng til den anden. Det afhænger naturligvis af, hvilke typer ændringer, man tillader. 
-\begin{itemize}
-\item Hammingafstanden mellem to lige lange strenge er Antallet af pladser, hvor de to strenge er forskellige. 
-Afstand fra \emph{sne} til \emph{sno} er $1$. Afstand fra \emph{sne} til \emph{neg} er $3$. 
-Det svarer til, at man må ændre et bogstav ad gangen. \emph{sne} $\rightarrow$ \emph{nne} $\rightarrow$ \emph{nee} $\rightarrow$ \emph{neg}.
-\item Levenshteinafstanden har flere tilladte ændringer:  
-Man må ændre bogstaver, som i Hamming, men man må også indsætte og fjerne bogstaver. 
-Levenshteinfstanden er det mindste antal sådanne ændringer, man skal  lave for at nå fra det ene ord til det andet. 
-Ordene/strengene behøver ikke have samme længde - man kan jo indsætte og fjerne bogstaver. 
-\begin{itemize}
-\item Afstand fra  \emph{sne} til \emph{sno} er $1$, ligesom Hammingafstanden. 
-\item Afstand fra \emph{sne} til \emph{sned} er også $1$ - og her er Hammingafstanden slet ikke meningsfuld. Den er ikke defineret.
-\item Afstand fra \emph{sne} til \emph{neg} er $2$ - via disse ændringer: \emph{sne} $\rightarrow$ \emph{ne}$\rightarrow$ \emph{neg}. Hammingafstanden er 3. 
-\end{itemize}
-Jo flere tilladte ændringer, jo kortere afstand. Der er algoritmer, der finder denne mindste vej mellem to ord - det er ikke helt så klart, hvordan man regner den ud, som for Hammingafstanden.
- Bemærk, at vi kunne have valgt \emph{sne} $\rightarrow$ \emph{sneg}$\rightarrow$ \emph{neg}, som også har to "moves". 
-\item Damerau-Levenshteinafstanden er som Levenshtein, men man tillader nu også ombytning af to bogstaver, som står ved siden af hinanden. 
-Hvis man skriver teskt på en telefon eller pc, er det let at bytte om på den måde. 
-Hvis man så har en liste over ord, der giver mening, kan man opdage, at teskt ikke giver mening, men at ordet tekst ligger meget tæt på - afstand 1 i dette afstandsmål - afstand 2 i Hamming eller Levenshtein.
-\end{itemize}
-FIGUR: Graf med ord i hver knude og kanter svarende til edit moves. Måske interaktivt, så man kan se, at kanter forsvinder, hvis man går fra Levenshtein til Hamming. 
-Afstand mellem DNA-strenge kan man se på med edit-afstande. Så det er bestemt ikke kun ord i sædvanlig forstand. 
-
-\begin{Eksempel}
-Afstande mellem navne: Navne som Peter, Pieter, Pietro, Petrus, Peder, Per, Pelle, Pekka, Peer, Petur, Pedro, Pierre, Pjotr, Pyotr, Petar eller måske Katarina, Katharina, Katrina, Katrine, Katrin, Cathryn, Kathryn, Catherine har samme oprindelse. Der er stor forskel på, hvor hyppigt, de optræder i forskellige lande. Overvej, om metrikkerne ovenfor kan bruges til at afsløre, hvor tæt på hinanden lande med Peter som hyppigst, er på lande med Pyotr. 
-
-
-\end{Eksempel}
+%\subsubsection*{Afstande mellem ord.} 
+% 
+%Et ord er en følge eller en \emph{streng} af bogstaver eller tal \emph{hnaikgoh} (nej, det behøver ikke give mening). Det kunne være en DNA-sekvens, et ord i en tekst eller noget helt andet \footnote{Ofte gør man det desuden binært, så det er en streng af $0$ og $1$ såsom $00110110$ Det er fornuftigt nok, eftersom computere opererer med den slags strenge.}
+% Længden af en streng er antallet af bogstaver.
+%\emph{Edit-afstande} er basalt set, hvor mange ændringer, man skal lave, for at komme fra den ene streng til den anden. Det afhænger naturligvis af, hvilke typer ændringer, man tillader. 
+%\begin{itemize}
+%\item Hammingafstanden mellem to lige lange strenge er Antallet af pladser, hvor de to strenge er forskellige. 
+%Afstand fra \emph{sne} til \emph{sno} er $1$. Afstand fra \emph{sne} til \emph{neg} er $3$. 
+%Det svarer til, at man må ændre et bogstav ad gangen. \emph{sne} $\rightarrow$ \emph{nne} $\rightarrow$ \emph{nee} $\rightarrow$ \emph{neg}.
+%\item Levenshteinafstanden har flere tilladte ændringer:  
+%Man må ændre bogstaver, som i Hamming, men man må også indsætte og fjerne bogstaver. 
+%Levenshteinfstanden er det mindste antal sådanne ændringer, man skal  lave for at nå fra det ene ord til det andet. 
+%Ordene/strengene behøver ikke have samme længde - man kan jo indsætte og fjerne bogstaver. 
+%\begin{itemize}
+%\item Afstand fra  \emph{sne} til \emph{sno} er $1$, ligesom Hammingafstanden. 
+%\item Afstand fra \emph{sne} til \emph{sned} er også $1$ - og her er Hammingafstanden slet ikke meningsfuld. Den er ikke defineret.
+%\item Afstand fra \emph{sne} til \emph{neg} er $2$ - via disse ændringer: \emph{sne} $\rightarrow$ \emph{ne}$\rightarrow$ \emph{neg}. Hammingafstanden er 3. 
+%\end{itemize}
+%Jo flere tilladte ændringer, jo kortere afstand. Der er algoritmer, der finder denne mindste vej mellem to ord - det er ikke helt så klart, hvordan man regner den ud, som for Hammingafstanden.
+% Bemærk, at vi kunne have valgt \emph{sne} $\rightarrow$ \emph{sneg}$\rightarrow$ \emph{neg}, som også har to "moves". 
+%\item Damerau-Levenshteinafstanden er som Levenshtein, men man tillader nu også ombytning af to bogstaver, som står ved siden af hinanden. 
+%Hvis man skriver teskt på en telefon eller pc, er det let at bytte om på den måde. 
+%Hvis man så har en liste over ord, der giver mening, kan man opdage, at teskt ikke giver mening, men at ordet tekst ligger meget tæt på - afstand 1 i dette afstandsmål - afstand 2 i Hamming eller Levenshtein.
+%\end{itemize}
+%FIGUR: Graf med ord i hver knude og kanter svarende til edit moves. Måske interaktivt, så man kan se, at kanter forsvinder, hvis man går fra Levenshtein til Hamming. 
+%Afstand mellem DNA-strenge kan man se på med edit-afstande. Så det er bestemt ikke kun ord i sædvanlig forstand. 
+%
+%\begin{Eksempel}
+%Afstande mellem navne: Navne som Peter, Pieter, Pietro, Petrus, Peder, Per, Pelle, Pekka, Peer, Petur, Pedro, Pierre, Pjotr, Pyotr, Petar eller måske Katarina, Katharina, Katrina, Katrine, Katrin, Cathryn, Kathryn, Catherine har samme oprindelse. Der er stor forskel på, hvor hyppigt, de optræder i forskellige lande. Overvej, om metrikkerne ovenfor kan bruges til at afsløre, hvor tæt på hinanden lande med Peter som hyppigst, er på lande med Pyotr. 
+%
+%
+%\end{Eksempel}
 \subsubsection*{Definition af en metrik- det abstrakte afstandsbegreb}
 
 Man har ikke frit valg til at bestemme, hvad man vil bruge som afstandsmål. Hvis det skal give mening, skal man have en \emph{metrik} - afstanden skal opfylde nogle betingelser: 
@@ -116,129 +116,129 @@ Et andet eksempel, som ligner en rigtig trekant: $p=(0,0)$ $q=(2,1)$, $r=(4,0)$.
 \end{Eksempel}
 \begin{Opgave} Brug $D(p,q)$ fra Eksempel~\ref{ex:ikke-metrik}. Her regner vi på trekanter, hvor midterpunktet $q$ flyttes længere væk fra førsteaksen: $p=(0,0)$ $q=(2,y)$, $r=(4,0)$. Udregn $D(p,q)+D(q,r)$ og find det $y$, hvor $D(p,q)+D(q,r)=D(p,r)$. Hvad er vinklen $pqr$, når den ligning er opfyldt? Kunne man have indset det uden at regne?
 \end{Opgave}
-\section{ Afstand mellem DNA og RNA-strenge.} 
-RNA er strenge med bogstaverne U (uracil), G (guanin), C (cytosin), A, (adenin). DNA har ikke U, men i stedet T (thymin) og DNA er dobbelt. U, G, C, A og T er nukleotider. 
+%\section{ Afstand mellem DNA og RNA-strenge.} 
+%RNA er strenge med bogstaverne U (uracil), G (guanin), C (cytosin), A, (adenin). DNA har ikke U, men i stedet T (thymin) og DNA er dobbelt. U, G, C, A og T er nukleotider. 
+%
+%Vi ser her på afstande mellem DNA (eller RNA) som bygger på antallet af mutationer for at nå fra den ene til den anden og desuden, hvor hyppige disse mutationer er - hvis man ved, en mutation sker ofte, er afstanden mellem en streng uden mutationen og en med mutationen ikke så lang, som hvis mutationen er meget sjælden. 
+% Udover regler for, hvilke ændringer, man tillader, giver man derfor en omkostning ved ændringen - afstanden er ikke bare antal ændringer, men summen af, hvor "dyre" disse ændringer er.
+%
+%\begin{Eksempel}
+%Afstand mellem DNA bruges til at analysere slægtskab og hvilke dyr, herunder mennesket, der nedstammer fra hvilke - fylogenetiske træer.\\ \url{ http://www.biotekunderviser.dk/sites/default/files/Handout Bioinformatik workshop Vejle 2.pdf}
+%
+%I den sammenhæng kalder man skift mellem A og G eller mellem C og T for \emph{transitioner}\footnote{A og G er puriner, mens C og T er pyrimediner. Transition bytter en purin med en purin eller en pyrimedin med en pyrimedin.} . De fire andre mulige skift: Mellem A og C, mellem A og T, mellem G og T, mellem G og C, kaldes \emph{transversioner}. Transitioner er hyppigere mutationer end transversioner, så afstanden mellem $GATTACA$ og $GATTACG$ er mindre end mellem $GATTACA$ og $GATTACC$ . Den slags udskiftning af et bogstav (et basepar) kaldes en punktmutation.
+%
+%Indel mutationer er indsætning ("In") eller fjernelse ("Del" for delete") af et eller flere basepar. Det er mindre hyppigt og svarer til længere afstand. I  KILDEN OVENFOR bruges følgende omkostninger og altså afstande mellem DNA-strenge; det er et valg - der er mange andre muligheder: 
+%\begin{itemize}
+%\item Transition: 1
+%\item Transversion: 2
+%\item Gap åbning: 9 (indsæt eller fjern præcis en base - altså et bogstav.
+%\item Gap forlængelse: 4 (indsæt eller fjern en base på samme sted, som er åbnet)
+%\end{itemize}
+%Man kan samle de to sidste og sige, at det koster $5+4L$ at indsætte eller fjerne en delstreng med $L$ bogstaver midt i et ord. (Overvej, at I forstår, det er samme regel.)
+%
+%Vi tilføjer forlængelse/forkortelse: Det koster $4L$ at indsætte eller fjerne $L$ bogstaver i start eller slut af et ord.  Alt i alt:
+%\begin{itemize}
+%\item Transition: 1
+%\item Transversion: 2
+%\item Indsæt eller fjern delord med $L$ bogstaver midt i et ord: $5+4L$
+%\item Forlæng/forkort Indsæt eller fjern $L$ bogstaver i start eller slut af et ord: $4L$
+%\end{itemize}
+%\end{Eksempel}
+%
+%Afstand mellem to strenge er så den kortest mulige måde, man kan komme fra den ene til den anden med de tilladte moves vægtet som her. 
+%
+%Overvej, at samme argumenter som i Opgave \ref{Opg:Levensh} kan vise, at vi har lavet en metrik på mængden af DNA-strenge.
+%
+%Et gratis move er at læse strengen bagfra, altså at vende den om. En DNA-streng har som udgangspunkt ikke en bestemt retning (ER DET MON RIGTIGT?)
+%
+%\begin{Eksempel} 
+%Her bruger vi meget korte strenge. Det er naturligvis ikke realistisk. 
+%
+%Vi vil finde afstanden fra $AGT$ til $ATG$. Der er mange muligheder for, hvordan man kan komme fra $AGT$ til $ATG$, altså hvordan mutationerne kunne have set ud. 
+%$$ AGT \to ATGT \to ATG$$
+%Indsæt $T$ mellem $A$ og $G$ og fjern så det sidste $T$. Det koster $9+4 =13$ - længden af den vej er $13$. En anden mulighed er 
+%$$AGT\to ATT \to ATG$$
+%Der er to punktmutationer og begge er transversioner (fra $T$ til $G$ eller omvendt), så det koster $2+2=4$. Det er faktisk den korteste vej, så afstanden er $4$. At den faktisk er kortest, kræver mere eftertanke. 
+%
+%Havde vi brugt samme omkostning/vægt for alle tilladte ændringer, ville begge de to veje have samme længde. 
+%
+%Hvad med fra $AGT$ til $TGA$? Jo, det er faktisk nemmere. Det er i virkeligheden samme DNA-sekvens; man har bare læst den fra den anden ende... 
+%
+%\end{Eksempel}
+%Med lange strenge, som er ens på lange stykker, finder man afstande ved først at "aligne"\; - anbringe strengene, så de passer sammen på flest mulige pladser. Og derefter udregne afstande, men det er stadig ikke nemt - der skal algoritmer til:
+%\begin{Eksempel}
+%Streng 1: $TCGTAGG$ Streng 2: $TCTGTATCGA$
+%\\Første alignment:
+%$$\begin{matrix}T&C&G&-&-&-&T&A&G&G\\T&C&T&G&T&A&T&C&G&A\end{matrix}$$
+%Det koster indsættelse af $GTA$, $5+4\cdot 3=17$, to  transversioner $G\leftrightarrow T$ og $A\leftrightarrow C$ en transition $G\leftrightarrow A$. I alt $17+4+1=22$.\\
+%Hvis man vælger alignment 
+%$$\begin{matrix}T&C&-&-&-&G&T&A&G&G\\T&C&T&G&T&A&T&C&G&A\end{matrix}$$
+%er transversionen mellem $G$ og $T$ erstattet med en transition $G\leftrightarrow A$ og omkostningen falder med $1$ til $21$
+%
+%Man indser ret let, at prisen for at klippe gør, at man ikke vil klippe to gange og  bruge 
+%$$\begin{matrix}T&C&-&G&-&-&T&A&G&G\\T&C&T&G&T&A&T&C&G&A\end{matrix}$$
+%hvor man kun sparer en enkelt transition, men hvad med 
+%$$\begin{matrix}T&C&-&G&T&A&-&-&G&G\\T&C&T&G&T&A&T&C&G&A\end{matrix}$$
+%Her er omkostningen $9$ for det første gap og $13$ for det andet. Og der er en transition i sidste plads $G\leftrightarrow A$, så omkostningen er $23$, men det er ikke helt så klart, at det er for dyrt at klippe to gange. I kan nok finde på eksempler, hvor det svarer sig at klippe flere steder. 
+%\end{Eksempel}, 
+%
 
-Vi ser her på afstande mellem DNA (eller RNA) som bygger på antallet af mutationer for at nå fra den ene til den anden og desuden, hvor hyppige disse mutationer er - hvis man ved, en mutation sker ofte, er afstanden mellem en streng uden mutationen og en med mutationen ikke så lang, som hvis mutationen er meget sjælden. 
- Udover regler for, hvilke ændringer, man tillader, giver man derfor en omkostning ved ændringen - afstanden er ikke bare antal ændringer, men summen af, hvor "dyre" disse ændringer er.
 
-\begin{Eksempel}
-Afstand mellem DNA bruges til at analysere slægtskab og hvilke dyr, herunder mennesket, der nedstammer fra hvilke - fylogenetiske træer.\\ \url{ http://www.biotekunderviser.dk/sites/default/files/Handout Bioinformatik workshop Vejle 2.pdf}
-
-I den sammenhæng kalder man skift mellem A og G eller mellem C og T for \emph{transitioner}\footnote{A og G er puriner, mens C og T er pyrimediner. Transition bytter en purin med en purin eller en pyrimedin med en pyrimedin.} . De fire andre mulige skift: Mellem A og C, mellem A og T, mellem G og T, mellem G og C, kaldes \emph{transversioner}. Transitioner er hyppigere mutationer end transversioner, så afstanden mellem $GATTACA$ og $GATTACG$ er mindre end mellem $GATTACA$ og $GATTACC$ . Den slags udskiftning af et bogstav (et basepar) kaldes en punktmutation.
-
-Indel mutationer er indsætning ("In") eller fjernelse ("Del" for delete") af et eller flere basepar. Det er mindre hyppigt og svarer til længere afstand. I  KILDEN OVENFOR bruges følgende omkostninger og altså afstande mellem DNA-strenge; det er et valg - der er mange andre muligheder: 
-\begin{itemize}
-\item Transition: 1
-\item Transversion: 2
-\item Gap åbning: 9 (indsæt eller fjern præcis en base - altså et bogstav.
-\item Gap forlængelse: 4 (indsæt eller fjern en base på samme sted, som er åbnet)
-\end{itemize}
-Man kan samle de to sidste og sige, at det koster $5+4L$ at indsætte eller fjerne en delstreng med $L$ bogstaver midt i et ord. (Overvej, at I forstår, det er samme regel.)
-
-Vi tilføjer forlængelse/forkortelse: Det koster $4L$ at indsætte eller fjerne $L$ bogstaver i start eller slut af et ord.  Alt i alt:
-\begin{itemize}
-\item Transition: 1
-\item Transversion: 2
-\item Indsæt eller fjern delord med $L$ bogstaver midt i et ord: $5+4L$
-\item Forlæng/forkort Indsæt eller fjern $L$ bogstaver i start eller slut af et ord: $4L$
-\end{itemize}
-\end{Eksempel}
-
-Afstand mellem to strenge er så den kortest mulige måde, man kan komme fra den ene til den anden med de tilladte moves vægtet som her. 
-
-Overvej, at samme argumenter som i Opgave \ref{Opg:Levensh} kan vise, at vi har lavet en metrik på mængden af DNA-strenge.
-
-Et gratis move er at læse strengen bagfra, altså at vende den om. En DNA-streng har som udgangspunkt ikke en bestemt retning (ER DET MON RIGTIGT?)
-
-\begin{Eksempel} 
-Her bruger vi meget korte strenge. Det er naturligvis ikke realistisk. 
-
-Vi vil finde afstanden fra $AGT$ til $ATG$. Der er mange muligheder for, hvordan man kan komme fra $AGT$ til $ATG$, altså hvordan mutationerne kunne have set ud. 
-$$ AGT \to ATGT \to ATG$$
-Indsæt $T$ mellem $A$ og $G$ og fjern så det sidste $T$. Det koster $9+4 =13$ - længden af den vej er $13$. En anden mulighed er 
-$$AGT\to ATT \to ATG$$
-Der er to punktmutationer og begge er transversioner (fra $T$ til $G$ eller omvendt), så det koster $2+2=4$. Det er faktisk den korteste vej, så afstanden er $4$. At den faktisk er kortest, kræver mere eftertanke. 
-
-Havde vi brugt samme omkostning/vægt for alle tilladte ændringer, ville begge de to veje have samme længde. 
-
-Hvad med fra $AGT$ til $TGA$? Jo, det er faktisk nemmere. Det er i virkeligheden samme DNA-sekvens; man har bare læst den fra den anden ende... 
-
-\end{Eksempel}
-Med lange strenge, som er ens på lange stykker, finder man afstande ved først at "aligne"\; - anbringe strengene, så de passer sammen på flest mulige pladser. Og derefter udregne afstande, men det er stadig ikke nemt - der skal algoritmer til:
-\begin{Eksempel}
-Streng 1: $TCGTAGG$ Streng 2: $TCTGTATCGA$
-\\Første alignment:
-$$\begin{matrix}T&C&G&-&-&-&T&A&G&G\\T&C&T&G&T&A&T&C&G&A\end{matrix}$$
-Det koster indsættelse af $GTA$, $5+4\cdot 3=17$, to  transversioner $G\leftrightarrow T$ og $A\leftrightarrow C$ en transition $G\leftrightarrow A$. I alt $17+4+1=22$.\\
-Hvis man vælger alignment 
-$$\begin{matrix}T&C&-&-&-&G&T&A&G&G\\T&C&T&G&T&A&T&C&G&A\end{matrix}$$
-er transversionen mellem $G$ og $T$ erstattet med en transition $G\leftrightarrow A$ og omkostningen falder med $1$ til $21$
-
-Man indser ret let, at prisen for at klippe gør, at man ikke vil klippe to gange og  bruge 
-$$\begin{matrix}T&C&-&G&-&-&T&A&G&G\\T&C&T&G&T&A&T&C&G&A\end{matrix}$$
-hvor man kun sparer en enkelt transition, men hvad med 
-$$\begin{matrix}T&C&-&G&T&A&-&-&G&G\\T&C&T&G&T&A&T&C&G&A\end{matrix}$$
-Her er omkostningen $9$ for det første gap og $13$ for det andet. Og der er en transition i sidste plads $G\leftrightarrow A$, så omkostningen er $23$, men det er ikke helt så klart, at det er for dyrt at klippe to gange. I kan nok finde på eksempler, hvor det svarer sig at klippe flere steder. 
-\end{Eksempel}, 
-
-
-
-\section*{Afstande udfra data}
-Hvis data består af vægt og højde for nogen personer, er det ikke klart, hvad afstanden mellem to punkter $(v_1,h_1)$ og $(v_2,h_2)$ skal være. Altså, hvornår to punkter ligger tæt på hinanden. 
-\begin{Eksempel}\label{ex:enheder og afstand}
-Tre personer er givet som datapunkter (vægt, højde) $A=(70 kg, 165 cm)$, $B=(90 kg, 180 cm)$, $C=(80 kg, 190 cm)$.
-
-Bruger vi Pythagoras på tallene, der står her, er afstanden mellem $A$ og $B$ $\sqrt{20^2+15^2}=25$. Afstanden mellem $A$ og $C$ er $\sqrt{10^2+25^2}=\sqrt{725}\simeq 27$ og mellem $B$ og $C$ $\sqrt{10^2+10^2}=\sqrt{200}\simeq 14$. Der er altså længst fra $A$ til $C$.
-
-Skifter vi enhed og udtrykker højden i meter $A=(70 kg, 1,\!65 m)$, $B=(90 kg, 1,\!80 m)$, $C=(80 kg, 1,\!90 m)$ er afstanden mellem $A$ og $B$ cirka 20. Mellem $A$ og $C$ cirka $4$ og mellem $B$ og $C$ cirka $10$. Der er nu længst fra $A$ til $B$.
-
-Det er ikke ret smart. Skal man finde de nærmeste naboer, er svaret tilsyneladende som vinden blæser. 
-
-\end{Eksempel}
-
-Selv hvis begge variable er i samme enhed, kan Pythagoras brugt med hovedet under armen være uheldigt:
-\begin{Eksempel}
-Vi har data for, hvor meget familierne $A$, $B$ og $C$  bruger på bolig og på mælk om måneden. Begge variable kan være i kroner. Hvis $A$ bruger $(7.500 kr, 200 kr)$ og $B$ bruger $(7.500 kr, 1.700 kr)$, mens $C$ bruger $(6.000 kr, 200 kr)$, er afstanden udregnet med Pythagoras den samme fra $A$ til $B$ som fra $A$ til $C$, men vi vil nok mene, $B$ afviger mere fra $A$ end $C$ gør, fordi mælkeforbruget i familie $B$ er usædvanligt.
-
-Har vi data for mange familier, kan vi kvantificere ideen om, hvad der er usædvanligt og bruge det til at lave en mere passende afstand. 
-\end{Eksempel}
-
-\subsection*{Første naive tilgang - Min-Max-skalering:}
-
-Data er punkter $(x_i,y_i)$ i planen. $x$-værdierne ligger mellem $a$ og $b$, mens $y$-værdierne ligger mellem $c$ og $d$. TEGNING af datapunkter.
-
-Ideen er nu, at vi skalerer, så afstandene langs $x$-aksen får samme vægt som afstande langs $y$-aksen. 
-
-Afstand fra $(x_1,y_1)$ til $(x_2,y_2)$ er $\sqrt{(\frac{x_2-x_1}{b-a})^2+(\frac{y_2-y_1}{d-c})^2}$
-
-Overvej, at man får samme effekt, samme afstand, hvis man erstatter hver punkt $(x_i,y_i)$ med med $$(x_i,y_i)_{Norm}=\left(\frac{x_i-a}{b-a}, \frac{y_i-c}{d-c}\right)$$
-
-\subsection*{Mindre naivt, mere bøvlet. Feature scaling}
-Skalering langs akserne, hvor man bruger data til at bestemme skaleringen, kaldes også "feature scaling", når vi arbejder med perceptroner eller neurale netværk. Hvis det data, der skal læres fra - træningsdata - er $(x_1,y_1), (x_2,y_2),\ldots, (x_n,y_n)$, så skalerer vi langs førsteaksen ved
-\begin{enumerate}
-\item Udregn et estimat for middelværdien af $x$:
-$$\bar{x}=\frac{\Sigma_{i=1}^nx_i}{n}$$
-\item og et estimat for denne variabels spredning:
-$$s_x=\sqrt{\frac{\Sigma_{i=1}^n(x_i-\bar{x})^2}{n-1}}$$
-\end{enumerate}
-Feature scaling af $x_i$ er da
-$$\hat{x}_i=\frac{x_i-\bar{x}}{s_x}$$
-Tilsvarende estimeres middelværdi og spredning for $y$ og feature scaling udregnes 
-$$\hat{y}_i= \frac{y_i-\bar{y}}{s_y}$$
-
-Euklidisk afstand mellem disse nye punkter $(\hat{x}_i,\hat{y}_i)$ og  $(\hat{x}_j,\hat{y}_j)$ er 
-
-$$\sqrt{\left(\frac{x_i-\bar{x}}{s_x}-\frac{x_j-\bar{x}}{s_x}\right)^2 +\left(\frac{y_i-\bar{y}}{s_y}-\frac{y_j-\bar{y}}{s_y}\right)^2}=\sqrt{\left(\frac{x_i-x_j}{s_x}\right)^2+\left(\frac{y_i-y_j}{s_y}\right)^2}$$
-Hvis vi sammenligner med den naive tilgang, er den ikke helt skæv. Der skal bare skaleres med $s_x$ i stedet for $b-a$ og med $s_y$ i stedet for $c-d$.
-\begin{Opgave}
-Se på INTERAKTIV ILLUSTRATION. Hvad er forskellen på den naive tilgang og \emph{feature scaling} i disse tilfælde? 
-\end{Opgave}
-\begin{Opgave}
-Vis, at afstandene i såvel den naive, som den knap så naive tilgang giver metrikker. VINK: De er begge skaleringer, så man kan gøre det i et hug. 
-\end{Opgave}
-\begin{Opgave} Kan vi finde noget om middelværdi og spredning for eksemplerne med vægt, højde og det med bolig og mælk? Eller måske give 10 punkter? 
-\end{Opgave}
+%\section*{Afstande udfra data}
+%Hvis data består af vægt og højde for nogen personer, er det ikke klart, hvad afstanden mellem to punkter $(v_1,h_1)$ og $(v_2,h_2)$ skal være. Altså, hvornår to punkter ligger tæt på hinanden. 
+%\begin{Eksempel}\label{ex:enheder og afstand}
+%Tre personer er givet som datapunkter (vægt, højde) $A=(70 kg, 165 cm)$, $B=(90 kg, 180 cm)$, $C=(80 kg, 190 cm)$.
+%
+%Bruger vi Pythagoras på tallene, der står her, er afstanden mellem $A$ og $B$ $\sqrt{20^2+15^2}=25$. Afstanden mellem $A$ og $C$ er $\sqrt{10^2+25^2}=\sqrt{725}\simeq 27$ og mellem $B$ og $C$ $\sqrt{10^2+10^2}=\sqrt{200}\simeq 14$. Der er altså længst fra $A$ til $C$.
+%
+%Skifter vi enhed og udtrykker højden i meter $A=(70 kg, 1,\!65 m)$, $B=(90 kg, 1,\!80 m)$, $C=(80 kg, 1,\!90 m)$ er afstanden mellem $A$ og $B$ cirka 20. Mellem $A$ og $C$ cirka $4$ og mellem $B$ og $C$ cirka $10$. Der er nu længst fra $A$ til $B$.
+%
+%Det er ikke ret smart. Skal man finde de nærmeste naboer, er svaret tilsyneladende som vinden blæser. 
+%
+%\end{Eksempel}
+%
+%Selv hvis begge variable er i samme enhed, kan Pythagoras brugt med hovedet under armen være uheldigt:
+%\begin{Eksempel}
+%Vi har data for, hvor meget familierne $A$, $B$ og $C$  bruger på bolig og på mælk om måneden. Begge variable kan være i kroner. Hvis $A$ bruger $(7.500 kr, 200 kr)$ og $B$ bruger $(7.500 kr, 1.700 kr)$, mens $C$ bruger $(6.000 kr, 200 kr)$, er afstanden udregnet med Pythagoras den samme fra $A$ til $B$ som fra $A$ til $C$, men vi vil nok mene, $B$ afviger mere fra $A$ end $C$ gør, fordi mælkeforbruget i familie $B$ er usædvanligt.
+%
+%Har vi data for mange familier, kan vi kvantificere ideen om, hvad der er usædvanligt og bruge det til at lave en mere passende afstand. 
+%\end{Eksempel}
+%
+%\subsection*{Første naive tilgang - Min-Max-skalering:}
+%
+%Data er punkter $(x_i,y_i)$ i planen. $x$-værdierne ligger mellem $a$ og $b$, mens $y$-værdierne ligger mellem $c$ og $d$. TEGNING af datapunkter.
+%
+%Ideen er nu, at vi skalerer, så afstandene langs $x$-aksen får samme vægt som afstande langs $y$-aksen. 
+%
+%Afstand fra $(x_1,y_1)$ til $(x_2,y_2)$ er $\sqrt{(\frac{x_2-x_1}{b-a})^2+(\frac{y_2-y_1}{d-c})^2}$
+%
+%Overvej, at man får samme effekt, samme afstand, hvis man erstatter hver punkt $(x_i,y_i)$ med med $$(x_i,y_i)_{Norm}=\left(\frac{x_i-a}{b-a}, \frac{y_i-c}{d-c}\right)$$
+%
+%\subsection*{Mindre naivt, mere bøvlet. Feature scaling}
+%Skalering langs akserne, hvor man bruger data til at bestemme skaleringen, kaldes også "feature scaling", når vi arbejder med perceptroner eller neurale netværk. Hvis det data, der skal læres fra - træningsdata - er $(x_1,y_1), (x_2,y_2),\ldots, (x_n,y_n)$, så skalerer vi langs førsteaksen ved
+%\begin{enumerate}
+%\item Udregn et estimat for middelværdien af $x$:
+%$$\bar{x}=\frac{\Sigma_{i=1}^nx_i}{n}$$
+%\item og et estimat for denne variabels spredning:
+%$$s_x=\sqrt{\frac{\Sigma_{i=1}^n(x_i-\bar{x})^2}{n-1}}$$
+%\end{enumerate}
+%Feature scaling af $x_i$ er da
+%$$\hat{x}_i=\frac{x_i-\bar{x}}{s_x}$$
+%Tilsvarende estimeres middelværdi og spredning for $y$ og feature scaling udregnes 
+%$$\hat{y}_i= \frac{y_i-\bar{y}}{s_y}$$
+%
+%Euklidisk afstand mellem disse nye punkter $(\hat{x}_i,\hat{y}_i)$ og  $(\hat{x}_j,\hat{y}_j)$ er 
+%
+%$$\sqrt{\left(\frac{x_i-\bar{x}}{s_x}-\frac{x_j-\bar{x}}{s_x}\right)^2 +\left(\frac{y_i-\bar{y}}{s_y}-\frac{y_j-\bar{y}}{s_y}\right)^2}=\sqrt{\left(\frac{x_i-x_j}{s_x}\right)^2+\left(\frac{y_i-y_j}{s_y}\right)^2}$$
+%Hvis vi sammenligner med den naive tilgang, er den ikke helt skæv. Der skal bare skaleres med $s_x$ i stedet for $b-a$ og med $s_y$ i stedet for $c-d$.
+%\begin{Opgave}
+%Se på INTERAKTIV ILLUSTRATION. Hvad er forskellen på den naive tilgang og \emph{feature scaling} i disse tilfælde? 
+%\end{Opgave}
+%\begin{Opgave}
+%Vis, at afstandene i såvel den naive, som den knap så naive tilgang giver metrikker. VINK: De er begge skaleringer, så man kan gøre det i et hug. 
+%\end{Opgave}
+%\begin{Opgave} Kan vi finde noget om middelværdi og spredning for eksemplerne med vægt, højde og det med bolig og mælk? Eller måske give 10 punkter? 
+%\end{Opgave}
 \section*{Clustering - klyngeanalyse}
 
 Clustering er at samle datapunkter i grupper, klynger, så objekter i en klynge har mere til fælles med hinanden end med objekter i andre grupper. Har man et afstandsbegreb, der passer godt til det, vi mener med til fælles, kan man bruge det til clustering - objekter i samme klynge er tæt på hinanden, men længere fra punkter i de andre klynger. 
@@ -268,7 +268,7 @@ https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6130602/
 
 
 
-\section*{Clustering og anbefalingsalgoritmer}
+\section*{Clustering og anbefalingsalgoritmer. DET SKAL NOK IKKE BRUGES}
 
 \emph{Clustering} er samling af datapunkter i "klumper", hvor punkterne i en klump ligner hinanden, men ikke ligner dem, der er i andre klumper. Det kan man bruge en metrik til, men der er andre måder, data kan ligne hinanden på. Når musiktjenester anbefaler musik, online boghandlere anbefaler bøger, online supermarkeder anbefaler grønsager etc. "Andre, der hører xxx hører også yyy." "Andre, der har set filmen xxx har også set filmen yyy", så baserer de anbefalingerne på en forståelse af, hvordan vi ligner andre kunder. 
 
