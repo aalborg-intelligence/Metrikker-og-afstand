@@ -1,0 +1,100 @@
+Afstande udfra data {#afstande-udfra-data .unnumbered}
+===================
+
+Hvis data består af vægt og højde for nogen personer, er det ikke klart,
+hvad afstanden mellem to punkter $(v_1,h_1)$ og $(v_2,h_2)$ skal være.
+Altså, hvornår to punkter ligger tæt på hinanden.
+
+[\[ex:enheder og afstand\]]{#ex:enheder og afstand
+label="ex:enheder og afstand"} Tre personer er givet som datapunkter
+(vægt, højde) $A=(70 kg, 165 cm)$, $B=(90 kg, 180 cm)$,
+$C=(80 kg, 190 cm)$.
+
+Bruger vi Pythagoras på tallene, der står her, er afstanden mellem $A$
+og $B$ $\sqrt{20^2+15^2}=25$. Afstanden mellem $A$ og $C$ er
+$\sqrt{10^2+25^2}=\sqrt{725}\simeq 27$ og mellem $B$ og $C$
+$\sqrt{10^2+10^2}=\sqrt{200}\simeq 14$. Der er altså længst fra $A$ til
+$C$.
+
+Skifter vi enhed og udtrykker højden i meter $A=(70 kg, 1,\!65 m)$,
+$B=(90 kg, 1,\!80 m)$, $C=(80 kg, 1,\!90 m)$ er afstanden mellem $A$ og
+$B$ cirka 20. Mellem $A$ og $C$ cirka $4$ og mellem $B$ og $C$ cirka
+$10$. Der er nu længst fra $A$ til $B$.
+
+Det er ikke ret smart. Skal man finde de nærmeste naboer, er svaret
+tilsyneladende som vinden blæser.
+
+Selv hvis begge variable er i samme enhed, kan Pythagoras brugt med
+hovedet under armen være uheldigt:
+
+Vi har data for, hvor meget familierne $A$, $B$ og $C$ bruger på bolig
+og på mælk om måneden. Begge variable kan være i kroner. Hvis $A$ bruger
+$(7.500 kr, 200 kr)$ (altså 7.500 kr på bolig og 200 kr på mælk) og $B$
+bruger $(7.500 kr, 1.700 kr)$, mens $C$ bruger $(6.000 kr, 200 kr)$, er
+afstanden udregnet med Pythagoras den samme fra $A$ til $B$ som fra $A$
+til $C$, men vi vil nok mene, $B$ afviger mere fra $A$ end $C$ gør,
+fordi mælkeforbruget i familie $B$ er usædvanligt.
+
+Har vi data for mange familier, kan vi kvantificere ideen om, hvad der
+er usædvanligt og bruge det til at lave en mere passende afstand.
+
+Første naive tilgang - Min-Max-skalering: {#første-naive-tilgang---min-max-skalering .unnumbered}
+-----------------------------------------
+
+Data er punkter $(x_i,y_i)$ i planen. $x$-værdierne ligger mellem $a$ og
+$b$, mens $y$-værdierne ligger mellem $c$ og $d$. TEGNING af
+datapunkter.
+
+Ideen er nu, at vi skalerer, så afstandene langs $x$-aksen får samme
+vægt som afstande langs $y$-aksen.
+
+Afstand fra $(x_1,y_1)$ til $(x_2,y_2)$ er
+$\sqrt{(\frac{x_2-x_1}{b-a})^2+(\frac{y_2-y_1}{d-c})^2}$
+
+Overvej, at man får samme effekt, samme afstand, hvis man erstatter hver
+punkt $(x_i,y_i)$ med med
+$$(x_i,y_i)_{Norm}=\left(\frac{x_i-a}{b-a}, \frac{y_i-c}{d-c}\right)$$
+
+Mindre naivt, mere bøvlet. Feature scaling. {#mindre-naivt-mere-bøvlet.-feature-scaling. .unnumbered}
+-------------------------------------------
+
+Skalering langs akserne, hvor man bruger data til at bestemme
+skaleringen, kaldes også \"feature scaling\", når vi arbejder med
+perceptroner eller neurale netværk. Hvis det data, der skal læres fra -
+træningsdata - er $(x_1,y_1), (x_2,y_2),\ldots, (x_n,y_n)$, så skalerer
+vi langs førsteaksen ved
+
+1.  Udregn et estimat for middelværdien af $x$:
+    $$\bar{x}=\frac{\Sigma_{i=1}^nx_i}{n}$$
+
+2.  og et estimat for denne variabels spredning:
+    $$s_x=\sqrt{\frac{\Sigma_{i=1}^n(x_i-\bar{x})^2}{n-1}}$$
+
+Feature scaling af $x_i$ er da $$\hat{x}_i=\frac{x_i-\bar{x}}{s_x}$$
+Tilsvarende estimeres middelværdi og spredning for $y$ og feature
+scaling udregnes $$\hat{y}_i= \frac{y_i-\bar{y}}{s_y}$$
+
+Euklidisk afstand mellem disse nye punkter $(\hat{x}_i,\hat{y}_i)$ og
+$(\hat{x}_j,\hat{y}_j)$ er
+
+$$\sqrt{\left(\frac{x_i-\bar{x}}{s_x}-\frac{x_j-\bar{x}}{s_x}\right)^2 +\left(\frac{y_i-\bar{y}}{s_y}-\frac{y_j-\bar{y}}{s_y}\right)^2}=\sqrt{\left(\frac{x_i-x_j}{s_x}\right)^2+\left(\frac{y_i-y_j}{s_y}\right)^2}$$
+
+Hvis vi sammenligner med den naive tilgang, er den ikke helt skæv. Der
+skal bare skaleres med $s_x$ i stedet for $b-a$ og med $s_y$ i stedet
+for $c-d$.
+
+SKAL HER STÅ NOGET OM, AT DET ER STANDARDISERING OG Z-score??
+
+Se på INTERAKTIV ILLUSTRATION. Hvad er forskellen på den naive tilgang
+og *feature scaling* i disse tilfælde?
+
+Vis, at afstandene i såvel den naive, som den knap så naive tilgang
+giver metrikker. VINK: De er begge skaleringer, så man kan gøre det i et
+hug.
+
+Kan vi finde noget om middelværdi og spredning for eksemplerne med vægt,
+højde og det med bolig og mælk? Eller måske give 10 punkter? Det
+gennemsnitlige forbrug af mælk pr husstand pr år er ca. 1300 kr iflg
+statbank.dk Årlig lejeudgift er i gennemsnit 31.619 kr (Faktisk husleje
+betalt af lejere) men der er forbrugsudgifter - vand, fjernvarme,\... på
+ca.28.000 oveni.
