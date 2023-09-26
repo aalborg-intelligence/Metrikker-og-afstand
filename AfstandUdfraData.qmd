@@ -1,94 +1,199 @@
-Afstande udfra data {#afstande-udfra-data .unnumbered}
-===================
+---
+title: "Afstande udfra data"
+description: | 
+  Det er ikke altid helt klart, hvordan man skal bestemme afstanden mellem to datapunkter, hvis koordinaterne i hvert datapunkter beskriver vidt forskellige ting. Vi vil her se nærmere på, hvilke problemer, der kan opstå, hvis man ikke tænker sig om -- og hvad man kan gøre for at løse dem.
 
-Hvis data består af vægt og højde for nogen personer, er det ikke klart,
+# image: "media/image1.png"
+
+format:
+    html: 
+      self-contained: true
+      toc: true
+      toc-title: Indhold
+      toc-location: left
+reference-location: margin
+categories:
+  - A-niveau
+crossref:
+  fig-prefix: figur   # (default is "Figure")
+  tbl-prefix: tabel    # (default is "Table")
+  exm-prefix: eksempel
+  thm-prefix: sætning
+  sec-prefix: afsnit
+  eq-prefix: ''
+  fig-title: Figur
+  exm-title: Eksempel
+  thm-title: Sætning
+  tbl-title: Tabel
+label:
+    fig: Figur
+fig-cap-location: margin
+tab-cap-location: margin
+execute:
+  echo: false
+  warning: false
+---
+
+## Afstand med hovedet under armen
+
+Lad os forestille os, at data består af vægt og højde for nogle personer, så hvert datapunkt er på formen
+$$(v,h)$$
+hvor $v$ er den pågældende persons vægt og $h$ er højden. Her er det faktisk ikke klart,
 hvad afstanden mellem to punkter $(v_1,h_1)$ og $(v_2,h_2)$ skal være.
 Altså, hvornår to punkter ligger tæt på hinanden.
 
-[\[ex:enheder og afstand\]]{#ex:enheder og afstand
-label="ex:enheder og afstand"} Tre personer er givet som datapunkter
-(vægt, højde) $A=(70 kg, 165 cm)$, $B=(90 kg, 180 cm)$,
-$C=(80 kg, 190 cm)$.
+Et første bud kunne være at bestemme den [euklidske afstand](AfstandeMellemPunkteriPlanen.qmd) mellem de to punkter -- det der bare svarer til at bruge Pythagoras. Gør vi det får vi følgende afstandsmål mellem punkterne $(v_1,h_1)$ og $(v_2,h_2)$
 
-Bruger vi Pythagoras på tallene, der står her, er afstanden mellem $A$
-og $B$ $\sqrt{20^2+15^2}=25$. Afstanden mellem $A$ og $C$ er
-$\sqrt{10^2+25^2}=\sqrt{725}\simeq 27$ og mellem $B$ og $C$
-$\sqrt{10^2+10^2}=\sqrt{200}\simeq 14$. Der er altså længst fra $A$ til
-$C$.
+$$\sqrt{(v_2-v_1)^2+(h_2-h_1)^2}$$
 
-Skifter vi enhed og udtrykker højden i meter $A=(70 kg, 1,\!65 m)$,
-$B=(90 kg, 1,\!80 m)$, $C=(80 kg, 1,\!90 m)$ er afstanden mellem $A$ og
-$B$ cirka 20. Mellem $A$ og $C$ cirka $4$ og mellem $B$ og $C$ cirka
-$10$. Der er nu længst fra $A$ til $B$.
+Vi prøver at regne lidt på det, og forestille os at tre personer er givet som datapunkter i nedenstående tabel.
 
-Det er ikke ret smart. Skal man finde de nærmeste naboer, er svaret
-tilsyneladende som vinden blæser.
+| Person | (vægt, højde) |
+|:-----:|:-----:
+| A | $(70 \ kg, 165 \ cm)$ |
+| B | $(90 \ kg, 180 \ cm)$ |
+| C | $(80 \ kg, 190 \ cm)$ |
 
-Selv hvis begge variable er i samme enhed, kan Pythagoras brugt med
-hovedet under armen være uheldigt:
 
-Vi har data for, hvor meget familierne $A$, $B$ og $C$ bruger på bolig
-og på mælk om måneden. Begge variable kan være i kroner. Hvis $A$ bruger
-$(7.500 kr, 200 kr)$ (altså 7.500 kr på bolig og 200 kr på mælk) og $B$
-bruger $(7.500 kr, 1.700 kr)$, mens $C$ bruger $(6.000 kr, 200 kr)$, er
-afstanden udregnet med Pythagoras den samme fra $A$ til $B$ som fra $A$
-til $C$, men vi vil nok mene, $B$ afviger mere fra $A$ end $C$ gør,
+Bruger vi Pythagoras på tallene, der står her, er:
+
+\begin{align*} 
+&\text{Afstanden mellem A og B: } \sqrt{20^2+15^2}=25 \\
+&\text{Afstanden mellem A og C: } \sqrt{10^2+25^2}\simeq 27 \\
+&\text{Afstanden mellem B og C: } \sqrt{10^2+10^2}\simeq 14
+\end{align*}
+
+Med dette afstandsmål er der altså længst fra $A$ til $C$.
+
+Skifter vi nu enhed og udtrykker højden i meter får vi følgende datapunkter:
+
+| Person | (vægt, højde) |
+|:-----:|:-----:
+| A | $(70 \ kg, 1.65 \ m)$ |
+| B | $(90 \ kg, 1.80 \ m)$ |
+| C | $(80 \ kg, 1.90 \ m)$ |
+
+Nu er 
+
+\begin{align*} 
+&\text{Afstanden mellem A og B: } \sqrt{20^2+0.15^2} \simeq 20 \\
+&\text{Afstanden mellem A og C: } \sqrt{10^2+0.25^2} \simeq 10 \\
+&\text{Afstanden mellem B og C: } \sqrt{10^2+0.10^2} \simeq 10
+\end{align*}
+
+Der er nu længst fra $A$ til $B$.
+
+Det er ikke ret smart. Skal man finde de datapunkter, som ligger tættest på hinanden, er svaret
+tilsyneladende som vinden blæser og afhængig af hvilken enhed, vi har valgt at måle i.
+
+Men selv hvis begge variable er i samme enhed, kan Pythagoras brugt med
+hovedet under armen være uheldigt, som nedenstående eksempel illustrerer.
+
+Vi forestiller os, at vi har data for, hvor meget familierne $A$, $B$ og $C$ bruger på bolig
+og på mælk om måneden. Begge variable kan være i kroner. I tabellen ses et eksempel:
+
+| Familie | (bolig, mælk) |
+|:-----:|:-----:
+| A | $(7500 \ kr, 200 \ kr)$ |
+| B | $(7500 \ kr, 1700 \ kr)$ |
+| C | $(6000 \ kr, 200 \ kr)$ |
+
+Det vil altså for eksempel sige, at familie $A$ bruger $7500$ kr på bolig og $200$ kr på mælk. Her er
+afstanden udregnet med Pythagoras:
+
+\begin{align*} 
+&\text{Afstanden mellem A og B: } \sqrt{0^2+1500^2} = 1500 \\
+&\text{Afstanden mellem A og C: } \sqrt{1500^2+0^2} = 1500 \\
+&\text{Afstanden mellem B og C: } \sqrt{1500^2+1500^2} \simeq 2121
+\end{align*}
+
+Altså er der samme afstand fra $A$ til $B$ som fra $A$
+til $C$, men vi vil nok mene, at $B$ afviger mere fra $A$ end $C$ gør,
 fordi mælkeforbruget i familie $B$ er usædvanligt.
 
-Har vi data for mange familier, kan vi kvantificere ideen om, hvad der
+Har vi data for mange familier, kan vi kvantificere idéen om, hvad der
 er usædvanligt og bruge det til at lave en mere passende afstand.
 
-Første naive tilgang - Min-Max-skalering: {#første-naive-tilgang---min-max-skalering .unnumbered}
------------------------------------------
+## Første naive tilgang: Min-Max-skalering
 
-Data er punkter $(x_i,y_i)$ i planen. $x$-værdierne ligger mellem $a$ og
-$b$, mens $y$-værdierne ligger mellem $c$ og $d$. TEGNING af
-datapunkter.
+Eksemplet ovenfor illustrerer, at det nok vil være smart at prøve at inddrage i hvilket interval $x$- og $y$-værdierne varierer. For eksempel er et udsving på $500$ kr i boligudgifter ikke lige så voldsomt, som et udsving på $500$ kr i mælkeudgifter. Problemet er, at den *absolutte* forskel på henholdsvis $x$- og $y$-værdierne ikke er sammenlignelige her.   
 
-Ideen er nu, at vi skalerer, så afstandene langs $x$-aksen får samme
-vægt som afstande langs $y$-aksen.
+Lad os sige, at vi betrager datapunkter $(x_i,y_i)$ i planen, hvor $x$-værdierne ligger mellem $a$ og
+$b$, mens $y$-værdierne ligger mellem $c$ og $d$. Situationen er illustreret i @fig-min_max_skalering.
 
-Afstand fra $(x_1,y_1)$ til $(x_2,y_2)$ er
-$\sqrt{(\frac{x_2-x_1}{b-a})^2+(\frac{y_2-y_1}{d-c})^2}$
+![Datapunkter i planen, hvor $x$-værdierne ligger mellem $a$ og
+$b$, mens $y$-værdierne ligger mellem $c$ og $d$.](images/fig_min_max_skalering.png){#fig-min_max_skalering}
 
-Overvej, at man får samme effekt, samme afstand, hvis man erstatter hver
-punkt $(x_i,y_i)$ med med
-$$(x_i,y_i)_{Norm}=\left(\frac{x_i-a}{b-a}, \frac{y_i-c}{d-c}\right)$$
+Idéen er nu, at vi skalerer, så afstandene langs $x$-aksen får samme
+vægt som afstandene langs $y$-aksen.
 
-Mindre naivt, mere bøvlet. Feature scaling. {#mindre-naivt-mere-bøvlet.-feature-scaling. .unnumbered}
--------------------------------------------
+Det vil sige, at vi definerer afstanden fra $(x_1,y_1)$ til $(x_2,y_2)$ som
 
-Skalering langs akserne, hvor man bruger data til at bestemme
-skaleringen, kaldes også \"feature scaling\", når vi arbejder med
-perceptroner eller neurale netværk. Hvis det data, der skal læres fra -
-træningsdata - er $(x_1,y_1), (x_2,y_2),\ldots, (x_n,y_n)$, så skalerer
-vi langs førsteaksen ved
+$$\sqrt{\left ( \frac{x_2-x_1}{b-a} \right )^2+ \left ( \frac{y_2-y_1}{d-c} \right )^2}$$ {#eq-min_max_skalering}
 
-1.  Udregn et estimat for middelværdien af $x$:
-    $$\bar{x}=\frac{\Sigma_{i=1}^nx_i}{n}$$
+Det får den betydning, at hvis $x$-værdierne f.eks. kan varierer i et langt bredere interval end $y$-værdierne (dvs. at $b-a>d-c$), så bliver forskellen på $x$-værdierne i ovenstående afstandsmål skaleret mere ned (fordi vi kommer til at dividere med et større tal). En anden måde at forstå dette afstandsmål på, er ved at erstatte hvert punkt $(x_i,y_i)$ med et nyt skaleret punkt:
 
-2.  og et estimat for denne variabels spredning:
+$$(x_i,y_i)_{Norm}=\left(\frac{x_i-a}{b-a}, \frac{y_i-c}{d-c}\right)$$ {#eq-norm}
+
+Resultatet af at lave denne skalering af punkterne fra @fig-min_max_skalering ses i @fig-min_max_skalering2.
+
+![Datapunkterne fra @fig-min_max_skalering, men hvor alle punkter er blevet skaleret ved at bruge formlen i (@eq-norm).](images/fig_min_max_skalering2.png){#fig-min_max_skalering2}
+
+Bemærk, at datapunkterne nu er skaleret på en sådan måde, at alle $x$- og $y$-værdier ligger mellem $0$ og $1$. Derfor giver det mening, at bruge Pythagoras på disse skalerede punkter -- og gør vi det, får vi
+
+$$\sqrt{\left(\frac{x_2-a}{b-a}-\frac{x_1-a}{b-a}\right)^2 +\left(\frac{y_2-c}{d-c}-\frac{y_1-c}{d-c}\right)^2}=\sqrt{\left(\frac{x_2-x_1}{b-a}\right)^2+\left(\frac{y_2-y_1}{d-c}\right)^2}$$
+
+Bemærk, at det præcis er afstandsmålet i (@eq-min_max_skalering).  
+
+## Mindre naivt, mere bøvlet: Feature scaling
+
+Den skalering vi har præsenteret i (@eq-norm) benytter ikke som sådan information om data, men kun om den mindste og største værdi, som henholdsvis $x$- og $y$-værdier ligger imellem (nemlig $a$ og $b$ for $x$-værdierne og $c$ og $d$ for $y$-værdierne).
+
+Et alternativ til dette er at bruge data til at bestemme
+skaleringen. Dette kaldes for *feature scaling*, når vi arbejder med
+perceptroner eller neurale netværk. Hvis de data, der skal læres fra -- det vil sige
+træningsdata -- er 
+$$(x_1,y_1), (x_2,y_2),\ldots, (x_n,y_n)$$ 
+så skalerer vi langs førsteaksen ved, at
+
+* udregne et estimat for middelværdien af $x$:
+    $$\bar{x}=\frac{x_1 + x_2 + \cdots + x_n}{n}=\frac{\Sigma_{i=1}^nx_i}{n}$$
+
+* og et estimat for denne variabels spredning:
     $$s_x=\sqrt{\frac{\Sigma_{i=1}^n(x_i-\bar{x})^2}{n-1}}$$
 
-Feature scaling af $x_i$ er da $$\hat{x}_i=\frac{x_i-\bar{x}}{s_x}$$
+Feature scaling af $x_i$ er da 
+$$\hat{x}_i=\frac{x_i-\bar{x}}{s_x}$$ {#eq-feature_scaling_x}
+
 Tilsvarende estimeres middelværdi og spredning for $y$ og feature
-scaling udregnes $$\hat{y}_i= \frac{y_i-\bar{y}}{s_y}$$
+scaling udregnes: 
+$$\hat{y}_i= \frac{y_i-\bar{y}}{s_y}$$ {#eq-feature_scaling_y}
 
-Euklidisk afstand mellem disse nye punkter $(\hat{x}_i,\hat{y}_i)$ og
-$(\hat{x}_j,\hat{y}_j)$ er
+Resultatet af at lave denne feature skalering af punkterne fra @fig-min_max_skalering ses i @fig-feature_scaling.
 
-$$\sqrt{\left(\frac{x_i-\bar{x}}{s_x}-\frac{x_j-\bar{x}}{s_x}\right)^2 +\left(\frac{y_i-\bar{y}}{s_y}-\frac{y_j-\bar{y}}{s_y}\right)^2}=\sqrt{\left(\frac{x_i-x_j}{s_x}\right)^2+\left(\frac{y_i-y_j}{s_y}\right)^2}$$
+![Datapunkterne fra @fig-min_max_skalering, men hvor alle punkter er blevet feature skaleret ved at bruge formlerne i (@eq-feature_scaling_x) og (@eq-feature_scaling_y).](images/fig_feature_scaling.png){#fig-feature_scaling}
 
-Hvis vi sammenligner med den naive tilgang, er den ikke helt skæv. Der
+Bemærk, hvordan de feature skalerede datapunkter har $x$- og $y$-værdier, som alle[^1] ligger mellem $-2$ og $2$. 
+
+Da alle $x$- og $y$-værdier nu er på samme skala, giver det igen mening at beregne den euklidiske afstand mellem disse nye punkter. Betragter vi de skalerede punkter $(\hat{x}_1,\hat{y}_1)$ og
+$(\hat{x}_2,\hat{y}_2)$ så bliver den euklidiske afstand mellem dem
+
+\begin{align*}
+\sqrt{(\hat{x}_2-\hat{x}_1)^2+(\hat{y}_2-\hat{y}_1)^2} &= \sqrt{\left(\frac{x_2-\bar{x}}{s_x}-\frac{x_1-\bar{x}}{s_x}\right)^2 +\left(\frac{y_2-\bar{y}}{s_y}-\frac{y_1-\bar{y}}{s_y}\right)^2}\\
+& =\sqrt{\left(\frac{x_2-x_1}{s_x}\right)^2+\left(\frac{y_2-y_1}{s_y}\right)^2}
+\end{align*}
+
+Hvis vi sammenligner med den naive tilgang i (@eq-min_max_skalering), er den ikke helt skæv. Der
 skal bare skaleres med $s_x$ i stedet for $b-a$ og med $s_y$ i stedet
 for $c-d$.
 
-SKAL HER STÅ NOGET OM, AT DET ER STANDARDISERING OG Z-score??
+Bemærk, at den feature skalering, som foretages i (@eq-feature_scaling_x) og (@eq-feature_scaling_y), svarer til at standardisere en normalfordelt stokastisk variabel $X \sim N(\mu, \sigma)$:
 
-Se på INTERAKTIV ILLUSTRATION. Hvad er forskellen på den naive tilgang
-og *feature scaling* i disse tilfælde?
+$$ Z = \frac{X-\mu}{\sigma}$$
+Derfor vil det også være sådan, at hvis de oprindelige data er normalfordelte, så vil de nye feature skalerede data være standard normalfordelte (dvs. normalfordelte med middelværdi $0$ og spredning $1$). Heraf følger også, at cirka $95 \%$ af de feature skalerede data vil ligge mellem $-2$ og $2$.
 
-Vis, at afstandene i såvel den naive, som den knap så naive tilgang
+
+<!-- Vis, at afstandene i såvel den naive, som den knap så naive tilgang
 giver metrikker. VINK: De er begge skaleringer, så man kan gøre det i et
 hug.
 
@@ -97,4 +202,27 @@ højde og det med bolig og mælk? Eller måske give 10 punkter? Det
 gennemsnitlige forbrug af mælk pr husstand pr år er ca. 1300 kr iflg
 statbank.dk Årlig lejeudgift er i gennemsnit 31.619 kr (Faktisk husleje
 betalt af lejere) men der er forbrugsudgifter - vand, fjernvarme,\... på
-ca.28.000 oveni.
+ca.28.000 oveni. -->
+
+## Eksempel: Feature scaling
+
+Vi vil prøve at se på et udvidet eksempel om udgifter til bolig og mælk. Se nedenstående tabel:
+
+| Familie | (bolig, mælk) |
+|:-----:|:-----:
+| A | $(7500 \ kr, 200 \ kr)$ |
+| B | $(7500 \ kr, 1700 \ kr)$ |
+| C | $(6000 \ kr, 200 \ kr)$ |
+| D | $(5200 \ kr, 300 \ kr)$ |
+| E | $(8100 \ kr, 250 \ kr)$ |
+| F | $(6200 \ kr, 350  \ kr)$ |
+| G | $(7700 \ kr, 400 \ kr)$ |
+| H | $(5800 \ kr, 350 \ kr)$ |
+| I | $(7200 \ kr, 250 \ kr)$ |
+| J | $(6800 \ kr, 400  \ kr)$ |
+
+Datapunkterne fra tabellen ses indtegnet i @fig-bolig_milk_raw. De tre første familier $A$, $B$ og $C$ fra det tidligere eksempel er markeret. Bemærk, at vi tidligere har beregnet, at afstanden mellem $A$ og $B$ er den samme som afstanden mellem $A$ og $C$. Det ser måske ikke umiddelbart sådan ud i @fig-bolig_milk_raw, men det skyldes, at enheden på de to akser er forskellige.
+
+![Datapunkterne fra eksemplet omkring udgifter til bolig og mælk.](images/fig_bolig_milk_raw.png){#fig-bolig_milk_raw}
+
+[^1]: I virkelighedens verden kan der godt være værdier, som er mindre end $-2$ eller større end $2$, men som oftest vil det være sådan, at omkring $95 \%$ af værdierne vil ligge mellem $-2$ og $2$ efter feature skalering. 
